@@ -1,6 +1,28 @@
 {
   "name": "application-2022",
   "version": "0.0.0",
+  "description": "Description",
+  "main": "index.jsx",
+  "author": {
+    "name": "GadelhaTI",
+    "url": "http://www.gadelhat.eti.br",
+    "github": "https://github.com/gadelhati",
+    "twitter": "https://twitter.com/gadelhati"
+  },
+  "contributors": [
+    {
+      "name": "Instituto Hidrográfico",
+      "url": "https://github.com/Instituto-Hidrografico"
+    }
+  ],
+  "homepage": "http://10.5.192.35/observation/",
+  "copyright": "Copyright 1822-2021",
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gadelhati/application-2022.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
