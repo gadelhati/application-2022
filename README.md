@@ -1,4 +1,4 @@
-# Application 2022
+# _Application 2022_
 
 ## creation project
 ```
@@ -15,10 +15,7 @@ npm init vite@latest application-name --template react-ts
 ### src/assets/heraldica.ico
 ### src/assets/heraldica.svg
 ### src/assets/heraldica.png
-### .env
-```
-PORT=3126
-```
+
 ### LICENCE
 ```
 MIT License
@@ -121,9 +118,32 @@ export default function AppRoutes() {
 ```
 npm install
 npm install react-router-dom
+npm install --save styled-components
+npm install @stitches/react
+npm install @radix-ui/react-*
 ```
 
 ## run project
 ```
 npm run dev
 ```
+
+# libraries
+## visual, css in js
+>[styled-components](https://styled-components.com/)
+
+>[stitches](https://stitches.dev/)
+## functional
+>[radix ui](https://www.radix-ui.com/docs/primitives/overview/introduction)
+
+# data fetching
+>[react query](https://react-query.tanstack.com/)
+
+>[graphql](https://graphql.org/)
+
+>[uRQL](https://formidable.com/open-source/urql/)
+
+# tests
+>[testing-library](https://testing-library.com/docs/react-testing-library/intro/) : for unitary tests
+
+>[cypress](https://www.cypress.io/)
