@@ -12,6 +12,9 @@ npm init vite@latest application-name --template react-ts
 - [x] src/logo.svg
 
 ## file creation
+### src/assets/heraldica.ico
+### src/assets/heraldica.svg
+### src/assets/heraldica.png
 ### .env
 ```
 PORT=3126
@@ -41,6 +44,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 ## file changes
+### index.html
+```
+...
+<link rel="icon" type="image/svg+xml" href="/src/assets/heraldica.png" />
+...
+<title>Application Name</title>
+...
+```
 ### src/App.tsx
 ```
 export default function App() {
