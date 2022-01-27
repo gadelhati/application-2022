@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AppRoutes from "./AppRoutes";
 import Observation from "./components/Observation";
+import ToolbarDemo from "./components/doc/ToolBarDemo";
 
 export default function App() {
   const [observation, setObservation] = useState<string[]>([
@@ -13,6 +14,7 @@ export default function App() {
   }
   return (
     <>
+      <ToolbarDemo/>
       <AppRoutes/>
       {observation.map(observation => {
         return <Observation mimi={observation}/>
