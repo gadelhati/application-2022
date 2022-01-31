@@ -1,4 +1,4 @@
-const localStorage = [] as  any;
+// const localStorage = [] as  any;
 
 export const currentUserisLogged = () => {
   return localStorage.getItem('user') ? true : false;

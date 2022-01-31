@@ -1,12 +1,12 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 
-import { AppButton } from "./components/App.Button";
+import { AppButton } from "./containers/App.Button";
 import AvatarDemo from "./components/doc/AvatarDemo";
 import CheckboxDemo from "./components/doc/CheckboxDemo";
 import LabelDemo from "./components/doc/LabelDemo";
-import { Observation } from "./components/Observation";
-import { ObservationList } from "./components/Observation.List";
-import { Observator } from "./components/Observator";
+import { Observation } from "./components/observation/Observation";
+import { ObservationList } from "./components/observation/Observation.List";
+import { Observator } from "./components/observation/Observator";
 import AccordionDemo from "./components/doc/AccordionDemo";
 import AlertDialogDemo from "./components/doc/AlertDialogDemo";
 // import AspectRatioDemo from "./components/doc/AspectRatioDemo";
@@ -34,7 +34,7 @@ export default function AppRoutes() {
             <Routes>
                 <Route path="/observation" element={<Observation mimi="vixi" />}></Route>
                 <Route path="/list" element={<ObservationList />}></Route>
-                <Route path="/observator" element={<Observator />}></Route>
+                <Route path="/observator" element={<Observator id="" />}></Route>
 
                 <Route path="/accordion" element={<AccordionDemo />}></Route>
                 <Route path="/alert" element={<AlertDialogDemo />}></Route>

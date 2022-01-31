@@ -1,7 +1,7 @@
 import { constants } from "../assets/constants/constants"
 import { create, retrieve, getRetrieve, update, remove, removeAll } from "../services/service"
 
-export const createActions = (item:{}) => async (dispatch: any)/*: Promise<{}>*/ => {
+export const createAction = (item:{}) => async (dispatch: any)/*: Promise<{}>*/ => {
     dispatch(createStart())
     try {
         const response = await create(item)
@@ -24,7 +24,7 @@ export const createError = (error: any) => ({
     payload: error
 })
 
-export const retrieveAllActions = () => async (dispatch: any) => {
+export const retrieveAllAction = () => async (dispatch: any) => {
     dispatch(retrieveStart())
     try {
         const response = await getRetrieve()
@@ -47,7 +47,7 @@ export const retrieveAllError = (error: any) => ({
     payload: error
 })
 
-export const retrieveActions = (id: string) => async (dispatch: any) => {
+export const retrieveAction = (id: string) => async (dispatch: any) => {
     dispatch(retrieveStart())
     try {
         const response = await retrieve(id)

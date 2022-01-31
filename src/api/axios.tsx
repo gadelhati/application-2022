@@ -17,7 +17,6 @@ export const api = axios.create({
 api.interceptors.request.use(async config => {
   const token = getLocalAccessToken();
   if (token) {
-    const response = await getLocalAccessToken();
     config.headers!.Authorization = `Bearer ${token}`;
     // config.headers.Access = `*`,
     // config.headers.Content = `application/json`

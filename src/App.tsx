@@ -1,6 +1,5 @@
-import { useState } from "react";
 import AppRoutes from "./AppRoutes";
-import { Stitches } from "./components/Stitches";
+import { Stitches } from "./containers/Stitches";
 
 export default function App() {
   return (

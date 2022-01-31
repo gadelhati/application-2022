@@ -1,5 +1,5 @@
 import { constants } from "../assets/constants/constants"
-import { initialReducer } from "../initialState/initialReducer"
+import { initialReducer } from "../components/initialState/initialReducer"
 
 export const Reducer = (state: initialReducer, action: any) => {
     switch (action.type) {
