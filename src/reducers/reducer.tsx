@@ -20,7 +20,7 @@ export const Reducer = (state: initialReducer, action: any) => {
         case constants.RETRIEVE_START:
             return { ...state, error: false, loading: true, item: {} }
         case constants.RETRIEVE_SUCCESS:
-            return { ...state, error: false, loading: false, itens: action.payload, item: {} }
+            return { ...state, error: false, loading: false, itens: [], item: action.payload }
         case constants.RETRIEVE_ERROR:
             return { ...state, error: true, loading: false, itens: [], item: {} }
 
