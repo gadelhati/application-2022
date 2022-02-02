@@ -1,6 +1,6 @@
 import { constants } from "../assets/types/constants"
 
-const user = JSON.parse(localStorage.getItem("user"))
+const user = JSON.parse(`${localStorage.getItem("user")}`)
 
 const initialState = user
   ? { isLoggedIn: true, user }
