@@ -11,7 +11,7 @@ export const updateLocalAccessToken = (token: any) => {
 }
 
 export const getUser = () => {
-  return JSON.parse(localStorage.getItem("user"));
+  return localStorage.getItem("user") ? localStorage.getItem("user") : undefined;
 }
 
 export const setUser = (user: any) => {
