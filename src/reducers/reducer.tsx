@@ -1,4 +1,4 @@
-import { constants } from "../assets/constants/constants"
+import { constants } from "../assets/types/constants"
 import { initialReducer } from "../components/initialState/initialReducer"
 
 export const Reducer = (state: initialReducer, action: any) => {

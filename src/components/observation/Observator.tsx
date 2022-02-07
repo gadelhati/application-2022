@@ -7,7 +7,7 @@ import { createAction, retrieveAction, updateAction, deleteAction } from "../../
 
 export const Observator = (props: initialObservator) => {
     const [state, setState] = useState<initialObservator>(props)
-    const [message, setMessage] = useState({ expose: false, heading: "", body: "" })
+    const [message, setMessage] = useState({ expose: false, header: "", body: "" })
     // const history = useHistory()
     const dispatch = useDispatch()
     // const loading = useSelector((state => state.itens.loading))
@@ -21,9 +21,9 @@ export const Observator = (props: initialObservator) => {
         dispatch(createAction(state))
         // .catch(error => {
         //     try {
-        //         setMessage({ expose: true, heading: "Error", body: error.response.data.errors.map(item => item.field + ": " + item.defaultMessage + ", ") })
+        //         setMessage({ expose: true, header: "Error", body: error.response.data.errors.map(item => item.field + ": " + item.defaultMessage + ", ") })
         //     } catch {
-        //         setMessage({ expose: true, heading: "Error", body: error.response.data.errors })
+        //         setMessage({ expose: true, header: "Error", body: error.response.data.errors })
         //     }
         // })
     }
@@ -33,20 +33,20 @@ export const Observator = (props: initialObservator) => {
     const updateItem = () => {
         dispatch(updateAction(state.id, state))
             // .then(response => {
-            //     setMessage({ expose: true, heading: "Updated item", body: JSON.stringify(response.data.id) })
+            //     setMessage({ expose: true, header: "Updated item", body: JSON.stringify(response.data.id) })
             // })
             // .catch(error => {
-            //     setMessage({ expose: true, heading: "Error", body: error.response.data.errors.map(item => item.field + ": " + item.defaultMessage + ", ") })
+            //     setMessage({ expose: true, header: "Error", body: error.response.data.errors.map(item => item.field + ": " + item.defaultMessage + ", ") })
             // })
     }
     const deleteItem = () => {
         dispatch(deleteAction(state.id))
             // .then((response: any) => {
-            //     setMessage({ expose: true, heading: "Deleted item", body: JSON.stringify(response.data.id) })
+            //     setMessage({ expose: true, header: "Deleted item", body: JSON.stringify(response.data.id) })
             //     setState(initialObservator)
             // })
             // .catch(error => {
-            //     setMessage({ expose: true, heading: "Error", body: JSON.stringify(error) })
+            //     setMessage({ expose: true, header: "Error", body: JSON.stringify(error) })
             // })
     }
 
