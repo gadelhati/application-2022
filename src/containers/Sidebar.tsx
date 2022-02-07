@@ -1,6 +1,5 @@
 import { styled } from '@stitches/react';
 import { violet, mauve, blackA } from '@radix-ui/colors';
-import { Content } from './Content';
 
 export const Sidebar = styled('div', {
     margin: 0,
@@ -43,7 +42,7 @@ export const SidebarSubTitle = styled('div', {
     color: '#cdd2d7',
     padding: 18,
     paddingTop: 28,
-    paddingBottom: 10,
+    paddingBottom: 12,
     '@media(max-width:700px)': {
         float: 'left'
     },
@@ -54,13 +53,14 @@ export const SidebarSubTitle = styled('div', {
 });
 
 export const SidebarItem = styled('a', {
+    // fontWeight: 'bold',
     transition: 'all 0.5s ease',
     alignItems: 'center',
     fontFamily: 'sans-serif',
     fontSize: 14,
     display: 'flex',
     color: '#cdd2d7',
-    padding: 18,
+    padding: 14,
     textDecoration: 'none',
     '&:active': { backgroundColor: '#46546b', color: 'White' },
     '&:hover': { backgroundColor: '#2db75b', color: 'White' },
@@ -74,7 +74,7 @@ export const SidebarItem = styled('a', {
 });
 
 export const SidebarIcon = styled('img', {
-    paddingRight: 20,
+    paddingRight: 22,
     // paddingLeft: 10,
     width: 20,
     '@media(max-width:400px)': {
@@ -86,7 +86,7 @@ export const SidebarIcon = styled('img', {
 export const SidebarContent = styled('a', {
     fontFamily: 'sans-serif',
     backgroundColor: 'Red',//'#ebedee',
-    marginLeft: '200',
+    marginLeft: 250,
     width: '80%',
     padding: '1px 16px',
     height: 1000,
@@ -94,6 +94,8 @@ export const SidebarContent = styled('a', {
         marginLeft: 0
     }
 });
+
+// footer in sidebar: #303C54
 
 const w3_open = () => {
     var main = document.getElementById("main") as HTMLInputElement;
@@ -142,18 +144,10 @@ export const SidebarContainer = () => {
                 </SidebarItem>
             </Sidebar>
             <SidebarContent id="main">
-                <div className="w3-teal">
-                    {/* <button id="openNav" className="w3-button w3-teal w3-xlarge" onClick={w3_open() as any}>&#9776;</button> */}
-                    <div className="w3-container">
-                        <h1>My Page</h1>
-                    </div>
-                    Andréa
-                </div>
-                <img src="img_car.jpg" alt="Car" /*style="width:100%"*/></img>
-                <div className="w3-container">
-                    <p>Marcelo Ribeiro Gadelha oh iuy uguo yui tfut fut cyt c yrff yct yitciy</p>
-                </div>
-                <>Marcelo Ribeiro Gadelha oh iuy uguo yui tfut fut cyt c yrff yct yitciy</>
+                {/* <button id="openNav" className="w3-button w3-teal w3-xlarge" onClick={w3_open() as any}>&#9776;</button> */}
+                <>
+                    <>Marcelo Ribeiro Gadelha oh iuy uguo yui tfut fut cyt c yrff yct yitciy</>
+                </>
             </SidebarContent>
         </>
     );
