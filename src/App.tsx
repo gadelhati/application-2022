@@ -1,11 +1,8 @@
-import AppRoutes from "./AppRoutes";
-import { Stitches } from "./containers/Stitches";
+import { SidebarContainer } from "./containers/Sidebar";
+import './App.css';
 
 export default function App() {
   return (
-    <>
-      <Stitches/>
-      <AppRoutes/>
-    </>
+    <SidebarContainer />
   )
 }
