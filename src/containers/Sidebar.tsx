@@ -1,5 +1,7 @@
 import { styled } from '@stitches/react';
 import { violet, mauve, blackA } from '@radix-ui/colors';
+import { Observation } from '../components/observation/Observation';
+import { ContentContainer } from './Content';
 
 export const Sidebar = styled('div', {
     margin: 0,
@@ -64,6 +66,7 @@ export const SidebarItem = styled('a', {
     textDecoration: 'none',
     '&:active': { backgroundColor: '#46546b', color: 'White' },
     '&:hover': { backgroundColor: '#2db75b', color: 'White' },
+    '&:child': { backgroundColor: 'Black' },
     '@media(max-width:700px)': {
         float: 'left'
     },
@@ -85,42 +88,45 @@ export const SidebarIcon = styled('img', {
 
 export const SidebarContent = styled('a', {
     fontFamily: 'sans-serif',
-    backgroundColor: 'Red',//'#ebedee',
+    backgroundColor: 'Green',//'#ebedee',
     marginLeft: 250,
     width: '80%',
     padding: '1px 16px',
     height: 1000,
     '@media(max-width:400px)': {
-        marginLeft: 0
+        margin: 300,
+        backgroundColor: 'Red',
+        // width: '100%'
     }
 });
 
 // footer in sidebar: #303C54
 
 const w3_open = () => {
-    var main = document.getElementById("main") as HTMLInputElement;
-    main.style.marginLeft = "25%";
-    var side = document.getElementById("mySidebar") as HTMLInputElement;
-    side.style.width = "25%";
-    side.style.display = "block"
-    var nav = document.getElementById("openNav") as HTMLInputElement;
-    nav.style.display = "none"
+    // var main = document.getElementById("main") as HTMLInputElement;
+    // main.style.marginLeft = "25%";
+    var side = document.getElementById("mySidebar") as HTMLDivElement;
+    // side.style.width = "25%";
+    side.style.display = "block";
+    // var nav = document.getElementById("openNav") as HTMLInputElement;
+    // nav.style.display = "none"
 }
 
 const w3_close = () => {
-    var main = document.getElementById("main") as HTMLInputElement;
-    main.style.marginLeft = "0%";
-    var side = document.getElementById("mySidebar") as HTMLInputElement;
-    side.style.width = "none";
-    var nav = document.getElementById("openNav") as HTMLInputElement;
-    nav.style.display = "inline-block"
+    // var main = document.getElementById("main") as HTMLDivElement;
+    // main.style.marginLeft = "0%";
+    var side = document.getElementById("mySidebar") as HTMLDivElement;
+    // side.style.width = "none";
+    side.style.backgroundColor = 'Blue';
+    // var nav = document.getElementById("openNav") as HTMLDivElement;
+    // nav.style.display = "inline-block"
 }
 
 export const SidebarContainer = () => {
     return (
         <>
             <Sidebar id="mySidebar" >
-                {/* <button className="w3-bar-item w3-button w3-large" onClick={w3_close() as any}>Close &times;</button> */}
+                {/* <button onClick={w3_close() as any}>Close &times;</button> */}
                 <SidebarTitle>
                     <SidebarIcon src="/src/assets/image/heraldica.png" alt="Arrow" ></SidebarIcon>
                     Application
@@ -143,12 +149,14 @@ export const SidebarContainer = () => {
                     About
                 </SidebarItem>
             </Sidebar>
-            <SidebarContent id="main">
-                {/* <button id="openNav" className="w3-button w3-teal w3-xlarge" onClick={w3_open() as any}>&#9776;</button> */}
+            <ContentContainer />
+            {/* <SidebarContent id="main">
+                <Observation mimi='oi'></Observation>
+                <button id="openNav" onClick={w3_open() as any}>&#9776;</button>
                 <>
                     <>Marcelo Ribeiro Gadelha oh iuy uguo yui tfut fut cyt c yrff yct yitciy</>
                 </>
-            </SidebarContent>
+            </SidebarContent> */}
         </>
     );
 }
