@@ -1,4 +1,4 @@
-import { constants } from "../assets/types/constants"
+import { constants } from "../assets/types/constants.auth"
 import { signin, signup, logout } from "../services/service.auth"
 
 export const signupActions = (username: string, email: string, password: string) => async (dispatch: any) => {

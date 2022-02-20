@@ -1,4 +1,4 @@
-import { constants } from "../assets/types/constants"
+import { constants } from "../assets/types/constants.auth"
 
 const user = JSON.parse(`${localStorage.getItem("user")}`)
 

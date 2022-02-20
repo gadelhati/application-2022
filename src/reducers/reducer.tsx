@@ -45,16 +45,6 @@ export const Reducer = (state: initialReducer, action: any) => {
         case constants.DELETE_ALL_ERROR:
             return { ...state, error: true, loading: false }
 
-        // case constants.UPDATED_START:
-        //     return { ...state, error: null }
-        // case constants.UPDATED_SUCCESS:
-        //     return { ...state, error: null,
-        //         itens: state.itens.map(
-        //             item => item._id === action.payload._id ? item = action.payload : item
-        //         )
-        //     }
-        // case constants.UPDATED_ERROR:
-        //     return { ...state, error: true }
         default:
             return state
     }
