@@ -3,7 +3,7 @@ import { useQuery } from "../assets/hook/useQuery";
 import { crud } from "./om.action.type";
 import { constants } from "../assets/types/constants";
 import { OM } from "../assets/interface/om"
-import { create, retrieve, getRetrieve, getAll, update, remove, removeAll } from "../services/service"
+import { create, retrieve, getRetrieve, getAll, update, remove, removeAll } from "../services/om.service"
 
 export const createAction = (om: OM) => {
     return async (dispatch: Dispatch<crud>) => {
@@ -15,7 +15,8 @@ export const createAction = (om: OM) => {
             dispatch({
                 type: constants.CREATE_SUCCESS,
                 payload: data
-            });
+            })
+            return data;
         } catch(error: any) {
             dispatch({
                 type: constants.CREATE_ERROR,
@@ -25,30 +26,26 @@ export const createAction = (om: OM) => {
     }
 }
 
-export const retrieveAllAction = () => async (dispatch: Dispatch<crud>) => {
-// export const retrieveAllAction = () => {
-    // return async (dispatch: Dispatch<crud>) => {
+export const retrieveAllAction = () => {
+    return async (dispatch: any) => {
         dispatch({
             type: constants.RETRIEVE_ALL_START
         });
         try {
-            // const { data } = await getRetrieve()
-            const { data } = useQuery<OM[] | undefined>('/om/retrieve')
-            console.log(data)
-            // dispatch({
-            //     type: constants.RETRIEVE_ALL_SUCCESS,
-            //     payload: data
-            // });
-            return Promise.resolve(data)
+            const { data } = await getRetrieve()
+            // const { data } = useQuery<OM[] | undefined>('/om/retrieve')
+            dispatch({
+                type: constants.RETRIEVE_ALL_SUCCESS,
+                payload: data
+            });
         } catch(error: any) {
-            console.log(error.message)
             dispatch({
                 type: constants.RETRIEVE_ALL_ERROR,
                 payload: error.message
             });
-            return Promise.reject(error.message)
+
         }
-    // }
+    }
 }
 
 export const updateAction = (id: string, om: OM) => {
