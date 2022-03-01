@@ -1,5 +1,5 @@
 import { constants } from "../assets/types/constants"
-import { create, retrieve, getRetrieve, update, remove, removeAll } from "../services/service"
+import { create, retrieve, getRetrieve, update, remove, removeAll } from "../services/om.service"
 
 export const createAction = (item:{}) => async (dispatch: any)/*: Promise<{}>*/ => {
     dispatch(createStart())
