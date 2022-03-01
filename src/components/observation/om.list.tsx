@@ -16,6 +16,9 @@ export const OMList = (props: OM | null) => {
         retrieveItem()
         console.log(state)
     }, [dispatch, state])
+    const resetItem = () => {
+        setState(initialOM)
+    }
     const createItem = () => {
         dispatch(createAction(state))
     }
@@ -58,6 +61,7 @@ export const OMList = (props: OM | null) => {
                 onChange={handleInputChange}
                 name="name"
             />
+            <button onClick={resetItem}>Reset</button>
             <button onClick={createItem}>Create</button>
             <button onClick={retrieveItem}>Retrieve</button>
             <button onClick={updateItem}>Update</button>
