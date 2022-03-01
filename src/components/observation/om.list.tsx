@@ -13,16 +13,14 @@ export const OMList = (props: OM | null) => {
     const { loading, error, itens, item } = useTypedSelector((state) => state.oms);
 
     useEffect(() => {
-        dispatch(retrieveAllAction)
+        retrieveItem()
+        console.log(state)
     }, [dispatch, state])
-
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target
-        setState({ ...state, [name]: value })
-    }
-
     const createItem = () => {
         dispatch(createAction(state))
+    }
+    const retrieveItem = () => {
+        dispatch(retrieveAllAction())
     }
     const updateItem = () => {
         dispatch(updateAction(state.id, state))
@@ -30,56 +28,57 @@ export const OMList = (props: OM | null) => {
     const deleteItem = () => {
         dispatch(deleteAction(state.id))
     }
-
-    const onSubmitHandler = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        const sim = dispatch(retrieveAllAction());
-        console.log(sim)
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target
+        setState({ ...state, [name]: value })
     }
-
     return (
         <>
-            <form onSubmit={onSubmitHandler}>
-                <input
-                    placeholder="ID"
-                    aria-label="id"
-                    aria-describedby="basic-addon1"
-                    type="text"
-                    className="form-control"
-                    id="id"
-                    required
-                    value={state.id}
-                    onChange={handleInputChange}
-                    name="id"
-                />
-                <input
-                    placeholder="Name"
-                    aria-label="name"
-                    aria-describedby="basic-addon1"
-                    type="text"
-                    className="form-control"
-                    id="name"
-                    required
-                    value={state.name}
-                    onChange={handleInputChange}
-                    name="name"
-                />
-                <button type="submit"> submit </button>
-            </form>
-            <ul>
-                <button /*style={{ backgroundColor: 'GrayText' }}*/ onClick={createItem}>Create</button>
-                <button /*style={{ backgroundColor: 'GrayText' }}*/ onClick={updateItem}>Update</button>
-                <button /*style={{ backgroundColor: 'GrayText' }}*/ onClick={deleteItem}>Delete</button>
-                {isQuery && <>Carregando...</>}
-                {oms?.map(om => {
+            <input
+                placeholder="ID"
+                aria-label="id"
+                aria-describedby="basic-addon1"
+                type="text"
+                className="form-control"
+                id="id"
+                required
+                value={state.id}
+                onChange={handleInputChange}
+                name="id"
+            />
+            <input
+                placeholder="Name"
+                aria-label="name"
+                aria-describedby="basic-addon1"
+                type="text"
+                className="form-control"
+                id="name"
+                required
+                value={state.name}
+                onChange={handleInputChange}
+                name="name"
+            />
+            <button onClick={createItem}>Create</button>
+            <button onClick={retrieveItem}>Retrieve</button>
+            <button onClick={updateItem}>Update</button>
+            <button onClick={deleteItem}>Delete</button>
+            {loading && <>Carregando...</>}
+            <table>
+                {itens?.map(item => {
                     return (
-                        <li key={om.id}>
-                            <strong>{om.id}</strong>
-                            <p>{om.name}</p>
-                        </li>
+                        <tr key={item.id}>
+                            <td>{item.id}</td>
+                            <td>{item.name}</td>
+                            {/* <td><input type="button" onClick={updateItem} key={item.id}>Update</input></td>
+                            <td><input type="button" onClick={deleteItem} key={item.id}> kDelete</input></td> */}
+                            {/* <td><Button href={`/item/${item.id}`} variant="secondary" key={item.id} item={item} > More </button></td> */}
+                            {/* <td><button href={`/item/${item.id}`} variant="secondary" key={item.id} item={item} > More </button></td> */}
+                            <td><button onClick={updateItem}>Update</button></td>
+                            <td><button onClick={deleteItem}>Delete</button></td>
+                        </tr>
                     )
                 })}
-            </ul>
+            </table>
         </>
     );
 }
