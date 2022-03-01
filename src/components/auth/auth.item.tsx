@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from "react-router"
+// import { useDispatch, useSelector } from "react-redux"
+import { useAppDispatch } from "../../assets/hook/useHook"
+// import { useHistory } from "react-router-dom"
 
 import { signupActions, signinActions } from "../../actions/action.auth"
 import { Card, OverlayTrigger, Tooltip, InputGroup, FormControl, Button } from "react-bootstrap"
 import { Message } from "../../assets/helpers/message.alert"
 import ErrorBoundary from "../../assets/helpers/error.boudary"
-import heraldica from "../../assets/icons/brasao-chm.png"
+import heraldica from "../../assets/image/heraldica.png"
 
-export const AuthItem = (props) => {
+export const AuthItem = (props: any) => {
 
     const [state, setState] = useState(props)
     const [message, setMessage] = useState({ expose: false, heading: "", body: "" })
-    const history = useHistory()
-    const dispatch = useDispatch()
+    // const history = useHistory()
+    // const useAppDispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
-    const loading = useSelector((state => state.itens.loading))
+    // const loading = useSelector((state => state.itens.loading))
     // const error = useSelector((state => state.itens.error))
     // const itens = useSelector((state => state.itens.itens))
 
@@ -32,10 +34,10 @@ export const AuthItem = (props) => {
             // return <Redirect to="/profile" />
         // }
         // history.push('/signin')
-    }, [dispatch, state]);
+    }, [state]);
 
     const signupItem = () => {
-        dispatch(signupActions(state.username, state.email, state.password))
+        // dispatch(signupActions(state.username, state.email, state.password))
             // .then(response => {
             //     setMessage({ expose: true, heading: "Signuped", body: JSON.stringify(response.id) })
             // })
@@ -44,7 +46,7 @@ export const AuthItem = (props) => {
             // })
     };
     const signinItem = () => {
-        dispatch(signinActions(state.username, state.password))
+        // dispatch(signinActions(state.username, state.password))
             // .then(response => {
             //     setMessage({ expose: true, heading: "Signined", body: JSON.stringify(response) })
             //     history.push("/observation")
@@ -71,11 +73,11 @@ export const AuthItem = (props) => {
 
     return (
         <>
-        {   loading ?
+        {/* {   loading ?
 			<Message expose={message.expose} header="Loading" body="loading..." />
 			:
 			<Message expose={message.expose} header={message.heading} body={message.body} />
-		}
+		} */}
         <Card style={{ width: '28rem' }}>
             <Card.Img className="profile-img-card" alt="Centro de Hidrografia da Marinha" src={heraldica} height={40} />
              <Card.Body>
@@ -96,25 +98,7 @@ export const AuthItem = (props) => {
                         />
                     </OverlayTrigger>
                 </InputGroup>
-                {props.match.path === "/signup" &&
-                    <InputGroup className="mb-3">
-                        <InputGroup.Text id="basic-addon1">E-mail</InputGroup.Text>
-                        <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Valid email address</Tooltip>}>
-                            <FormControl
-                                placeholder="E-mail"
-                                aria-label="email"
-                                aria-describedby="basic-addon1"
-                                type="text"
-                                className="form-control"
-                                id="email"
-                                // required
-                                value={state.email}
-                                onChange={handleInputChange}
-                                name="email"
-                            />
-                        </OverlayTrigger>
-                    </InputGroup>
-                }
+                
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="basic-addon1">Password</InputGroup.Text>
                     <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Password</Tooltip>}>
@@ -132,21 +116,7 @@ export const AuthItem = (props) => {
                         />
                     </OverlayTrigger>
                 </InputGroup>
-                {props.match.path === "/signin" &&
-                    <div className="d-grid gap-2">
-                        <ErrorBoundary>
-                            <Button variant="primary" onClick={() => signinItem()} > Signin </Button>
-                            {' '}
-                        </ErrorBoundary>
-                    </div>
-                }
-                {props.match.path === "/signup" &&
-                    <div className="d-grid gap-2">
-                        <ErrorBoundary>
-                            <Button variant="primary" onClick={() => signupItem()} > SigUp </Button>
-                        </ErrorBoundary>
-                    </div>
-                }
+                
                 {state.error ? <div className="font-weight-bold alert alert-danger text-center mt-4">Some data are //required {state.error}</div> : null}
             </Card.Body>
         </Card>

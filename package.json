@@ -53,14 +53,15 @@
     "@radix-ui/react-toggle-group": "^0.1.4",
     "@radix-ui/react-toolbar": "^0.1.4",
     "@radix-ui/react-tooltip": "^0.1.6",
+    "@reduxjs/toolkit": "^1.7.2",
     "@stitches/react": "^1.2.6",
     "axios": "^0.25.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
-    "react-router": "^6.2.1",
-    "react-router-dom": "^6.2.1"
+    "react-router-dom": "^6.2.1",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.33",

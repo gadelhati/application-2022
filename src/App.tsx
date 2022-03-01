@@ -2,14 +2,14 @@ import { SidebarContainer } from "./containers/Sidebar";
 import './App.css';
 import { HeaderContainer } from "./containers/Header";
 import AppRoutes from "./AppRoutes";
-import { Repositories } from "./components/observation/Repositories";
+import { OMList } from "./components/observation/om.list";
 
 export default function App() {
   return (
     <>
-      <Repositories />
+      <OMList id="" name="" />
       <SidebarContainer />
-      <HeaderContainer />
+      {/* <HeaderContainer /> */}
       <AppRoutes />
     </>
   )

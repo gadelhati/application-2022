@@ -34,14 +34,14 @@ export const Reducer = (state: initialReducer, action: any) => {
         case constants.DELETE_START:
             return { ...state, error: false, loading: true }
         case constants.DELETE_SUCCESS:
-            return { ...state, error: false, loading: false, itens: state.itens.filter(item => item._id !== action.payload) }
+            return { ...state, error: false, loading: false, itens: state.itens }
         case constants.DELETE_ERROR:
             return { ...state, error: true, loading: false }
 
         case constants.DELETE_ALL_START:
             return { ...state, error: false, loading: true }
         case constants.DELETE_ALL_SUCCESS:
-            return { ...state, error: false, loading: false, itens: state.itens.filter(item => item._id !== action.payload) }
+            return { ...state, error: false, loading: false, itens: state.itens }
         case constants.DELETE_ALL_ERROR:
             return { ...state, error: true, loading: false }
 

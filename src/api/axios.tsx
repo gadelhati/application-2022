@@ -4,7 +4,7 @@ import { getLocalAccessToken } from "../services/service.token"
 const token = getLocalAccessToken();
 
 export const api = axios.create({
-  baseURL: "http://127.0.0.1:3128/application-back",
+  baseURL: "http://localhost:3128/application-back",
 });
 
 api.interceptors.request.use(async config => {

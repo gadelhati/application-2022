@@ -27,6 +27,8 @@ import TooltipDemo from "./components/doc/TooltipDemo";
 import ToggleDemo from "./components/doc/ToogleDemo";
 // import ToggleGroupDemo from "./components/doc/ToogleGroupDemo";
 import ToolbarDemo from "./components/doc/ToolBarDemo";
+import { AuthItem } from "./components/auth/auth.item";
+import { OM2 } from "./components/OM2";
 
 export default function AppRoutes() {
     return (
@@ -35,7 +37,9 @@ export default function AppRoutes() {
                 <Route path="/observation" element={<Observation mimi="vixi" />}></Route>
                 <Route path="/list" element={<ObservationList />}></Route>
                 <Route path="/observator" element={<Observator id="" />}></Route>
+                <Route path="/auth" element={<AuthItem />}></Route>
 
+                <Route path="/om2" element={<OM2 />}></Route>
                 <Route path="/accordion" element={<AccordionDemo />}></Route>
                 <Route path="/alert" element={<AlertDialogDemo />}></Route>
                 {/* <Route path="/aspect" element={<AspectRatioDemo />}></Route> */}
