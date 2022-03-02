@@ -12,6 +12,17 @@ interface createError {
     type: constants.CREATE_ERROR,
     payload: {}
 }
+interface retrieveStart {
+    type: constants.RETRIEVE_START,
+}
+interface retrieveSuccess {
+    type: constants.RETRIEVE_SUCCESS,
+    payload: OM
+}
+interface retrieveError {
+    type: constants.RETRIEVE_ERROR,
+    payload: {}
+}
 interface retrieveAllStart {
     type: constants.RETRIEVE_ALL_START,
 }
@@ -23,5 +34,27 @@ interface retrieveAllError {
     type: constants.RETRIEVE_ALL_ERROR,
     payload: {}
 }
+interface updateStart {
+    type: constants.UPDATE_START,
+}
+interface updateSuccess {
+    type: constants.UPDATE_SUCCESS,
+    payload: OM
+}
+interface updateError {
+    type: constants.UPDATE_ERROR,
+    payload: {}
+}
+interface deleteStart {
+    type: constants.DELETE_START,
+}
+interface deleteSuccess {
+    type: constants.DELETE_SUCCESS,
+    payload: OM
+}
+interface deleteError {
+    type: constants.DELETE_ERROR,
+    payload: {}
+}
 
-export type crud = createStart | createSuccess | createError | retrieveAllStart | retrieveAllSuccess | retrieveAllError
+export type crud = createStart | createSuccess | createError | retrieveAllStart | retrieveAllSuccess | retrieveAllError | retrieveStart | retrieveSuccess | retrieveError | updateStart | updateSuccess | updateError | deleteStart | deleteSuccess | deleteError

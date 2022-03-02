@@ -14,7 +14,6 @@ export const OMList = (props: OM | null) => {
 
     useEffect(() => {
         retrieveItem()
-        console.log(state)
     }, [dispatch, state])
     const resetItem = () => {
         setState(initialOM)

@@ -51,17 +51,17 @@ export const retrieveAllAction = () => {
 export const updateAction = (id: string, om: OM) => {
     return async (dispatch: Dispatch<crud>) => {
         dispatch({
-            type: constants.CREATE_START
+            type: constants.UPDATE_START
         });
         try {
             const { data } = await update(id, om);
             dispatch({
-                type: constants.CREATE_SUCCESS,
+                type: constants.UPDATE_SUCCESS,
                 payload: data
             });
         } catch(error: any) {
             dispatch({
-                type: constants.CREATE_ERROR,
+                type: constants.UPDATE_ERROR,
                 payload: error.message
             });
         }
@@ -71,17 +71,17 @@ export const updateAction = (id: string, om: OM) => {
 export const deleteAction = (id: string) => {
     return async (dispatch: Dispatch<crud>) => {
         dispatch({
-            type: constants.CREATE_START
+            type: constants.DELETE_START
         });
         try {
             const { data } = await remove(id);
             dispatch({
-                type: constants.CREATE_SUCCESS,
+                type: constants.DELETE_SUCCESS,
                 payload: data
             });
         } catch(error: any) {
             dispatch({
-                type: constants.CREATE_ERROR,
+                type: constants.DELETE_ERROR,
                 payload: error.message
             });
         }
