@@ -16,11 +16,10 @@ export const createAction = (om: OM) => {
                 type: constants.CREATE_SUCCESS,
                 payload: data
             })
-            return data;
         } catch(error: any) {
             dispatch({
                 type: constants.CREATE_ERROR,
-                payload: error.message
+                payload: error.response.data.errors
             });
         }
     }

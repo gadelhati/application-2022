@@ -2,7 +2,7 @@ import { OM } from "./om";
 
 export interface stateOM {
     loading: boolean,
-    error: boolean,
+    error: string | null,
     item: OM,
     itens: OM[],
 }

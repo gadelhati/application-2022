@@ -65,22 +65,25 @@ export const OMList = (props: OM | null) => {
             <button onClick={retrieveItem}>Retrieve</button>
             <button onClick={updateItem}>Update</button>
             <button onClick={deleteItem}>Delete</button>
-            {loading && <>Carregando...</>}
+            {loading && <>Loading...</>}
+            {error != null && JSON.stringify(error)}
             <table>
-                {itens?.map(item => {
-                    return (
-                        <tr key={item.id}>
-                            <td>{item.id}</td>
-                            <td>{item.name}</td>
-                            {/* <td><input type="button" onClick={updateItem} key={item.id}>Update</input></td>
+                <tbody>
+                    {itens?.map(item => {
+                        return (
+                            <tr key={item.id}>
+                                <td>{item.id}</td>
+                                <td>{item.name}</td>
+                                {/* <td><input type="button" onClick={updateItem} key={item.id}>Update</input></td>
                             <td><input type="button" onClick={deleteItem} key={item.id}> kDelete</input></td> */}
-                            {/* <td><Button href={`/item/${item.id}`} variant="secondary" key={item.id} item={item} > More </button></td> */}
-                            {/* <td><button href={`/item/${item.id}`} variant="secondary" key={item.id} item={item} > More </button></td> */}
-                            <td><button onClick={updateItem}>Update</button></td>
-                            <td><button onClick={deleteItem}>Delete</button></td>
-                        </tr>
-                    )
-                })}
+                                {/* <td><Button href={`/item/${item.id}`} variant="secondary" key={item.id} item={item} > More </button></td> */}
+                                {/* <td><button href={`/item/${item.id}`} variant="secondary" key={item.id} item={item} > More </button></td> */}
+                                <td><button onClick={updateItem}>Update</button></td>
+                                <td><button onClick={deleteItem}>Delete</button></td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
             </table>
         </>
     );
