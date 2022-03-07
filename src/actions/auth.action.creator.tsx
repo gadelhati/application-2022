@@ -2,14 +2,15 @@ import { Dispatch } from "redux";
 import { crud } from "./type/auth.action.type";
 import { constants } from "../assets/types/constants.auth";
 import { signup, signin, logout, refreshToken } from "../services/auth.service"
+import { OM } from "../assets/interface/om";
 
-export const signupAction = (username: string, email: string, password: string) => {
+export const signupAction = (om: OM, username: string, email: string, password: string) => {
     return async (dispatch: Dispatch<crud>) => {
         dispatch({
             type: constants.SIGNUP_START
         });
         try {
-            const { data } = await signup(username, email, password);
+            const { data } = await signup(om, username, email, password);
             dispatch({
                 type: constants.SIGNUP_SUCCESS,
                 payload: data
@@ -56,7 +57,8 @@ export const logoutAction = () => {
 export const refreshTokenAction = (accessToken: any) => {
     return async (dispatch: Dispatch<crud>) => {
         dispatch({
-            type: constants.REFRESH_TOKEN
+            type: constants.REFRESH_TOKEN,
+            payload: accessToken
         });
     }
 }

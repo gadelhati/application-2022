@@ -1,8 +1,9 @@
 import { api } from "../api/axios"
+import { OM } from "../assets/interface/om"
 import { setUser, removeToken } from "./service.token"
 
-export const signup = (username: string, email: string, password: string) => {
-  return api.post(`/auth/signup`, { username, email, password })
+export const signup = (om: OM, username: string, email: string, password: string) => {
+  return api.post(`/auth/signup`, { om, username, email, password })
 }
 
 export const signin = async (username: string, password: string) => {

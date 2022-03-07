@@ -37,7 +37,7 @@ export default function AppRoutes() {
                 <Route path="/observation" element={<Observation mimi="vixi" />}></Route>
                 <Route path="/list" element={<ObservationList />}></Route>
                 <Route path="/observator" element={<Observator id="" />}></Route>
-                <Route path="/auth" element={<AuthList username="" email="" password="" />}></Route>
+                <Route path="/auth" element={<AuthList om='' username="" email="" password="" />}></Route>
 
                 <Route path="/om" element={<OMList id="" name="" />}></Route>
                 <Route path="/accordion" element={<AccordionDemo />}></Route>

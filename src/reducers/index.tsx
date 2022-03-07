@@ -3,7 +3,7 @@ import { authReducer } from "./auth.reducer"
 import { omReducer } from "./om.reducer"
 
 export const reducers = combineReducers({ 
-    authReducer: authReducer,
+    auths: authReducer,
     oms: omReducer,
 })
 

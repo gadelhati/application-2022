@@ -3,21 +3,26 @@ import { useDispatch } from 'react-redux';
 import { Auth } from "../../assets/interface/auth";
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { signupAction, signinAction, logoutAction, refreshTokenAction } from '../../actions/auth.action.creator';
+import { retrieveAllAction } from '../../actions/om.action.creator';
 import { initialAuth as initial } from '../../assets/initialState/auth.initial';
 
 export const AuthList = (props: Auth) => {
     const dispatch = useDispatch();
     const [ state, setState ] = useState<Auth>(props)
-    const { loading, error, itens, item } = useTypedSelector((state) => state.oms);
+    const { loading, error, itens, item } = useTypedSelector((state) => state.auths);
+    const { loading: omloading, error: omerror, itens: omitens, item: omitem } = useTypedSelector((state) => state.oms);
 
     useEffect(() => {
-        // retrieveItem()
+        retrieveItem()
     }, [dispatch, state])
+    const retrieveItem = () => {
+        dispatch(retrieveAllAction())
+    }
     const resetItem = () => {
         setState(initial)
     }
     const signupItem = () => {
-        dispatch(signupAction(state.username, state.email, state.password))
+        dispatch(signupAction(state.om, state.username, state.email, state.password))
     }
     const signinItem = () => {
         dispatch(signinAction(state.username, state.password))
@@ -32,8 +37,22 @@ export const AuthList = (props: Auth) => {
         const { name, value } = event.target
         setState({ ...state, [name]: value })
     }
+    const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        const { name, value } = event.target
+        setState({ ...state, [name]: value })
+    }
     return (
         <>
+            <select id="om.id" name="om.id" onChange={handleSelectChange}>
+                {omitens?.map(omitem => {
+                    return (
+                        <option 
+                        key={omitem.id}
+                        value={state.om.id}
+                        >{omitem.name}</option>
+                    )
+                })}
+            </select>
             <input
                 placeholder="Username"
                 aria-label="username"
@@ -45,18 +64,6 @@ export const AuthList = (props: Auth) => {
                 value={state.username}
                 onChange={handleInputChange}
                 name="username"
-            />
-            <input
-                placeholder="E-mail"
-                aria-label="email"
-                aria-describedby="basic-addon1"
-                type="text"
-                className="form-control"
-                id="email"
-                required
-                value={state.email}
-                onChange={handleInputChange}
-                name="email"
             />
             <input
                 placeholder="E-mail"
@@ -89,6 +96,7 @@ export const AuthList = (props: Auth) => {
             {/* <button onClick={refreshTokenItem}>Refresh Token</button> */}
             {loading && <>Loading...</>}
             {error != null && JSON.stringify(error)}
+            {JSON.stringify(state.om.id)}
         </>
     );
 }
