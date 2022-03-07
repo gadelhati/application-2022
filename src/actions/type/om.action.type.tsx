@@ -1,5 +1,5 @@
-import { OM } from "../assets/interface/om"
-import { constants } from "../assets/types/constants"
+import { OM } from "../../assets/interface/om"
+import { constants } from "../../assets/types/constants"
 
 interface createStart {
     type: constants.CREATE_START,

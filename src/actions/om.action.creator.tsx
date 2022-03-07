@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { useQuery } from "../assets/hook/useQuery";
-import { crud } from "./om.action.type";
+import { crud } from "./type/om.action.type";
 import { constants } from "../assets/types/constants";
 import { OM } from "../assets/interface/om"
 import { create, retrieve, getRetrieve, getAll, update, remove, removeAll } from "../services/om.service"

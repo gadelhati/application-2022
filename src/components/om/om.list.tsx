@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect } from 'react';
+import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { OM } from "../../assets/interface/om";
 import { useQuery } from "../../assets/hook/useQuery";
@@ -6,10 +6,11 @@ import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/om.action.creator';
 import { initialOM } from '../../assets/initialState/om.initial';
 
-export const OMList = (props: OM | null) => {
+export const OMList = (props: OM) => {
     const { data: oms, isQuery } = useQuery<OM[]>('/om/retrieve')
+    const [ message, setMessage ] = useState({ expose: false, header: "", body: "" })
     const dispatch = useDispatch();
-    const [state, setState] = useState(initialOM)
+    const [ state, setState ] = useState<OM>(props)
     const { loading, error, itens, item } = useTypedSelector((state) => state.oms);
 
     useEffect(() => {

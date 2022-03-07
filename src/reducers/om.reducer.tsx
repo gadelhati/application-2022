@@ -1,7 +1,7 @@
 import { stateOM } from "../assets/interface/om.state"
 import { initialState } from "../assets/initialState/om.state.initial"
 import { constants } from "../assets/types/constants"
-import { crud } from "./om.action.type"
+import { crud } from "../actions/type/om.action.type"
 
 export const omReducer = (state: stateOM = initialState, action: crud): stateOM => {
     switch (action.type) {
