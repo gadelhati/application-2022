@@ -38,17 +38,22 @@ export const AuthList = (props: Auth) => {
         setState({ ...state, [name]: value })
     }
     const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        const { name, value } = event.target
-        setState({ ...state, [name]: value })
+        setState( state => ({
+            ...state,
+                om: {
+                    id: event.target.value,
+                    name: event.target.value
+                }
+        }))
     }
     return (
         <>
-            <select id="om.id" name="om.id" onChange={handleSelectChange}>
+            <select id="om" name="om" onChange={handleSelectChange}>
                 {omitens?.map(omitem => {
                     return (
                         <option 
                         key={omitem.id}
-                        value={state.om.id}
+                        value={omitem.id}
                         >{omitem.name}</option>
                     )
                 })}
@@ -96,7 +101,7 @@ export const AuthList = (props: Auth) => {
             {/* <button onClick={refreshTokenItem}>Refresh Token</button> */}
             {loading && <>Loading...</>}
             {error != null && JSON.stringify(error)}
-            {JSON.stringify(state.om.id)}
+            {JSON.stringify(state.om)}
         </>
     );
 }
