@@ -42,7 +42,7 @@ export const AuthList = (props: Auth) => {
             ...state,
                 om: {
                     id: event.target.value,
-                    name: event.target.value
+                    name: ""
                 }
         }))
     }
@@ -101,7 +101,6 @@ export const AuthList = (props: Auth) => {
             {/* <button onClick={refreshTokenItem}>Refresh Token</button> */}
             {loading && <>Loading...</>}
             {error != null && JSON.stringify(error)}
-            {JSON.stringify(state.om)}
         </>
     );
 }
