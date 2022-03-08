@@ -1,6 +1,4 @@
 import { Card } from "react-bootstrap"
-
-import { Message } from "../../assets/helpers/message.alert"
 import { getUserName, getLocalAccessToken, getId, getEmail, getUser } from "../../services/service.token"
 
 export const Profile = (props: any) => {
@@ -17,7 +15,7 @@ export const Profile = (props: any) => {
                         <strong>Authorities: </strong> {getUser().roles.map((role: any, index: any) => <li key={index}>{role}</li>)}
                     </div>
                     :
-                    <Message expose={false} header="Loading" body="loading..." />
+                    <></>
                 }
             </Card.Body>
         </Card>
