@@ -147,6 +147,14 @@ export const SidebarContainer = () => {
                     <SidebarIcon src="/src/assets/image/folder.png" alt="Arrow" ></SidebarIcon>
                     About
                 </SidebarItem>
+                <SidebarItem href='/observation' >
+                    <SidebarIcon src="/src/assets/image/folder.png" alt="Arrow" ></SidebarIcon>
+                    Observation
+                </SidebarItem>
+                <SidebarItem href='/observationcoreui' >
+                    <SidebarIcon src="/src/assets/image/folder.png" alt="Arrow" ></SidebarIcon>
+                    ObservationCoreUI
+                </SidebarItem>
             </Sidebar>
             <ContentContainer />
             {/* <SidebarContent id="main">

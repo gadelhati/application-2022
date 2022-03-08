@@ -27,6 +27,7 @@ import ToolbarDemo from "./components/doc/ToolBarDemo";
 import { AuthList } from "./components/auth/auth.list"
 import { OMList } from "./components/om/om.list";
 import { ObservationList } from "./components/observation/observation.list";
+import { ObservationListCoreUI } from "./components/observation/observation.list.coreui";
 import { initialOM } from "./components/om/om.initial";
 import { Profile } from "./components/auth/profile";
 import { initialObservator } from "./components/observator/observator.initial";
@@ -39,6 +40,7 @@ export default function AppRoutes() {
                 <Route path="/profile" element={<Profile />}></Route>
                 <Route path="/om" element={<OMList id="" name="" />}></Route>
                 <Route path="/observation" element={<ObservationList id="" mimi="" observator={initialObservator} />}></Route>
+                <Route path="/observationcoreui" element={<ObservationListCoreUI id="" mimi="" observator={initialObservator} />}></Route>
 
                 <Route path="/accordion" element={<AccordionDemo />}></Route>
                 <Route path="/alert" element={<AlertDialogDemo />}></Route>
