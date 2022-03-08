@@ -4,9 +4,6 @@ import { AppButton } from "./containers/App.Button";
 import AvatarDemo from "./components/doc/AvatarDemo";
 import CheckboxDemo from "./components/doc/CheckboxDemo";
 import LabelDemo from "./components/doc/LabelDemo";
-import { Observation } from "./components/observation/Observation";
-import { ObservationList } from "./components/observation/Observation.List";
-import { Observator } from "./components/observation/Observator";
 import AccordionDemo from "./components/doc/AccordionDemo";
 import AlertDialogDemo from "./components/doc/AlertDialogDemo";
 // import AspectRatioDemo from "./components/doc/AspectRatioDemo";
@@ -27,20 +24,22 @@ import TooltipDemo from "./components/doc/TooltipDemo";
 import ToggleDemo from "./components/doc/ToogleDemo";
 // import ToggleGroupDemo from "./components/doc/ToogleGroupDemo";
 import ToolbarDemo from "./components/doc/ToolBarDemo";
-import { AuthList } from "./components/auth/auth";
+import { AuthList } from "./components/auth/auth.list"
 import { OMList } from "./components/om/om.list";
-import { initialOM } from "./assets/initialState/om.initial";
+import { ObservationList } from "./components/observation/observation.list";
+import { initialOM } from "./components/om/om.initial";
+import { Profile } from "./components/auth/profile";
+import { initialObservator } from "./components/observator/observator.initial";
 
 export default function AppRoutes() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/observation" element={<Observation mimi="vixi" />}></Route>
-                <Route path="/list" element={<ObservationList />}></Route>
-                <Route path="/observator" element={<Observator id="" />}></Route>
                 <Route path="/auth" element={<AuthList om={initialOM} username="" email="" password="" />}></Route>
-
+                <Route path="/profile" element={<Profile />}></Route>
                 <Route path="/om" element={<OMList id="" name="" />}></Route>
+                <Route path="/observation" element={<ObservationList id="" mimi="" observator={initialObservator} />}></Route>
+
                 <Route path="/accordion" element={<AccordionDemo />}></Route>
                 <Route path="/alert" element={<AlertDialogDemo />}></Route>
                 {/* <Route path="/aspect" element={<AspectRatioDemo />}></Route> */}

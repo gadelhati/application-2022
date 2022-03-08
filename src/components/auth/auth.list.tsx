@@ -2,9 +2,9 @@ import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Auth } from "../../assets/interface/auth";
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { signupAction, signinAction, logoutAction, refreshTokenAction } from '../../actions/auth.action.creator';
-import { retrieveAllAction } from '../../actions/om.action.creator';
-import { initialAuth as initial } from '../../assets/initialState/auth.initial';
+import { signupAction, signinAction, logoutAction, refreshTokenAction } from '../../actions/action.creator.auth';
+import { retrieveAllAction } from '../../actions/action.creator.om';
+import { initialAuth as initial } from './auth.initial';
 
 export const AuthList = (props: Auth) => {
     const dispatch = useDispatch();
@@ -100,7 +100,7 @@ export const AuthList = (props: Auth) => {
             <button onClick={logoutItem}>Logout</button>
             {/* <button onClick={refreshTokenItem}>Refresh Token</button> */}
             {loading && <>Loading...</>}
-            {error != null && JSON.stringify(error)}
+            {error != null && "Some data are required: " + JSON.stringify(error)}
         </>
     );
 }

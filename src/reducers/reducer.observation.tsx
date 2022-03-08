@@ -1,9 +1,9 @@
-import { stateOM } from "../assets/interface/om.state"
-import { initialState } from "../assets/initialState/om.state.initial"
+import { stateObservation } from "../assets/interface/observation.state"
+import { initialState } from "../assets/initialState/observation.state.initial"
 import { constants } from "../assets/types/constants"
-import { crud } from "../actions/type/om.action.type"
+import { crud } from "../actions/type/action.type.observation"
 
-export const omReducer = (state: stateOM = initialState, action: crud): stateOM => {
+export const observationReducer = (state: stateObservation = initialState, action: crud): stateObservation => {
     switch (action.type) {
         case constants.CREATE_START:
             return { ...state, error: null, loading: true }

@@ -1,6 +1,5 @@
 import { styled } from '@stitches/react';
 import { violet, mauve, blackA } from '@radix-ui/colors';
-import { Observation } from '../components/observation/Observation';
 import { ContentContainer } from './Content';
 
 export const Sidebar = styled('div', {

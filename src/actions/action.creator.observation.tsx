@@ -1,17 +1,16 @@
 import { Dispatch } from "redux";
-import { useQuery } from "../assets/hook/useQuery";
-import { crud } from "./type/om.action.type";
+import { crud } from "./type/action.type.observation";
 import { constants } from "../assets/types/constants";
-import { OM } from "../assets/interface/om"
-import { create, retrieve, getRetrieve, getAll, update, remove, removeAll } from "../services/om.service"
+import { Observation } from "../assets/interface/observation"
+import { create, retrieve, getRetrieve, getAll, update, remove, removeAll } from "../services/service.observation"
 
-export const createAction = (om: OM) => {
+export const createAction = (object: Observation) => {
     return async (dispatch: Dispatch<crud>) => {
         dispatch({
             type: constants.CREATE_START
         });
         try {
-            const { data } = await create(om);
+            const { data } = await create(object);
             dispatch({
                 type: constants.CREATE_SUCCESS,
                 payload: data
@@ -32,7 +31,6 @@ export const retrieveAllAction = () => {
         });
         try {
             const { data } = await getRetrieve()
-            // const { data } = useQuery<OM[] | undefined>('/om/retrieve')
             dispatch({
                 type: constants.RETRIEVE_ALL_SUCCESS,
                 payload: data
@@ -47,13 +45,13 @@ export const retrieveAllAction = () => {
     }
 }
 
-export const updateAction = (id: string, om: OM) => {
+export const updateAction = (id: string, object: Observation) => {
     return async (dispatch: Dispatch<crud>) => {
         dispatch({
             type: constants.UPDATE_START
         });
         try {
-            const { data } = await update(id, om);
+            const { data } = await update(id, object);
             dispatch({
                 type: constants.UPDATE_SUCCESS,
                 payload: data

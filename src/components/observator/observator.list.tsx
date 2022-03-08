@@ -1,20 +1,20 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Observation } from "../../assets/interface/observation";
+import { Observator } from "../../assets/interface/observator";
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/action.creator.observation';
-import { initialObservation } from './observation.initial';
+import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/action.creator.observator';
+import { initialObservator } from './observator.initial';
 
-export const ObservationList = (props: Observation) => {
+export const ObservationList = (props: Observator) => {
     const dispatch = useDispatch();
-    const [ state, setState ] = useState<Observation>(props)
+    const [ state, setState ] = useState<Observator>(props)
     const { loading, error, itens, item } = useTypedSelector((state) => state.observations);
 
     useEffect(() => {
         retrieveItem()
     }, [dispatch, state])
     const resetItem = () => {
-        setState(initialObservation)
+        setState(initialObservator)
     }
     const createItem = () => {
         dispatch(createAction(state))
@@ -54,7 +54,7 @@ export const ObservationList = (props: Observation) => {
                 className="form-control"
                 id="name"
                 required
-                value={state.ww}
+                // value={state.ww}
                 onChange={handleInputChange}
                 name="name"
             />

@@ -1,10 +1,10 @@
-import { initialObservator } from "./initialObservator";
+import { Observator } from "./observator";
 
-export type initialObservation = {
-    id?: string;
-    // coordinates?: string;
+export interface Observation {
+    id: string;
+    coordinates?: string;
     mimi: string;
-    // mjmj?: string;
+    mjmj?: string;
     ddddddd?: string;
     a1?: string;
     bw?: string;
@@ -86,7 +86,7 @@ export type initialObservation = {
     icf?: string;
     icp?: string;
     icq?: string;
-    observador?: initialObservator;
+    observator: Observator;
     dataObservacao?: Date;
     // estacao?: Station;
     // file?: string;

@@ -1,4 +1,3 @@
-import React from "react"
 import { Card } from "react-bootstrap"
 
 import { Message } from "../../assets/helpers/message.alert"

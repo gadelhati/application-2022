@@ -1,4 +1,4 @@
-import { api } from "../api/axios"
+import { api } from "../api/api"
 import { OM } from "../assets/interface/om"
 
 export const create = (data:{}) => {
