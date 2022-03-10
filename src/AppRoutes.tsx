@@ -32,15 +32,26 @@ import { initialOM } from "./components/om/om.initial";
 import { Profile } from "./components/auth/profile";
 import { initialObservator } from "./components/observator/observator.initial";
 
+import { Overview, Users, Revenue, Order, History, Configurations } from "./containers/pages/Overview";
+import Sidebar from "./containers/components/Sidebar";
+
 export default function AppRoutes() {
     return (
         <BrowserRouter>
+            <Sidebar />
             <Routes>
                 <Route path="/auth" element={<AuthList om={initialOM} username="" email="" password="" />}></Route>
                 <Route path="/profile" element={<Profile />}></Route>
                 <Route path="/om" element={<OMList id="" name="" />}></Route>
                 <Route path="/observation" element={<ObservationList id="" mimi="" observator={initialObservator} />}></Route>
                 <Route path="/observationcoreui" element={<ObservationListCoreUI id="" mimi="" observator={initialObservator} />}></Route>
+
+                <Route path="/overview" element={<Overview />} ></Route>
+                <Route path="/overview/users" element={<Users />} ></Route>
+                <Route path="/overview/revenue" element={<Revenue />} ></Route>
+                <Route path="/order" element={<Order />} ></Route>
+                <Route path="/history" element={<History />} ></Route>
+                <Route path="/configurations" element={<Configurations />} ></Route>
 
                 <Route path="/accordion" element={<AccordionDemo />}></Route>
                 <Route path="/alert" element={<AlertDialogDemo />}></Route>
@@ -66,7 +77,7 @@ export default function AppRoutes() {
                 {/* <Route path="/tooglegroup" element={<toogleGroupDemo />}></Route> */}
                 <Route path="/toolbar" element={<ToolbarDemo />}></Route>
 
-                <Route path="/button" element={<AppButton/>}></Route>
+                <Route path="/button" element={<AppButton />}></Route>
             </Routes>
         </BrowserRouter>
     )
