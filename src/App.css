@@ -1,21 +1,3 @@
-/* body {
-    margin: 0 auto;
-    padding: 0;
-    float: flex;
-    background-color: #ebedee;
-}
-
-#content {
-    margin-left: 256;
-    background-color: red;
-}
-
-@media only screen and (max-width:400px) {
-    #content {
-        margin-left: 0;
-    }
-} */
-
 * {
     margin: 0;
     padding: 0;
@@ -24,7 +6,7 @@
 
 html,
 body {
-    color: #fff;
+    background-color: #ebedee;
 }
 
 .overview {

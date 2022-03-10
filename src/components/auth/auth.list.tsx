@@ -48,6 +48,10 @@ export const AuthList = (props: Auth) => {
     }
     return (
         <>
+            <div className="input-group mb-3">
+                <span className="input-group-text" id="basic-addon1">@</span>
+                <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+            </div>
             <select id="om" name="om" onChange={handleSelectChange}>
                 {omitens?.map(omitem => {
                     return (

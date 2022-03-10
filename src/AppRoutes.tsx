@@ -33,7 +33,7 @@ import { Profile } from "./components/auth/profile";
 import { initialObservator } from "./components/observator/observator.initial";
 
 import { Overview, Users, Revenue, Order, History, Configurations } from "./containers/pages/Overview";
-import Sidebar from "./containers/components/Sidebar";
+import Sidebar from "./containers/menus/Sidebar";
 
 export default function AppRoutes() {
     return (

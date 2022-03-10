@@ -5,14 +5,17 @@ import { IconContext } from 'react-icons';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
 import Submenu from './Submenu';
+import { getUserName, getLocalAccessToken, getId, getEmail, getUser } from "../../services/service.token"
 
 const Nav = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    height: 5rem;
-    background-color: black;
+    height: 4rem;
+    background-color: white;
+    border-bottom: 1px solid #e0e3e7
 `;
+// border-bottom: 1px solid #b1b7c1;
 
 const SidebarNav = styled.div<{ sidebar: boolean }>`
     width: 256px;
@@ -45,6 +48,7 @@ const Sidebar: FC = () => {
                 <NavIcon to="#" onClick={showSidebar}>
                     <AiOutlineMenu />
                 </NavIcon>
+                {getUserName()}
             </Nav>
             <SidebarNav sidebar={sidebar}>
                 <SidebarWrap>
