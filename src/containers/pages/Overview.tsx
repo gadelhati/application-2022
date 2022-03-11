@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { AuthList } from '../../components/auth/auth.list';
+import { ObservationItem } from '../../components/observation/observation.item';
 import { initialOM } from '../../components/om/om.initial';
 
 export const Overview: FC = () => {
@@ -28,4 +29,8 @@ export const Configurations: FC = () => {
 
 export const Auth: FC = () => {
     return <div className="overview"><AuthList om={initialOM} username="" email="" password="" /></div>;
+};
+
+export const ObservationItemMenu: FC = () => {
+    return <div className="overview"><ObservationItem /></div>;
 };

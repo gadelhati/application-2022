@@ -30,6 +30,9 @@
   },
   "dependencies": {
     "@coreui/react": "^3.4.1",
+    "@coreui/chartjs": "^2.0.0",
+    "@coreui/coreui": "^3.4.0",
+    "@coreui/coreui-datatables": "^1.0.0",
     "@radix-ui/colors": "^0.1.8",
     "@radix-ui/react-accordion": "^0.1.5",
     "@radix-ui/react-alert-dialog": "^0.1.5",

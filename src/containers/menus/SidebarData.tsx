@@ -53,5 +53,10 @@ export const SidebarData: SidebarItem[] = [
         title: 'Observation CoreUI',
         path: '/observationcoreui',
         icon: <FaCog />
+    },
+    {
+        title: 'Observation Item',
+        path: '/observationitem',
+        icon: <FaCog />
     }
 ];

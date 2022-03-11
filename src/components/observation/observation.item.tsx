@@ -7,9 +7,9 @@ import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/action.creator.observation';
 import { initialObservation } from './observation.initial';
 
-export const ObservationItem = (props: Observation) => {
+export const ObservationItem = () => {
     const dispatch = useDispatch();
-    const [ state, setState ] = useState<Observation>(props)
+    const [ state, setState ] = useState<Observation>(initialObservation)
     const { loading, error, itens, item } = useTypedSelector((state) => state.observations);
 
     useEffect(() => {
@@ -36,7 +36,7 @@ export const ObservationItem = (props: Observation) => {
     }
     return (
         <>
-            <Card>
+           <Card>
                     {/* <Card.Title>Observation</Card.Title> */}
                     <Row>
                         <Col lg={true} >
@@ -1409,8 +1409,6 @@ export const ObservationItem = (props: Observation) => {
                     }
                     {error ? <div className="font-weight-bold alert alert-danger text-center mt-4">Some data are //required {error}</div> : null}
                 </Card>
-            {loading && <>Loading...</>}
-            {error != null && JSON.stringify(error)}
         </>
     );
 }
