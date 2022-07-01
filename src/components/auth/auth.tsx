@@ -1,4 +1,4 @@
-import { OM } from "../../assets/interface/om";
+import { OM } from "../om/om.interface";
 
 export interface Auth {
     om: OM,

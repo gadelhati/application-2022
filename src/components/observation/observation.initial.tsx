@@ -1,4 +1,4 @@
-import { Observation } from "../../assets/interface/observation";
+import { Observation } from "./observation";
 import { initialObservator } from "../observator/observator.initial";
 
 export const initialObservation : Observation = {

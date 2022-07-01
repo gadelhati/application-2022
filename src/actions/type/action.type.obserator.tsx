@@ -1,4 +1,4 @@
-import { Observator } from "../../assets/interface/observator"
+import { Observator } from "../../components/observator/observator"
 import { constants } from "../../assets/types/constants"
 
 interface createStart {

@@ -1,4 +1,4 @@
-import { Observator } from "./observator";
+import { Observator } from "../observator/observator";
 
 export interface Observation {
     id: string;

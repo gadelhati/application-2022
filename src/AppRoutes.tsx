@@ -34,7 +34,9 @@ import { Profile } from "./components/auth/profile";
 import { initialObservator } from "./components/observator/observator.initial";
 
 import { Overview, Users, Revenue, Order, History, Configurations } from "./containers/pages/Overview";
-import Sidebar from "./containers/menus/Sidebar";
+import { Sidebar } from "./containers/menus/Sidebar";
+import { FormList } from "./components/form/form.list";
+import { InputGroup } from "./containers/htmlcss/InputGroup";
 
 export default function AppRoutes() {
     return (
@@ -47,7 +49,9 @@ export default function AppRoutes() {
                 <Route path="/observation" element={<ObservationList id="" mimi="" observator={initialObservator} />}></Route>
                 <Route path="/observationitem" element={<ObservationItem />}></Route>
                 <Route path="/observationcoreui" element={<ObservationListCoreUI id="" mimi="" observator={initialObservator} />}></Route>
-
+                
+                <Route path="/formlist" element={<FormList om={initialOM} username="" email="" password="" />} ></Route>
+                <Route path="/inputgroup" element={<InputGroup />} ></Route>
                 <Route path="/overview" element={<Overview />} ></Route>
                 <Route path="/overview/users" element={<Users />} ></Route>
                 <Route path="/overview/revenue" element={<Revenue />} ></Route>

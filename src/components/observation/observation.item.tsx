@@ -2,9 +2,9 @@ import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Card, Row, Col, OverlayTrigger, Tooltip, InputGroup, FormControl, Button } from "react-bootstrap"
 import { CButtonToolbar } from "@coreui/react"
-import { Observation } from "../../assets/interface/observation";
+import { Observation } from "./observation";
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/action.creator.observation';
+import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/creator/action.creator.observation';
 import { initialObservation } from './observation.initial';
 
 export const ObservationItem = () => {

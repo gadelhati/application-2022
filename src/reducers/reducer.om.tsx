@@ -1,5 +1,5 @@
-import { stateOM } from "../assets/interface/om.state"
-import { initialState } from "../assets/initialState/om.state.initial"
+import { stateOM } from "../redux/interface/om.state";
+import { initialState } from "../redux/initialState/om.state.initial";
 import { constants } from "../assets/types/constants"
 import { crud } from "../actions/type/action.type.om"
 

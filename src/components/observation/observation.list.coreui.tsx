@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Observation } from "../../assets/interface/observation";
+import { Observation } from "./observation";
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { retrieveAllAction } from '../../actions/action.creator.observation';
+import { retrieveAllAction } from '../../actions/creator/action.creator.observation';
 
 import { Card, Button } from "react-bootstrap";
 import { CDataTable } from "@coreui/react";

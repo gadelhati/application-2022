@@ -1,7 +1,7 @@
 import { api } from "../api/api"
-import { OM } from "../assets/interface/om"
+import { OM } from "../components/om/om.interface"
 
-export const create = (data:{}) => {
+export const create = (data: OM) => {
   return api.post<OM>(`/om`, data)
 }
 
@@ -17,7 +17,7 @@ export const retrieve = (id: string) => {
   return api.get<OM>(`/om/${id}`)
 }
 
-export const update = (id: string, data: {}) => {
+export const update = (id: string, data: OM) => {
   return api.put<OM>(`/om/${id}`, data)
 }
 

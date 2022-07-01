@@ -1,0 +1,12 @@
+body {
+    font-family: 'sans-serif';
+    transform: 'scale(2)';
+    transform-origin: '0 0';
+    height: '130px';
+    width: 100%;
+    min-height: 300px;
+}
+
+*, *:before, *:after {
+	box-sizing: border-box;
+}

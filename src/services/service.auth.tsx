@@ -1,5 +1,5 @@
 import { api } from "../api/api"
-import { OM } from "../assets/interface/om"
+import { OM } from "../components/om/om.interface"
 import { setUser, removeToken } from "./service.token"
 
 export const signup = (om: OM, username: string, email: string, password: string) => {

@@ -1,4 +1,4 @@
-import { Auth } from "./auth";
+import { Auth } from "../../components/auth/auth";
 
 export interface stateAuth {
     loading: boolean,

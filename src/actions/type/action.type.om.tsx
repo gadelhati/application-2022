@@ -1,4 +1,4 @@
-import { OM } from "../../assets/interface/om"
+import { OM } from "../../components/om/om.interface"
 import { constants } from "../../assets/types/constants"
 
 interface createStart {

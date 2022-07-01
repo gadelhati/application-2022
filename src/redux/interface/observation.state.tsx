@@ -1,4 +1,4 @@
-import { Observation } from "./observation";
+import { Observation } from "../../components/observation/observation";
 
 export interface stateObservation {
     loading: boolean,

@@ -1,4 +1,4 @@
-import { Observation } from "../../assets/interface/observation"
+import { Observation } from "../../components/observation/observation"
 import { constants } from "../../assets/types/constants"
 
 interface createStart {

@@ -1,5 +1,5 @@
-import { stateAuth } from "../assets/interface/auth.state"
-import { initialState } from "../assets/initialState/auth.state.initial"
+import { stateAuth } from "../redux/interface/auth.state"
+import { initialState } from "../redux/initialState/auth.state.initial"
 import { constants } from "../assets/types/constants.auth"
 import { crud } from "../actions/type/action.type.auth"
 

@@ -1,4 +1,4 @@
-import { OM } from "./om";
+import { OM } from "../om/om.interface";
 
 export interface Observator {
     id: string,

@@ -1,4 +1,4 @@
-import { Auth } from "../../assets/interface/auth";
+import { Auth } from "./auth";
 import { initialOM } from "../om/om.initial";
 
 export const initialAuth : Auth = {

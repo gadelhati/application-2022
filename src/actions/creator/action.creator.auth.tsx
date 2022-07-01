@@ -1,8 +1,8 @@
 import { Dispatch } from "redux";
-import { crud } from "./type/action.type.auth";
-import { constants } from "../assets/types/constants.auth";
-import { signup, signin, logout, refreshToken } from "../services/service.auth"
-import { OM } from "../assets/interface/om";
+import { crud } from "../type/action.type.auth";
+import { constants } from "../../assets/types/constants.auth";
+import { signup, signin, logout, refreshToken } from "../../services/service.auth"
+import { OM } from "../../components/om/om.interface";
 
 export const signupAction = (om: OM, username: string, email: string, password: string) => {
     return async (dispatch: Dispatch<crud>) => {

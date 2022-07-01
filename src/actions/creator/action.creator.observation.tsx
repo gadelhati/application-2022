@@ -1,10 +1,10 @@
 import { Dispatch } from "redux";
-import { crud } from "./type/action.type.observation";
-import { constants } from "../assets/types/constants";
-import { Observator } from "../assets/interface/observator"
-import { create, retrieve, getRetrieve, getAll, update, remove, removeAll } from "../services/service.observation"
+import { crud } from "../type/action.type.observation";
+import { constants } from "../../assets/types/constants";
+import { Observation } from "../../components/observation/observation"
+import { create, retrieve, getRetrieve, getAll, update, remove, removeAll } from "../../services/service.observation"
 
-export const createAction = (object: Observator) => {
+export const createAction = (object: Observation) => {
     return async (dispatch: Dispatch<crud>) => {
         dispatch({
             type: constants.CREATE_START
@@ -45,7 +45,7 @@ export const retrieveAllAction = () => {
     }
 }
 
-export const updateAction = (id: string, object: Observator) => {
+export const updateAction = (id: string, object: Observation) => {
     return async (dispatch: Dispatch<crud>) => {
         dispatch({
             type: constants.UPDATE_START

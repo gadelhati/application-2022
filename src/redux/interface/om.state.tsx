@@ -1,4 +1,4 @@
-import { OM } from "./om";
+import { OM } from "../../components/om/om.interface";
 
 export interface stateOM {
     loading: boolean,

@@ -1,4 +1,4 @@
-import { OM } from "../../assets/interface/om";
+import { OM } from "./om.interface";
 
 export const initialOM : OM = {
     id: '',

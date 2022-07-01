@@ -1,4 +1,4 @@
-import { Observator } from "./observator";
+import { Observator } from "../../components/observator/observator";
 
 export interface stateObservator {
     loading: boolean,

@@ -1,9 +1,9 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Auth } from "../../assets/interface/auth";
+import { Auth } from "./auth";
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { signupAction, signinAction, logoutAction, refreshTokenAction } from '../../actions/action.creator.auth';
-import { retrieveAllAction } from '../../actions/action.creator.om';
+import { signupAction, signinAction, logoutAction, refreshTokenAction } from '../../actions/creator/action.creator.auth';
+import { retrieveAllAction } from '../../actions/creator/action.creator.om';
 import { initialAuth as initial } from './auth.initial';
 
 export const AuthList = (props: Auth) => {
