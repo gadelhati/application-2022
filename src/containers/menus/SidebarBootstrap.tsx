@@ -1,6 +1,8 @@
 import { useState, ChangeEvent } from 'react';
 import { styled } from '@stitches/react';
 import "./sidebars.css"
+import "../../assets/bootstrap/dist/js/bootstrap.bundle.min.js"
+import './sidebars.js';
 
 export const Sidestrap = () => {
     return (
