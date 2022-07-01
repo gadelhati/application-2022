@@ -1,0 +1,14 @@
+.input-group {
+  display: flex;
+  align-content: stretch;
+}
+
+.input-group>input {
+  flex: 1 0 auto;
+}
+
+.input-group-addon {
+  background: #eee;
+  border: 1px solid #ccc;
+  padding: 0.5em 1em;
+}
