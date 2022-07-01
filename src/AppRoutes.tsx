@@ -41,6 +41,7 @@ import { Sidebar } from "./containers/menus/Sidebar";
 import { FormList } from "./components/form/form.list";
 import { InputGroup } from "./containers/htmlcss/InputGroup";
 import { SigninContainer } from "./containers/Signin";
+import { Sidestrap } from "./containers/menus/SidebarBootstrap";
 
 export default function AppRoutes() {
     const defaultProtectedRouteProps: Omit<ProtectedRouteProps, 'outlet'> = {
@@ -50,6 +51,7 @@ export default function AppRoutes() {
     return (
         <BrowserRouter>
             {/* <Sidebar /> */}
+            {/* <Sidestrap /> */}
             <Routes>
                 {/* <Route path="/dashboard" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<OMList id="" name="" />} />} /> */}
                 <Route path="/auth" element={<AuthList om={initialOM} username="" email="" password="" />}></Route>
@@ -60,6 +62,7 @@ export default function AppRoutes() {
                 <Route path="/observationitem" element={<ObservationItem />}></Route>
                 <Route path="/observationcoreui" element={<ObservationListCoreUI id="" mimi="" observator={initialObservator} />}></Route>
                 <Route path="/signin" element={<SigninContainer  om={initialOM} username="" email="" password="" />}></Route>
+                <Route path="/sidebar" element={<Sidestrap />}></Route>
                 
                 <Route path="/formlist" element={<FormList om={initialOM} username="" email="" password="" />} ></Route>
                 <Route path="/inputgroup" element={<InputGroup />} ></Route>
