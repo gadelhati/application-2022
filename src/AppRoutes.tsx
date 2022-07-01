@@ -1,5 +1,7 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom";
+import ProtectedRoute from "react-router-dom";
 
+import { ProtectedRouteProps } from "./ProtectedRoutes";
 import { AppButton } from "./containers/App.Button";
 import AvatarDemo from "./components/doc/AvatarDemo";
 import CheckboxDemo from "./components/doc/CheckboxDemo";
@@ -26,8 +28,9 @@ import ToggleDemo from "./components/doc/ToogleDemo";
 import ToolbarDemo from "./components/doc/ToolBarDemo";
 import { AuthList } from "./components/auth/auth.list"
 import { OMList } from "./components/om/om.list";
+import { OneList } from "./components/list/list";
 import { ObservationItem } from "./components/observation/observation.item";
-import { ObservationList } from "./components/observation/observation.list";
+// import { ObservationList } from "./components/observation/observation.list";
 import { ObservationListCoreUI } from "./components/observation/observation.list.coreui";
 import { initialOM } from "./components/om/om.initial";
 import { Profile } from "./components/auth/profile";
@@ -37,18 +40,26 @@ import { Overview, Users, Revenue, Order, History, Configurations } from "./cont
 import { Sidebar } from "./containers/menus/Sidebar";
 import { FormList } from "./components/form/form.list";
 import { InputGroup } from "./containers/htmlcss/InputGroup";
+import { SigninContainer } from "./containers/Signin";
 
 export default function AppRoutes() {
+    const defaultProtectedRouteProps: Omit<ProtectedRouteProps, 'outlet'> = {
+        isAuthenticated: true,
+        authenticationPath: '/signin',
+    };
     return (
         <BrowserRouter>
-            <Sidebar />
+            {/* <Sidebar /> */}
             <Routes>
+                {/* <Route path="/dashboard" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<OMList id="" name="" />} />} /> */}
                 <Route path="/auth" element={<AuthList om={initialOM} username="" email="" password="" />}></Route>
                 <Route path="/profile" element={<Profile />}></Route>
                 <Route path="/om" element={<OMList id="" name="" />}></Route>
-                <Route path="/observation" element={<ObservationList id="" mimi="" observator={initialObservator} />}></Route>
+                <Route path="/onelist" element={<OneList id="" name="" />}></Route>
+                {/* <Route path="/observation" element={<ObservationList id="" mimi="" observator={initialObservator} />}></Route> */}
                 <Route path="/observationitem" element={<ObservationItem />}></Route>
                 <Route path="/observationcoreui" element={<ObservationListCoreUI id="" mimi="" observator={initialObservator} />}></Route>
+                <Route path="/signin" element={<SigninContainer  om={initialOM} username="" email="" password="" />}></Route>
                 
                 <Route path="/formlist" element={<FormList om={initialOM} username="" email="" password="" />} ></Route>
                 <Route path="/inputgroup" element={<InputGroup />} ></Route>

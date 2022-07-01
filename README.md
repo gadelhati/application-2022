@@ -117,6 +117,7 @@ export default function AppRoutes() {
 ## installation of dependencies
 ```
 npm install
+npm install -g npm
 npm install react-router-dom
 npm install --save styled-components
 npm install @stitches/react
