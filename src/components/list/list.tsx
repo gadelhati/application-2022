@@ -5,7 +5,7 @@ import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/creator/action.creator.om';
 import { initialOM } from './om.initial';
 
-export const OneList = (props: OM) => {
+export const List = (props: OM) => {
     const dispatch = useDispatch();
     const [ state, setState ] = useState<OM>(props)
     const { loading, error, itens, item } = useTypedSelector((state) => state.oms);

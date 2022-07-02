@@ -1,7 +1,9 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom";
-import ProtectedRoute from "react-router-dom";
 
+import ProtectedRoute from "./ProtectedRoutes";
 import { ProtectedRouteProps } from "./ProtectedRoutes";
+import { List } from "./components/list/list";
+
 import { AppButton } from "./containers/App.Button";
 import AvatarDemo from "./components/doc/AvatarDemo";
 import CheckboxDemo from "./components/doc/CheckboxDemo";
@@ -28,7 +30,6 @@ import ToggleDemo from "./components/doc/ToogleDemo";
 import ToolbarDemo from "./components/doc/ToolBarDemo";
 import { AuthList } from "./components/auth/auth.list"
 import { OMList } from "./components/om/om.list";
-import { OneList } from "./components/list/list";
 import { ObservationItem } from "./components/observation/observation.item";
 // import { ObservationList } from "./components/observation/observation.list";
 import { ObservationListCoreUI } from "./components/observation/observation.list.coreui";
@@ -42,10 +43,11 @@ import { FormList } from "./components/form/form.list";
 import { InputGroup } from "./containers/htmlcss/InputGroup";
 import { SigninContainer } from "./containers/Signin";
 import { Sidestrap } from "./containers/menus/SidebarBootstrap";
+import { getUserName, getLocalAccessToken, getId, getEmail, getUser } from "./services/service.token"
 
 export default function AppRoutes() {
     const defaultProtectedRouteProps: Omit<ProtectedRouteProps, 'outlet'> = {
-        isAuthenticated: true,
+        isAuthenticated: getUser(),
         authenticationPath: '/signin',
     };
     return (
@@ -53,11 +55,13 @@ export default function AppRoutes() {
             {/* <Sidebar /> */}
             {/* <Sidestrap /> */}
             <Routes>
-                {/* <Route path="/dashboard" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<OMList id="" name="" />} />} /> */}
+                <Route path="/list" element={<List id="" name="" />}></Route>
+
+
+                <Route path="/omlist" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<OMList id="" name="" />} />} />
                 <Route path="/auth" element={<AuthList om={initialOM} username="" email="" password="" />}></Route>
                 <Route path="/profile" element={<Profile />}></Route>
                 <Route path="/om" element={<OMList id="" name="" />}></Route>
-                <Route path="/onelist" element={<OneList id="" name="" />}></Route>
                 {/* <Route path="/observation" element={<ObservationList id="" mimi="" observator={initialObservator} />}></Route> */}
                 <Route path="/observationitem" element={<ObservationItem />}></Route>
                 <Route path="/observationcoreui" element={<ObservationListCoreUI id="" mimi="" observator={initialObservator} />}></Route>
