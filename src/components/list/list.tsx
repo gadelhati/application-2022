@@ -47,7 +47,7 @@ export const List = (props: OM) => {
                     aria-label="id"
                     aria-describedby="basic-addon1"
                     type="text"
-                    className="form-control"
+                    className={state.id == "" ? "form-control is-invalid":"form-control is-valid"}
                     id="id"
                     required
                     value={state.id}
@@ -56,6 +56,8 @@ export const List = (props: OM) => {
                     readOnly
                 />
                 <label htmlFor="id">ID</label>
+                <div className="valid-feedback">Looks good!</div>
+                <div className="invalid-feedback">Looks bad!</div>
             </div>
             <div className="form-floating">
                 <input
@@ -63,7 +65,7 @@ export const List = (props: OM) => {
                     aria-label="name"
                     aria-describedby="basic-addon1"
                     type="text"
-                    className="form-control"
+                    className="form-control is-invalid"
                     id="name"
                     required
                     value={state.name}
@@ -71,6 +73,16 @@ export const List = (props: OM) => {
                     name="name"
                 />
                 <label htmlFor="name">Name</label>
+                <div className="valid-feedback">Looks good!</div>
+            </div>
+            <div className="form-floating">
+                <select className={state.id == "" ? "form-select is-invalid":"form-select is-valid"} id="floatingSelectGrid" aria-label="Floating label select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <label htmlFor="floatingSelectGrid">Works with selects</label>
             </div>
             <button onClick={resetItem}>Reset</button>
             <button onClick={createItem} disabled={state.id != ""} >Create</button>
