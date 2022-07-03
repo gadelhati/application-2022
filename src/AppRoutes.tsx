@@ -55,8 +55,10 @@ export default function AppRoutes() {
             {/* <Sidebar /> */}
             {/* <Sidestrap /> */}
             <Routes>
-                <Route path="/list" element={<List id="" name="" />}></Route>
-
+                <Route path="/" element={<SigninContainer  om={initialOM} username="" email="" password="" />}></Route>
+                <Route path="/signin" element={<SigninContainer  om={initialOM} username="" email="" password="" />}></Route>
+                <Route path="/list" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<List id="" name="" />} />} />
+                <Route path="/sidebar" element={<Sidestrap />}></Route>
 
                 <Route path="/omlist" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<OMList id="" name="" />} />} />
                 <Route path="/auth" element={<AuthList om={initialOM} username="" email="" password="" />}></Route>
@@ -65,21 +67,19 @@ export default function AppRoutes() {
                 {/* <Route path="/observation" element={<ObservationList id="" mimi="" observator={initialObservator} />}></Route> */}
                 <Route path="/observationitem" element={<ObservationItem />}></Route>
                 <Route path="/observationcoreui" element={<ObservationListCoreUI id="" mimi="" observator={initialObservator} />}></Route>
-                <Route path="/signin" element={<SigninContainer  om={initialOM} username="" email="" password="" />}></Route>
-                <Route path="/sidebar" element={<Sidestrap />}></Route>
                 
-                <Route path="/formlist" element={<FormList om={initialOM} username="" email="" password="" />} ></Route>
+                {/* <Route path="/formlist" element={<FormList om={initialOM} username="" email="" password="" />} ></Route>
                 <Route path="/inputgroup" element={<InputGroup />} ></Route>
                 <Route path="/overview" element={<Overview />} ></Route>
                 <Route path="/overview/users" element={<Users />} ></Route>
                 <Route path="/overview/revenue" element={<Revenue />} ></Route>
                 <Route path="/order" element={<Order />} ></Route>
                 <Route path="/history" element={<History />} ></Route>
-                <Route path="/configurations" element={<Configurations />} ></Route>
+                <Route path="/configurations" element={<Configurations />} ></Route> */}
 
-                <Route path="/accordion" element={<AccordionDemo />}></Route>
+                {/* <Route path="/accordion" element={<AccordionDemo />}></Route>
                 <Route path="/alert" element={<AlertDialogDemo />}></Route>
-                {/* <Route path="/aspect" element={<AspectRatioDemo />}></Route> */}
+                <Route path="/aspect" element={<AspectRatioDemo />}></Route>
                 <Route path="/avatar" element={<AvatarDemo />}></Route>
                 <Route path="/checkbox" element={<CheckboxDemo />}></Route>
                 <Route path="/collapsible" element={<CollapsibleDemo />}></Route>
@@ -98,10 +98,10 @@ export default function AppRoutes() {
                 <Route path="/tabs" element={<TabsDemo />}></Route>
                 <Route path="/tooltip" element={<TooltipDemo />}></Route>
                 <Route path="/toogle" element={<ToggleDemo />}></Route>
-                {/* <Route path="/tooglegroup" element={<toogleGroupDemo />}></Route> */}
-                <Route path="/toolbar" element={<ToolbarDemo />}></Route>
+                <Route path="/tooglegroup" element={<toogleGroupDemo />}></Route>
+                <Route path="/toolbar" element={<ToolbarDemo />}></Route> */}
 
-                <Route path="/button" element={<AppButton />}></Route>
+                {/* <Route path="/button" element={<AppButton />}></Route> */}
             </Routes>
         </BrowserRouter>
     )

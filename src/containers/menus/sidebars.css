@@ -1,3 +1,7 @@
+* {
+  flex-shrink: 0;
+}
+
 .largura {
   width: 256px;
 }

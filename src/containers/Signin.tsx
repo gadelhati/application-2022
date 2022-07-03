@@ -64,7 +64,8 @@ export const SigninContainer = (props: Auth) => {
     }
     return (
         <div className="text-center">
-            <div className="form-signin">
+            <div className="form-signin w-100 m-auto">
+                <div>
                 {/* <Signin > */}
                 <img className="mb-4" src={logo} alt="" height="128"></img>
                 <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
@@ -85,6 +86,7 @@ export const SigninContainer = (props: Auth) => {
                 {loading && <>Loading...</>}
                 {error != null && "Some data are required: " + JSON.stringify(error)}
                 {/* </Signin> */}
+                </div>
             </div>
         </div>
     );

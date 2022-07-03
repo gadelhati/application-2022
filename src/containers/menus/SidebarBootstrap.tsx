@@ -83,7 +83,7 @@ export const Sidestrap = (props: any) => {
                 <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark largura">
                     <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <svg className="bi me-2" width="40" height="32">
-                            {/* <use xlink:href="#bootstrap" /> */}
+                            <use xlinkHref="#bootstrap" />
                         </svg>
                         <span className="fs-4">CHM</span>
                     </a>
