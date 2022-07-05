@@ -4,10 +4,13 @@ import { OM } from "./om.interface";
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/creator/action.creator.om';
 import { initialOM } from './om.initial';
+import './list.css'
+import { CButtonClose } from '@coreui/react';
 
 export const List = (props: OM) => {
     const dispatch = useDispatch();
-    const [ state, setState ] = useState<OM>(props)
+    const [state, setState] = useState<OM>(initialOM)
+    // const [click, setClick] = useState<boolean>(false)
     const { loading, error, itens, item } = useTypedSelector((state) => state.oms);
 
     useEffect(() => {
@@ -22,18 +25,21 @@ export const List = (props: OM) => {
     const createItem = () => {
         dispatch(createAction(state))
         resetItem()
+        // setClick(!click)
     }
     const retrieveItem = () => {
-        dispatch(retrieveAllAction())
         resetItem()
+        dispatch(retrieveAllAction())
     }
     const updateItem = () => {
         dispatch(updateAction(state.id, state))
-        // retrieveItem()
+        resetItem()
     }
     const deleteItem = () => {
         dispatch(deleteAction(state.id))
-        // retrieveItem()
+        resetItem()
+        // setClick(!click)
+        // window.location.reload();
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
@@ -41,13 +47,14 @@ export const List = (props: OM) => {
     }
     return (
         <>
+            {state.id != null ? console.log(JSON.stringify(dispatch)) : console.log("23")}
             <div className="form-floating">
                 <input
                     placeholder="ID"
                     aria-label="id"
                     aria-describedby="basic-addon1"
                     type="text"
-                    className={state.id == "" ? "form-control is-invalid":"form-control is-valid"}
+                    className={state.id == "" ? "form-control is-invalid" : "form-control is-valid"}
                     id="id"
                     required
                     value={state.id}
@@ -75,35 +82,46 @@ export const List = (props: OM) => {
                 <label htmlFor="name">Name</label>
                 <div className="valid-feedback">Looks good!</div>
             </div>
-            <div className="form-floating">
-                <select className={state.id == "" ? "form-select is-invalid":"form-select is-valid"} id="floatingSelectGrid" aria-label="Floating label select example">
+            {/* <div className="form-floating">
+                <select className={state.id == "" ? "form-select is-invalid" : "form-select is-valid"} id="floatingSelectGrid" aria-label="Floating label select example">
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                 </select>
                 <label htmlFor="floatingSelectGrid">Works with selects</label>
-            </div>
-            <button onClick={resetItem}>Reset</button>
-            <button onClick={createItem} disabled={state.id != ""} >Create</button>
-            <button onClick={retrieveItem}>Retrieve</button>
-            <button onClick={updateItem} disabled={state.id == ""} >Update</button>
-            <button onClick={deleteItem} disabled={state.id == ""} >Delete</button>
+            </div> */}
+            <button onClick={resetItem} className="w-20 btn btn-secondary">Reset</button>
+            <button onClick={createItem} className="w-20 btn btn-secondary" disabled={state.id != ""} >Create</button>
+            <button onClick={retrieveItem} className="w-20 btn btn-secondary" >Retrieve</button>
+            <button onClick={updateItem} className="w-20 btn btn-primary" disabled={state.id == ""} >Update</button>
+            <button onClick={deleteItem} className="w-20 btn btn-danger" disabled={state.id == ""} >Delete</button>
             {loading && <>Loading...</>}
             {error != null && JSON.stringify(error)}
-            <table className="table table-striped table-hover">
-                <tbody>
-                    {itens?.map(item => {
-                        return (
-                            <tr key={item.id}>
-                                <td>{item.id}</td>
-                                <td>{item.name}</td>
-                                <td><button onClick={() =>selectItem(item)}>Select</button></td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
+            <div className='table-responsive table-wrap'>
+                <table className="table table-striped table-hover align-middle table-light">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">NAME</th>
+                            <th scope="col">#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {itens?.map(item => {
+                            return (
+                                <tr key={item.id}>
+                                    <th scope="row">{item.id}</th>
+                                    <td>{item.name}</td>
+                                    <td className="align-bottom">
+                                        <button onClick={() => selectItem(item)} className="w-100 btn btn-lg btn-secondary">Select</button>
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
         </>
     );
 }

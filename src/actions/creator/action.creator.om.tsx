@@ -26,7 +26,7 @@ export const createAction = (object: OM) => {
 }
 
 export const retrieveAllAction = () => {
-    return async (dispatch: any) => {
+    return async (dispatch: Dispatch<crud>) => {
         dispatch({
             type: constants.RETRIEVE_ALL_START
         });

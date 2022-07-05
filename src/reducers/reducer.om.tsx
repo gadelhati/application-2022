@@ -34,7 +34,11 @@ export const omReducer = (state: stateOM = initialState, action: crud): stateOM 
         case constants.DELETE_START:
             return { ...state, error: null, loading: true }
         case constants.DELETE_SUCCESS:
-            return { ...state, error: null, loading: false, itens: state.itens }
+            let ne = state.itens.splice(state.itens.indexOf(action.payload), 1)
+            return { ...state, error: null, loading: false, itens: [...state.itens] }
+            // return { ...state, error: null, loading: false, itens: state.itens.splice(state.itens.indexOf(action.payload)-1, 1) }
+            // return { ...state, error: null, loading: false, itens: state.itens.filter(function(el) { return el.id !== action.payload.id }) }
+            // return { ...state, error: null, loading: false, itens: [...state.itens, action.payload] }
         case constants.DELETE_ERROR:
             return { ...state, error: action.payload, loading: false }
 

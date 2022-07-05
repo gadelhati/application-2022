@@ -122,6 +122,7 @@ npm install react-router-dom
 npm install --save styled-components
 npm install @stitches/react
 npm install @radix-ui/react-*
+npm install bootstrap
 ```
 
 ## run project

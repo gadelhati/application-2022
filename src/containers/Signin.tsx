@@ -6,7 +6,7 @@ import { useTypedSelector } from "../assets/hook/useTypeSelector";
 import { signupAction, signinAction, logoutAction, refreshTokenAction } from '../actions/creator/action.creator.auth'
 import { initialAuth } from '../components/auth/auth.initial';
 // import { styled } from '@stitches/react';
-// import "./../assets/bootstrap/dist/css/bootstrap.min.css"
+import "./../assets/bootstrap/dist/css/bootstrap.min.css"
 import "./signin.css"
 import logo from '../assets/image/heraldica.png'
 
@@ -63,11 +63,11 @@ export const SigninContainer = (props: Auth) => {
         setState({ ...state, [name]: value })
     }
     return (
-        <div className="text-center">
+        <body className="text-center">
             <div className="form-signin w-100 m-auto">
                 <div>
                 {/* <Signin > */}
-                <img className="mb-4" src={logo} alt="" height="128"></img>
+                <img className="mb-4" src={logo} alt="" width="120" height="128"></img>
                 <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
                 <div className="form-floating">
                     <input placeholder="Username" type="text" className="form-control" id="username" value={state.username} onChange={handleInputChange} name="username" ></input>
@@ -88,6 +88,6 @@ export const SigninContainer = (props: Auth) => {
                 {/* </Signin> */}
                 </div>
             </div>
-        </div>
+        </body>
     );
 }

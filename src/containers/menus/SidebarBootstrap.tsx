@@ -6,6 +6,7 @@ import "../../assets/bootstrap/dist/js/bootstrap.bundle.min.js"
 import './sidebars.js';
 import { getUserName, getLocalAccessToken, getId, getEmail, getUser } from "../../services/service.token"
 import { signupAction, signinAction, logoutAction, refreshTokenAction } from '../../actions/creator/action.creator.auth';
+import logo from '../../assets/image/heraldica.png'
 
 export const Sidestrap = (props: any) => {
     const dispatch = useDispatch();
@@ -82,9 +83,10 @@ export const Sidestrap = (props: any) => {
                 <h1 className="visually-hidden">Sidebars examples</h1>
                 <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark largura">
                     <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                        <svg className="bi me-2" width="40" height="32">
+                        {/* <svg className="bi me-2" width="40" height="32">
                             <use xlinkHref="#bootstrap" />
-                        </svg>
+                        </svg> */}
+                        <img className="mb-6 rounded-circle me-2" src={logo} alt="" width="30" height="38"></img>
                         <span className="fs-4">CHM</span>
                     </a>
                     <hr></hr>
@@ -94,32 +96,31 @@ export const Sidestrap = (props: any) => {
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#home" /></svg>Home</a>
                             <div className="collapse show" id="home-collapse">
                                 <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="#" className="link-light rounded">Overview</a></li>
-                                    <li><a href="#" className="link-light rounded">Updates</a></li>
-                                    <li><a href="#" className="link-light rounded">Reports</a></li>
+                                    <li><a href="/signin" className="link-light rounded">Signin</a></li>
+                                    <li><a href="/list" className="link-light rounded">List</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li>
                             <a href="/signin" className="nav-link text-white">
-                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#speedometer2" /></svg>Signin</a>
+                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#people-circle" /></svg>Signin</a>
                         </li>
-                        <li>
+                        {/* <li>
                             <a href="/auth" className="nav-link text-white">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#speedometer2" /></svg>Auth</a>
-                        </li>
-                        <li>
+                        </li> */}
+                        {/* <li>
                             <a href="/profile" className="nav-link text-white">
-                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table" /></svg>Profile</a>
-                        </li>
+                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#people-circle" /></svg>Profile</a>
+                        </li> */}
                         <li>
-                            <a href="/om" className="nav-link text-white">
-                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#grid" /></svg>OM</a>
+                            <a href="/list" className="nav-link text-white">
+                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#grid" /></svg>List</a>
                         </li>
-                        <li>
+                        {/* <li>
                             <a href="#" className="nav-link text-white">
-                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#people-circle" /></svg>Customers</a>
-                        </li>
+                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table" /></svg>Customers</a>
+                        </li> */}
                     </ul>
                     {getUser() ?
                         <>
