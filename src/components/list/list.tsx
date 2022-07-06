@@ -10,7 +10,6 @@ import { CButtonClose } from '@coreui/react';
 export const List = (props: OM) => {
     const dispatch = useDispatch();
     const [state, setState] = useState<OM>(initialOM)
-    // const [click, setClick] = useState<boolean>(false)
     const { loading, error, itens, item } = useTypedSelector((state) => state.oms);
 
     useEffect(() => {
@@ -25,7 +24,6 @@ export const List = (props: OM) => {
     const createItem = () => {
         dispatch(createAction(state))
         resetItem()
-        // setClick(!click)
     }
     const retrieveItem = () => {
         resetItem()
@@ -38,8 +36,6 @@ export const List = (props: OM) => {
     const deleteItem = () => {
         dispatch(deleteAction(state.id))
         resetItem()
-        // setClick(!click)
-        // window.location.reload();
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
