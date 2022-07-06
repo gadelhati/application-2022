@@ -18,27 +18,25 @@ export const omReducer = (state: stateOM = initialState, action: crud): stateOM 
             return { ...state, error: null, loading: false, itens: action.payload }
         case constants.RETRIEVE_ALL_ERROR:
             return { ...state, error: action.payload, loading: false }
+
         // case constants.RETRIEVE_START:
-        //     return { ...state, error: null, loading: true, item: {} }
+        //     return { ...state, error: null, loading: true }
         // case constants.RETRIEVE_SUCCESS:
-        //     return { ...state, error: null, loading: false, itens: [], item: action.payload }
+        //     return { ...state, error: null, loading: false, itens: [...state.itens], item: action.payload }
         // case constants.RETRIEVE_ERROR:
         //     return { ...state, error: action.payload, loading: false, itens: [], item: {} }
+
         case constants.UPDATE_START:
             return { ...state, error: null, loading: true }
         case constants.UPDATE_SUCCESS:
-            return { ...state, error: null, loading: false, item: action.payload }
+            return { ...state, error: null, loading: false, itens: [...state.itens.filter(item => item.id !== action.payload.id), action.payload], item: action.payload }
         case constants.UPDATE_ERROR:
             return { ...state, error: action.payload, loading: false }
 
         case constants.DELETE_START:
             return { ...state, error: null, loading: true }
         case constants.DELETE_SUCCESS:
-            let ne = state.itens.splice(state.itens.indexOf(action.payload), 1)
-            return { ...state, error: null, loading: false, itens: [...state.itens] }
-            // return { ...state, error: null, loading: false, itens: state.itens.splice(state.itens.indexOf(action.payload)-1, 1) }
-            // return { ...state, error: null, loading: false, itens: state.itens.filter(function(el) { return el.id !== action.payload.id }) }
-            // return { ...state, error: null, loading: false, itens: [...state.itens, action.payload] }
+            return { ...state, error: null, loading: false, itens: state.itens.filter(item => item.id !== action.payload.id) }
         case constants.DELETE_ERROR:
             return { ...state, error: action.payload, loading: false }
 
