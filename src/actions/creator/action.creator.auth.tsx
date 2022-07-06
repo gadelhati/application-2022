@@ -4,13 +4,13 @@ import { constants } from "../../assets/types/constants.auth";
 import { signup, signin, logout, refreshToken } from "../../services/service.auth"
 import { OM } from "../../components/om/om.interface";
 
-export const signupAction = (om: OM, username: string, email: string, password: string) => {
+export const signupAction = (username: string, email: string, password: string) => {
     return async (dispatch: Dispatch<crud>) => {
         dispatch({
             type: constants.SIGNUP_START
         });
         try {
-            const { data } = await signup(om, username, email, password);
+            const { data } = await signup(username, email, password);
             dispatch({
                 type: constants.SIGNUP_SUCCESS,
                 payload: data
