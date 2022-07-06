@@ -10,7 +10,13 @@ export const createAction = (object: OM) => {
             type: constants.CREATE_START
         });
         try {
-            const { data } = await create(object);
+            const { data, headers, config, status, statusText, request } = await create(object);
+            console.log(JSON.stringify(data))
+            console.log(JSON.stringify(headers))
+            console.log(JSON.stringify(config))
+            console.log(JSON.stringify(status))
+            console.log(JSON.stringify(statusText))
+            console.log(JSON.stringify(request))
             dispatch({
                 type: constants.CREATE_SUCCESS,
                 payload: data
@@ -20,6 +26,16 @@ export const createAction = (object: OM) => {
                 type: constants.CREATE_ERROR,
                 payload: error.message
             });
+            console.log(JSON.stringify("message" + error.errorMessage))
+            console.log(JSON.stringify("name" + error.name))
+            console.log(JSON.stringify("fileName" + error.fileName))
+            console.log(JSON.stringify("lineNumber" + error.lineNumber))
+            console.log(JSON.stringify("columnNumber" + error.columnNumber))
+            console.log(JSON.stringify("stack" + error.stack))
+            console.log(JSON.stringify("config" + error.config))
+            console.log(JSON.stringify("status" + error.status))
+            console.log(JSON.stringify("data" + error.data))
+            // console.log(JSON.stringify(errors.map(item => item.field + ": " + item.defaultMessage + ", ")))
         }
     }
 }
