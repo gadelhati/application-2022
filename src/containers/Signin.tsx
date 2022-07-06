@@ -30,30 +30,20 @@ export const SigninContainer = (props: Auth) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [ state, setState ] = useState<Auth>(initialAuth)
-    // const { loading, error, itens, item } = useTypedSelector((state) => state.auths);
     const { loading, error, itens, item, user, isLoggedIn } = useTypedSelector((state) => state.auths);
 
-    useEffect(() => {
-        retrieveItem()
-    }, [dispatch])
-    const retrieveItem = () => {
-        // dispatch(retrieveAllAction())
-    }
     const resetItem = () => {
         setState(initialAuth)
     }
-    const signupItem = () => {
-        dispatch(signupAction(state.username, state.email, state.password))
-    }
     const signinItem = () => {
         dispatch(signinAction(state.username, state.password))
-        console.log(JSON.stringify("Loading "+loading))
-        console.log(JSON.stringify("Error "+error))
-        console.log(JSON.stringify("Itens "+itens))
-        console.log(JSON.stringify("Item "+JSON.stringify(item)))
-        console.log(JSON.stringify("State "+JSON.stringify(state)))
-        console.log(JSON.stringify("User "+JSON.stringify(user)))
-        console.log(JSON.stringify("LoggedIn "+JSON.stringify(isLoggedIn)))
+        // console.log(JSON.stringify("Loading "+loading))
+        // console.log(JSON.stringify("Error "+error))
+        // console.log(JSON.stringify("Itens "+itens))
+        // console.log(JSON.stringify("Item "+JSON.stringify(item)))
+        // console.log(JSON.stringify("State "+JSON.stringify(state)))
+        // console.log(JSON.stringify("User "+JSON.stringify(user)))
+        // console.log(JSON.stringify("User "+JSON.stringify(isLoggedIn)))
         if(isLoggedIn) {
             navigate("/list")
         }
@@ -61,9 +51,6 @@ export const SigninContainer = (props: Auth) => {
     const logoutItem = () => {
         dispatch(logoutAction())
     }
-    // const refreshTokenItem = () => {
-    //     dispatch(refreshTokenAction())
-    // }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
         setState({ ...state, [name]: value })
