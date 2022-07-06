@@ -152,7 +152,7 @@ export const FormList = (props: Auth) => {
         setState(initial)
     }
     const signupItem = () => {
-        dispatch(signupAction(state.om, state.username, state.email, state.password))
+        dispatch(signupAction(state.username, state.email, state.password))
     }
     const signinItem = () => {
         dispatch(signinAction(state.username, state.password))
