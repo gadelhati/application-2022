@@ -1,4 +1,4 @@
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 
 import ProtectedRoute from "./ProtectedRoutes";
 import { ProtectedRouteProps } from "./ProtectedRoutes";
@@ -28,8 +28,8 @@ export default function AppRoutes() {
                 </div>
                 <div className="col">
                     <Routes>
-                        <Route path="/" element={<SigninContainer om={initialOM} username="" email="" password="" />}></Route>
-                        <Route path="/signin" element={<SigninContainer om={initialOM} username="" email="" password="" />}></Route>
+                        <Route path="/" element={ getUser() === null ? <SigninContainer om={initialOM} username="" email="" password="" /> : <Navigate to="/list"/> }></Route>
+                        <Route path="/signin" element={ getUser() === null ? <SigninContainer om={initialOM} username="" email="" password="" /> : <Navigate to="/list"/> }></Route>
                         <Route path="/list" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<List id="" name="" />} />} />
                         <Route path="/sidebar" element={<Sidestrap />}></Route>
 
