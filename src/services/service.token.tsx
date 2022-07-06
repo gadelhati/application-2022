@@ -13,7 +13,6 @@ export const getUser = () => {
 }
 
 export const setUser = (user: any) => {
-  console.log(JSON.stringify(user));
   localStorage.setItem("user", JSON.stringify(user));
 }
 
