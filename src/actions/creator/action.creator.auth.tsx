@@ -2,7 +2,6 @@ import { Dispatch } from "redux";
 import { crud } from "../type/action.type.auth";
 import { constants } from "../../assets/types/constants.auth";
 import { signup, signin, logout, refreshToken } from "../../services/service.auth"
-import { OM } from "../../components/om/om.interface";
 
 export const signupAction = (username: string, email: string, password: string) => {
     return async (dispatch: Dispatch<crud>) => {
@@ -18,7 +17,7 @@ export const signupAction = (username: string, email: string, password: string) 
         } catch(error: any) {
             dispatch({
                 type: constants.SIGNUP_ERROR,
-                payload: error.response.data.errors
+                payload: error.message
             });
         }
     }

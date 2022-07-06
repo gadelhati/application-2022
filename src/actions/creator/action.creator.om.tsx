@@ -3,7 +3,6 @@ import { crud } from "../type/action.type.om";
 import { constants } from "../../assets/types/constants";
 import { OM } from "../../components/om/om.interface"
 import { create, retrieve, getRetrieve, getAll, update, remove, removeAll } from "../../services/service.om"
-import { useQuery } from "../../assets/hook/useQuery";
 
 export const createAction = (object: OM) => {
     return async (dispatch: Dispatch<crud>) => {
@@ -19,7 +18,7 @@ export const createAction = (object: OM) => {
         } catch(error: any) {
             dispatch({
                 type: constants.CREATE_ERROR,
-                payload: error.response.data.errors
+                payload: error.message
             });
         }
     }
@@ -32,7 +31,6 @@ export const retrieveAllAction = () => {
         });
         try {
             const { data } = await getRetrieve()
-            // const { data } = useQuery<OM[] | undefined>('/om/retrieve')
             dispatch({
                 type: constants.RETRIEVE_ALL_SUCCESS,
                 payload: data
@@ -86,32 +84,6 @@ export const deleteAction = (id: string) => {
         }
     }
 }
-
-// export const updatedAction = (item) => {
-//     return (dispatch) => {
-//         dispatch(updatedStart())
-//         service.update(item.id, item)
-//             .then(response => {
-//                 console.log("edição ok")
-//                 dispatch(updatedSuccess(response.data))
-//             })
-//             .catch(error => {
-//                 console.log("erro ao editar")
-//                 dispatch(updatedError())
-//             })
-//     }
-// }
-// export const updatedStart = () => ({
-//     type: constants.UPDATED_START
-// })
-// export const updatedSuccess = item => ({
-//     type: constants.UPDATED_SUCCESS,
-//     payload: item
-// })
-// export const updatedError = () => ({
-//     type: constants.UPDATED_ERROR
-// })
-
 
 // export const findTutorialsByTitle = (title) => async (dispatch) => {
 //     try {
