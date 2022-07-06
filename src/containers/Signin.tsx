@@ -29,13 +29,13 @@ import logo from '../assets/image/heraldica.png'
 export const SigninContainer = (props: Auth) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [ state, setState ] = useState<Auth>(props)
+    const [ state, setState ] = useState<Auth>(initialAuth)
     // const { loading, error, itens, item } = useTypedSelector((state) => state.auths);
-    const { loading, error, itens, item } = useTypedSelector((state) => state.auths);
+    const { loading, error, itens, item, user, isLoggedIn } = useTypedSelector((state) => state.auths);
 
     useEffect(() => {
         retrieveItem()
-    }, [dispatch, state])
+    }, [dispatch])
     const retrieveItem = () => {
         // dispatch(retrieveAllAction())
     }
@@ -43,14 +43,20 @@ export const SigninContainer = (props: Auth) => {
         setState(initialAuth)
     }
     const signupItem = () => {
-        dispatch(signupAction(state.om, state.username, state.email, state.password))
+        dispatch(signupAction(state.username, state.email, state.password))
     }
     const signinItem = () => {
         dispatch(signinAction(state.username, state.password))
-        // console.log(JSON.stringify(error))
-        // if(error == null) {
-        //     navigate("/om")
-        // }
+        console.log(JSON.stringify("Loading "+loading))
+        console.log(JSON.stringify("Error "+error))
+        console.log(JSON.stringify("Itens "+itens))
+        console.log(JSON.stringify("Item "+JSON.stringify(item)))
+        console.log(JSON.stringify("State "+JSON.stringify(state)))
+        console.log(JSON.stringify("User "+JSON.stringify(user)))
+        console.log(JSON.stringify("LoggedIn "+JSON.stringify(isLoggedIn)))
+        if(isLoggedIn) {
+            navigate("/list")
+        }
     }
     const logoutItem = () => {
         dispatch(logoutAction())

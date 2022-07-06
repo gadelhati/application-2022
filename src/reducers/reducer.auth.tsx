@@ -7,10 +7,12 @@ const user = JSON.parse(`${localStorage.getItem("user")}`)
 
 export const authReducer = (state: stateAuth = initialState, action: crud): stateAuth => {
   switch (action.type) {
+    case constants.SIGNUP_START:
+      return { ...state, error: null, loading: true, isLoggedIn: false, }
     case constants.SIGNUP_SUCCESS:
-      return { ...state, isLoggedIn: false, }
+      return { ...state, error: null, loading: false, isLoggedIn: true, }
     case constants.SIGNUP_ERROR:
-      return { ...state, isLoggedIn: false, };
+      return { ...state, error: action.payload, isLoggedIn: false };
 
     case constants.SIGNIN_SUCCESS:
       return { ...state, isLoggedIn: true, user: action.payload.user, };
