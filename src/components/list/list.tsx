@@ -1,11 +1,10 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { OM } from "./om.interface";
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/creator/action.creator.om';
+import { OM } from "./om.interface";
 import { initialOM } from './om.initial';
 import './list.css'
-import { CButtonClose } from '@coreui/react';
 
 export const List = (props: OM) => {
     const dispatch = useDispatch();
@@ -43,14 +42,14 @@ export const List = (props: OM) => {
     }
     return (
         <>
-            {state.id != null ? console.log(JSON.stringify(dispatch)) : console.log("23")}
             <div className="form-floating">
                 <input
                     placeholder="ID"
                     aria-label="id"
                     aria-describedby="basic-addon1"
                     type="text"
-                    className={state.id == "" ? "form-control is-invalid" : "form-control is-valid"}
+                    // className={state.id == "" ? "form-control is-invalid" : "form-control is-valid"}
+                    className={"form-control"}
                     id="id"
                     required
                     value={state.id}
@@ -59,8 +58,8 @@ export const List = (props: OM) => {
                     readOnly
                 />
                 <label htmlFor="id">ID</label>
-                <div className="valid-feedback">Looks good!</div>
-                <div className="invalid-feedback">Looks bad!</div>
+                {/* <div className="valid-feedback">Looks good!</div>
+                <div className="invalid-feedback">Looks bad!</div> */}
             </div>
             <div className="form-floating">
                 <input
@@ -68,7 +67,7 @@ export const List = (props: OM) => {
                     aria-label="name"
                     aria-describedby="basic-addon1"
                     type="text"
-                    className="form-control is-invalid"
+                    className="form-control"
                     id="name"
                     required
                     value={state.name}

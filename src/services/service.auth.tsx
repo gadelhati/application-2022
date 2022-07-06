@@ -8,10 +8,10 @@ export const signup = (username: string, email: string, password: string) => {
 
 export const signin = async (username: string, password: string) => {
   const response = await api.post(`/auth/signin`, { username, password })
-    if (response.data.accessToken) {
-        setUser(response.data)
-    }
-    return response.data
+  if (response.data.accessToken) {
+    setUser(response.data)
+  }
+  return response
 }
 
 export const logout = () => {
