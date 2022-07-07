@@ -28,13 +28,13 @@ export default function AppRoutes() {
                 </div>
                 <div className="col">
                     <Routes>
-                        <Route path="/" element={ getUser() === null ? <SigninContainer om={initialOM} username="" email="" password="" /> : <Navigate to="/list"/> }></Route>
-                        <Route path="/signin" element={ getUser() === null ? <SigninContainer om={initialOM} username="" email="" password="" /> : <Navigate to="/list"/> }></Route>
+                        <Route path="/" element={ getUser() === null ? <SigninContainer username="" email="" password="" /> : <Navigate to="/list"/> }></Route>
+                        <Route path="/signin" element={ getUser() === null ? <SigninContainer username="" email="" password="" /> : <Navigate to="/list"/> }></Route>
                         <Route path="/list" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<List id="" name="" />} />} />
                         <Route path="/sidebar" element={<Sidestrap />}></Route>
 
                         <Route path="/omlist" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<OMList id="" name="" />} />} />
-                        <Route path="/auth" element={<AuthList om={initialOM} username="" email="" password="" />}></Route>
+                        <Route path="/auth" element={<AuthList username="" email="" password="" />}></Route>
                         <Route path="/profile" element={<Profile />}></Route>
                         <Route path="/om" element={<OMList id="" name="" />}></Route>
                         {/* <Route path="/observation" element={<ObservationList id="" mimi="" observator={initialObservator} />}></Route> */}
