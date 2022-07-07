@@ -2,7 +2,7 @@ import { api } from "../api/api"
 import { OM } from "../components/om/om.interface"
 
 export const create = (data: OM) => {
-  return api.post(`/om`, data)
+  return api.post<OM>(`/om`, data)
 }
 
 export const getRetrieve = () => {
