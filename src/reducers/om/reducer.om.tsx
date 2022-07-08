@@ -1,9 +1,9 @@
-import { stateObservation } from "../redux/interface/observation.state"
-import { initialState } from "../redux/initialState/observation.state.initial"
-import { constants } from "../assets/types/constants"
-import { crud } from "../actions.generics/type/action.type.observation"
+import { stateOM } from "./om.state";
+import { initialState } from "./om.state.initial";
+import { constants } from "../../assets/types/constants"
+import { crud } from "../../actions.generics/type/action.type.om"
 
-export const observationReducer = (state: stateObservation = initialState, action: crud): stateObservation => {
+export const omReducer = (state: stateOM = initialState, action: crud): stateOM => {
     switch (action.type) {
         case constants.CREATE_START:
             return { ...state, error: null, loading: true }
@@ -18,11 +18,11 @@ export const observationReducer = (state: stateObservation = initialState, actio
             return { ...state, error: null, loading: false, itens: action.payload }
         case constants.RETRIEVE_ALL_ERROR:
             return { ...state, error: action.payload, loading: false }
-            
+
         // case constants.RETRIEVE_START:
-        //     return { ...state, error: null, loading: true, item: {} }
+        //     return { ...state, error: null, loading: true }
         // case constants.RETRIEVE_SUCCESS:
-        //     return { ...state, error: null, loading: false, itens: [], item: action.payload }
+        //     return { ...state, error: null, loading: false, itens: [...state.itens], item: action.payload }
         // case constants.RETRIEVE_ERROR:
         //     return { ...state, error: action.payload, loading: false, itens: [], item: {} }
 

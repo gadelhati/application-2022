@@ -14,6 +14,7 @@ import { initialObservator } from "./components/observator/observator.initial";
 import { SigninContainer } from "./containers/Signin";
 import { Sidestrap } from "./containers/menus/SidebarBootstrap";
 import { getUserName, getLocalAccessToken, getId, getEmail, getUser } from "./services/service.token"
+import { Signup } from "./containers/Signup";
 
 export default function AppRoutes() {
     const defaultProtectedRouteProps: Omit<ProtectedRouteProps, 'outlet'> = {
@@ -23,21 +24,22 @@ export default function AppRoutes() {
     return (
         <BrowserRouter>
             <div className="row">
-                <div className="col-md">
-                    { getUser() && <Sidestrap /> }
+                {/* justify-content-center */}
+                <div className="col-4">
+                    {getUser() && <Sidestrap />}
                 </div>
-                <div className="col">
+                <div className="col-8">
                     <Routes>
-                        <Route path="/" element={ getUser() === null ? <SigninContainer username="" email="" password="" /> : <Navigate to="/list"/> }></Route>
-                        <Route path="/signin" element={ getUser() === null ? <SigninContainer username="" email="" password="" /> : <Navigate to="/list"/> }></Route>
+                        <Route path="/" element={getUser() === null ? <SigninContainer username="" email="" password="" /> : <Navigate to="/list" />}></Route>
+                        <Route path="/signin" element={getUser() === null ? <SigninContainer username="" email="" password="" /> : <Navigate to="/list" />}></Route>
                         <Route path="/list" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<List id="" name="" />} />} />
+                        <Route path="/signup" element={<Signup username="" email="" password="" />}></Route>
                         <Route path="/sidebar" element={<Sidestrap />}></Route>
 
                         <Route path="/omlist" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<OMList id="" name="" />} />} />
                         <Route path="/auth" element={<AuthList username="" email="" password="" />}></Route>
                         <Route path="/profile" element={<Profile />}></Route>
                         <Route path="/om" element={<OMList id="" name="" />}></Route>
-                        {/* <Route path="/observation" element={<ObservationList id="" mimi="" observator={initialObservator} />}></Route> */}
                         <Route path="/observationitem" element={<ObservationItem />}></Route>
                         <Route path="/observationcoreui" element={<ObservationListCoreUI id="" mimi="" observator={initialObservator} />}></Route>
                     </Routes>

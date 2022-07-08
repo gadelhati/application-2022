@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { OM } from "./om.interface";
 import { useQuery } from "../../assets/hook/useQuery";
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/creator/action.creator.om';
+import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.om';
 import { initialOM } from './om.initial';
 import { styled } from '@stitches/react';
 import './om.css';

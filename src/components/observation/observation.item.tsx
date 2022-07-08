@@ -4,7 +4,7 @@ import { Card, Row, Col, OverlayTrigger, Tooltip, InputGroup, FormControl, Butto
 import { CButtonToolbar } from "@coreui/react"
 import { Observation } from "./observation";
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/creator/action.creator.observation';
+import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.observation';
 import { initialObservation } from './observation.initial';
 
 export const ObservationItem = () => {

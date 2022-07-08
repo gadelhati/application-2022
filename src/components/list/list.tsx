@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/creator/action.creator.om';
+import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.om';
 import { OM } from "./om.interface";
 import { initialOM } from './om.initial';
 import './list.css'
@@ -48,8 +48,7 @@ export const List = (props: OM) => {
                     aria-label="id"
                     aria-describedby="basic-addon1"
                     type="text"
-                    // className={state.id == "" ? "form-control is-invalid" : "form-control is-valid"}
-                    className={"form-control"}
+                    className="form-control"
                     id="id"
                     required
                     value={state.id}
@@ -58,8 +57,6 @@ export const List = (props: OM) => {
                     readOnly
                 />
                 <label htmlFor="id">ID</label>
-                {/* <div className="valid-feedback">Looks good!</div>
-                <div className="invalid-feedback">Looks bad!</div> */}
             </div>
             <div className="form-floating">
                 <input
@@ -68,6 +65,7 @@ export const List = (props: OM) => {
                     aria-describedby="basic-addon1"
                     type="text"
                     className="form-control"
+                    // className={state.name == "" ? "form-control is-invalid" : "form-control is-valid"}
                     id="name"
                     required
                     value={state.name}
@@ -75,7 +73,8 @@ export const List = (props: OM) => {
                     name="name"
                 />
                 <label htmlFor="name">Name</label>
-                <div className="valid-feedback">Looks good!</div>
+                {/* <div className="valid-feedback">Looks good!</div> */}
+                {/* <div className="invalid-feedback">Looks bad!</div> */}
             </div>
             {/* <div className="form-floating">
                 <select className={state.id == "" ? "form-select is-invalid" : "form-select is-valid"} id="floatingSelectGrid" aria-label="Floating label select example">

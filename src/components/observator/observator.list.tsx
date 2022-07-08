@@ -2,7 +2,7 @@ import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Observator } from "./observator";
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/creator/action.creator.observator';
+import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.observator';
 import { initialObservator } from './observator.initial';
 
 export const ObservationList = (props: Observator) => {

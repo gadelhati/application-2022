@@ -1,6 +1,6 @@
 import { combineReducers  } from "redux"
 import { authReducer } from "./reducer.auth"
-import { omReducer } from "./reducer.om"
+import { omReducer } from "./om/reducer.om"
 import { observationReducer } from "./reducer.observation"
 
 export const reducers = combineReducers({ 

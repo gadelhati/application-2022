@@ -5,7 +5,7 @@ import "./sidebars.css"
 import "../../assets/bootstrap/dist/js/bootstrap.bundle.min.js"
 import './sidebars.js';
 import { getUserName, getLocalAccessToken, getId, getEmail, getUser } from "../../services/service.token"
-import { signupAction, signinAction, logoutAction, refreshTokenAction } from '../../actions/creator/action.creator.auth';
+import { signupAction, signinAction, logoutAction, refreshTokenAction } from '../../actions.generics/creator/action.creator.auth';
 import logo from '../../assets/image/heraldica.png'
 
 export const Sidestrap = (props: any) => {
@@ -122,9 +122,7 @@ export const Sidestrap = (props: any) => {
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table" /></svg>Customers</a>
                         </li> */}
                     </ul>
-                    {getUser() ?
-                        <>
-                        <hr></hr>
+                    {getUser() &&
                         <div className="dropdown">
                             <a href="#" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"></img>
@@ -138,9 +136,6 @@ export const Sidestrap = (props: any) => {
                                 <li><a className="dropdown-item" href="/signin" onClick={logoutItem} >Sign out</a></li>
                             </ul>
                         </div>
-                        </>
-                        :
-                        <></>
                     }
                 </div>
             </main>

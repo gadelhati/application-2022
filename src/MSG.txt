@@ -1,8 +1,8 @@
-redirecionar após o login
-response auth == reponse om
-get server response
-	put on input
-organizer archives
+	redirecionar após o login
+	response auth == reponse om
+X	get server response
+		put on input
+	organizer archives
 
 {
 	"transitional":{

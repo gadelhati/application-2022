@@ -1,7 +1,7 @@
 import { stateAuth } from "../redux/interface/auth.state"
 import { initialState } from "../redux/initialState/auth.state.initial"
 import { constants } from "../assets/types/constants.auth"
-import { crud } from "../actions/type/action.type.auth"
+import { crud } from "../actions.generics/type/action.type.auth"
 
 const user = JSON.parse(`${localStorage.getItem("user")}`)
 
