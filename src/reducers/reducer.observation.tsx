@@ -1,5 +1,5 @@
-import { stateObservation } from "../redux/interface/observation.state"
-import { initialState } from "../redux/initialState/observation.state.initial"
+import { stateObservation } from "./observation/observation.state"
+import { initialState } from "./observation/observation.state.initial"
 import { constants } from "../assets/types/constants"
 import { crud } from "../actions.generics/type/action.type.observation"
 

@@ -1,5 +1,5 @@
 import { combineReducers  } from "redux"
-import { authReducer } from "./reducer.auth"
+import { authReducer } from "./auth/reducer.auth"
 import { omReducer } from "./om/reducer.om"
 import { observationReducer } from "./reducer.observation"
 

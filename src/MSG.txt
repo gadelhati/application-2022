@@ -3,7 +3,8 @@
 X	get server response
 		put on input
 	organizer archives
-
+	action.create to generics
+	action.type to generics
 {
 	"transitional":{
 		"silentJSONParsing":true,

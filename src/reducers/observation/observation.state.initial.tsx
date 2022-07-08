@@ -1,5 +1,5 @@
 import { initialObservation } from "../../components/observation/observation.initial";
-import { stateObservation } from "../interface/observation.state";
+import { stateObservation } from "./observation.state";
 
 export const initialState: stateObservation = {
     loading: false,
