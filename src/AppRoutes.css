@@ -8,9 +8,15 @@ body {
 
 aside {
     /* background-color: green; */
+    display: flex;
+    flex-direction: col;
     align-items: stretch;
     height: 100vh;
     width: 256px;
+}
+
+nav {
+    
 }
 
 main {

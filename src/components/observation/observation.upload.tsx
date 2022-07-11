@@ -30,6 +30,9 @@ export const ObservationUpload = () => {
     }, [])
     const selectItem = () => {
         // setState(exemplo)
+        for(let i = 0;i<exemplo.length;i++){
+            console.log(exemplo[i]);
+        }
     }
     return (
         <section>
@@ -38,6 +41,7 @@ export const ObservationUpload = () => {
                 {cc.name}
                 {cc.address}
                 {cc.order_count}
+                <button onClick={selectItem} className="w-20 btn btn-secondary">Show in Console Log</button>
             </article>
         </section>
     );
