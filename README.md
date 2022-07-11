@@ -123,7 +123,8 @@ npm install --save styled-components
 npm install @stitches/react
 npm install @radix-ui/react-*
 npm install bootstrap
-npm install --save react-dropzone
+<!-- npm install --save react-dropzone -->
+npm i --save-dev @types/node
 ```
 
 ## run project
