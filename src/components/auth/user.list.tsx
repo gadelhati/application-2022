@@ -95,6 +95,22 @@ export const UserList = (props: User) => {
                 </div>
                 <div className="form-floating">
                     <input
+                        placeholder="PASSWORD"
+                        aria-label="password"
+                        aria-describedby="basic-addon1"
+                        type="password"
+                        className="form-control"
+                        id="password"
+                        required
+                        value={state.password}
+                        onChange={handleInputChange}
+                        name="password"
+                        readOnly={state.id != ""}
+                    />
+                    <label htmlFor="password">Password</label>
+                </div>
+                <div className="form-floating">
+                    <input
                         placeholder="ACTIVE"
                         aria-label="active"
                         aria-describedby="basic-addon1"
