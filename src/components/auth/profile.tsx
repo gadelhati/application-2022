@@ -13,7 +13,9 @@ export const Profile = (props: User) => {
     const { loading, error, itens, item } = useTypedSelector((state) => state.users);
 
     useEffect(() => {
-        retrieveItem()
+        state.id = getId(),
+        state.username = getUserName(),
+        state.email = getEmail()
     }, [dispatch])
     const resetItem = () => {
         setState(initialUser)
