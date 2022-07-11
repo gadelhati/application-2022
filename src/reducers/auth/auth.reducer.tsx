@@ -1,6 +1,6 @@
 import { stateAuth } from "./auth.state"
 import { initialState } from "./auth.state.initial"
-import { constants } from "../../assets/types/constants.auth"
+import { constants } from "../../assets/types/constants"
 import { crud } from "../../actions.generics/type/action.type.auth"
 
 const user = JSON.parse(`${localStorage.getItem("user")}`)

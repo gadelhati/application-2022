@@ -109,20 +109,20 @@ export const UserList = (props: User) => {
                     />
                     <label htmlFor="password">Password</label>
                 </div>
-                <div className="form-floating">
+                <div className="form-check">
                     <input
                         placeholder="ACTIVE"
                         aria-label="active"
                         aria-describedby="basic-addon1"
                         type="checkbox"
-                        // className="form-control"
+                        className="form-check-input"
                         id="active"
                         required
                         checked={state.active}
                         onChange={handleInputChange}
                         name="active"
                     />
-                    <label htmlFor="active">Active</label>
+                    <label className="form-check-label" htmlFor="active">Active</label>
                 </div>
                 <div className="form-floating">
                     {/* <select className={state.id == "" ? "form-select is-invalid" : "form-select is-valid"} id="om" aria-label="Floating label select example"> */}

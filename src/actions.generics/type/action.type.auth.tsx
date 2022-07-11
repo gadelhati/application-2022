@@ -1,4 +1,4 @@
-import { constants } from "../../assets/types/constants.auth"
+import { constants } from "../../assets/types/constants"
 
 interface signupStart {
     type: constants.SIGNUP_START,
