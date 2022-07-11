@@ -1,24 +1,24 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.om';
-import { OM } from "./om.interface";
-import { initialOM } from './om.initial';
+import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.user';
+import { User } from "./user.interface";
+import { initialUser } from './user.initial';
 import '../list.css'
 
-export const List = (props: OM) => {
+export const UserList = (props: User) => {
     const dispatch = useDispatch();
-    const [state, setState] = useState<OM>(initialOM)
-    const { loading, error, itens, item } = useTypedSelector((state) => state.oms);
+    const [state, setState] = useState<User>(initialUser)
+    const { loading, error, itens, item } = useTypedSelector((state) => state.users);
 
     useEffect(() => {
         retrieveItem()
     }, [dispatch])
-    const selectItem = (object: OM) => {
+    const selectItem = (object: User) => {
         setState(object)
     }
     const resetItem = () => {
-        setState(initialOM)
+        setState(initialUser)
     }
     const createItem = () => {
         dispatch(createAction(state))
@@ -37,7 +37,8 @@ export const List = (props: OM) => {
         resetItem()
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target
+        const { name } = event.target
+        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
         setState({ ...state, [name]: value })
     }
     return (
@@ -61,31 +62,62 @@ export const List = (props: OM) => {
                 </div>
                 <div className="form-floating">
                     <input
-                        placeholder="Name"
-                        aria-label="name"
+                        placeholder="USERNAME"
+                        aria-label="username"
                         aria-describedby="basic-addon1"
                         type="text"
                         className="form-control"
                         // className={state.name == "" ? "form-control is-invalid" : "form-control is-valid"}
-                        id="name"
+                        id="username"
                         required
-                        value={state.name}
+                        value={state.username}
                         onChange={handleInputChange}
-                        name="name"
+                        name="username"
                     />
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="username">Username</label>
                     {/* <div className="valid-feedback">Looks good!</div> */}
                     {/* <div className="invalid-feedback">Looks bad!</div> */}
                 </div>
-                {/* <div className="form-floating">
-                <select className={state.id == "" ? "form-select is-invalid" : "form-select is-valid"} id="floatingSelectGrid" aria-label="Floating label select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-                <label htmlFor="floatingSelectGrid">Works with selects</label>
-            </div> */}
+                <div className="form-floating">
+                    <input
+                        placeholder="E-MAIL"
+                        aria-label="email"
+                        aria-describedby="basic-addon1"
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        required
+                        value={state.email}
+                        onChange={handleInputChange}
+                        name="email"
+                    />
+                    <label htmlFor="email">E-mail</label>
+                </div>
+                <div className="form-floating">
+                    <input
+                        placeholder="ACTIVE"
+                        aria-label="active"
+                        aria-describedby="basic-addon1"
+                        type="checkbox"
+                        // className="form-control"
+                        id="active"
+                        required
+                        checked={state.active}
+                        onChange={handleInputChange}
+                        name="active"
+                    />
+                    <label htmlFor="active">Active</label>
+                </div>
+                <div className="form-floating">
+                    {/* <select className={state.id == "" ? "form-select is-invalid" : "form-select is-valid"} id="om" aria-label="Floating label select example"> */}
+                    <select className="form-select" id="om" aria-label="Floating label select">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    <label htmlFor="om">Works with selects</label>
+                </div>
                 <button onClick={resetItem} className="w-20 btn btn-secondary">Reset</button>
                 <button onClick={createItem} className="w-20 btn btn-secondary" disabled={state.id != ""} >Create</button>
                 <button onClick={retrieveItem} className="w-20 btn btn-secondary" >Retrieve</button>
@@ -97,8 +129,10 @@ export const List = (props: OM) => {
             <table>
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">NAME</th>
+                        {/* <th scope="col">ID</th> */}
+                        <th scope="col">USERNAME</th>
+                        <th scope="col">E-MAIL</th>
+                        <th scope="col">ACTIVE</th>
                         <th scope="col">#</th>
                     </tr>
                 </thead>
@@ -107,7 +141,11 @@ export const List = (props: OM) => {
                         return (
                             <tr key={item.id}>
                                 <th scope="row">{item.id}</th>
-                                <td>{item.name}</td>
+                                <td>{item.username}</td>
+                                <td>{item.email}</td>
+                                <td>
+                                    <input type="checkbox" value="active" id="active" disabled checked={item.active}></input>
+                                </td>
                                 <td className="align-bottom">
                                     <button onClick={() => selectItem(item)} className="w-100 btn btn-lg btn-secondary">Select</button>
                                 </td>

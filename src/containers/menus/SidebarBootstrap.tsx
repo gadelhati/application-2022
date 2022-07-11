@@ -105,6 +105,10 @@ export const Sidestrap = (props: any) => {
                             <a href="/signin" className="nav-link text-white">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#people-circle" /></svg>Signin</a>
                         </li>
+                        <li>
+                            <a href="/users" className="nav-link text-white">
+                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table" /></svg>Users</a>
+                        </li>
                         {/* <li>
                             <a href="/auth" className="nav-link text-white">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#speedometer2" /></svg>Auth</a>
@@ -117,10 +121,6 @@ export const Sidestrap = (props: any) => {
                             <a href="/list" className="nav-link text-white">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#grid" /></svg>List</a>
                         </li>
-                        {/* <li>
-                            <a href="#" className="nav-link text-white">
-                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table" /></svg>Customers</a>
-                        </li> */}
                     </ul>
                     {getUser() &&
                         <div className="dropdown">

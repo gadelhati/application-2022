@@ -1,0 +1,23 @@
+section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    /* justify-content: space-between; */
+    align-items: stretch;
+    flex-grow: 1;
+    /* background-color: yellow; */
+    /* width: 80vw; */
+    padding: 10px;
+}
+
+.signin {
+    
+}
+
+article {
+    padding: 0.5em;
+}
+
+table {
+    /* align-items: stretch; */
+}

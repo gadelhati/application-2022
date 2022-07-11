@@ -1,7 +1,5 @@
 import { styled } from '@stitches/react';
 import { violet, mauve, blackA } from '@radix-ui/colors';
-import { ContentContainer } from './Content';
-
 export const Sidebar = styled('div', {
     margin: 0,
     padding: 0,
@@ -156,7 +154,6 @@ export const SidebarContainer = () => {
                     ObservationCoreUI
                 </SidebarItem>
             </Sidebar>
-            <ContentContainer />
             {/* <SidebarContent id="main">
                 <Observation mimi='oi'></Observation>
                 <button id="openNav" onClick={w3_open() as any}>&#9776;</button>

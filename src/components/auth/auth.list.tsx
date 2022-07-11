@@ -1,14 +1,14 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Auth } from "./auth";
+import { User } from "./user.interface";
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { signupAction, signinAction, logoutAction, refreshTokenAction } from '../../actions.generics/creator/action.creator.auth';
 import { retrieveAllAction } from '../../actions.generics/creator/action.creator.om';
-import { initialAuth as initial } from './auth.initial';
+import { initialUser } from './user.initial';
 
-export const AuthList = (props: Auth) => {
+export const AuthList = (props: User) => {
     const dispatch = useDispatch();
-    const [ state, setState ] = useState<Auth>(props)
+    const [ state, setState ] = useState<User>(props)
     const { loading, error, itens, item } = useTypedSelector((state) => state.auths);
     const { loading: omloading, error: omerror, itens: omitens, item: omitem } = useTypedSelector((state) => state.oms);
 
@@ -19,10 +19,10 @@ export const AuthList = (props: Auth) => {
         dispatch(retrieveAllAction())
     }
     const resetItem = () => {
-        setState(initial)
+        setState(initialUser)
     }
     const signupItem = () => {
-        dispatch(signupAction(state.om, state.username, state.email, state.password))
+        dispatch(signupAction(state.username, state.email, state.password))
     }
     const signinItem = () => {
         dispatch(signinAction(state.username, state.password))

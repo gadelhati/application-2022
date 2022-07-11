@@ -148,7 +148,7 @@ export const OMList = (props: OM) => {
         setState({ ...state, [name]: value })
     }
     return (
-        <>
+        <div className='gti-container'>
             <input
                 placeholder="ID"
                 aria-label="id"
@@ -197,7 +197,7 @@ export const OMList = (props: OM) => {
             </FB> */}
             {loading && <>Loading...</>}
             {error != null && JSON.stringify(error)}
-            <table>
+            <table className='gti-item'>
                 <tbody>
                     {itens?.map(item => {
                         return (
@@ -214,6 +214,6 @@ export const OMList = (props: OM) => {
                     })}
                 </tbody>
             </table>
-        </>
+        </div>
     );
 }

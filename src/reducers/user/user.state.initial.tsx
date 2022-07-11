@@ -1,11 +1,9 @@
-import { stateAuth } from "./auth.state";
 import { initialUser } from "../../components/auth/user.initial";
+import { stateUser } from "./user.state";
 
-export const initialState: stateAuth = {
+export const initialState: stateUser = {
     loading: false,
     error: null,
-    isLoggedIn: false,
-    user: null,
     item: initialUser,
     itens: [],
 }
