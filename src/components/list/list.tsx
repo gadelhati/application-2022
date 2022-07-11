@@ -37,7 +37,8 @@ export const List = (props: OM) => {
         resetItem()
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target
+        const { name } = event.target
+        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
         setState({ ...state, [name]: value })
     }
     return (
