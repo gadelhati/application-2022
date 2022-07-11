@@ -1,4 +1,4 @@
-import { User } from "../../components/auth/user.interface"
+import { User } from "../../components/user/user.interface"
 import { constants } from "../../assets/types/constants"
 
 interface createStart {

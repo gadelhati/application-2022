@@ -10,14 +10,10 @@ section {
     padding: 10px;
 }
 
-.signin {
-    
-}
-
 article {
     padding: 0.5em;
 }
 
 table {
-    /* align-items: stretch; */
+    overflow-y:auto;
 }

@@ -1,5 +1,5 @@
-import { Observation } from "./observation";
-import { initialObservator } from "../observator/observator.initial";
+import { Observation } from "./observation.interface";
+import { initialUser } from "../user/user.initial";
 
 export const initialObservation : Observation = {
     id: "",
@@ -87,7 +87,7 @@ export const initialObservation : Observation = {
     icf: "",
     icp: "",
     icq: "",
-    observator: initialObservator,
+    observator: initialUser,
     dataObservacao: new Date(),
     // estacao: "",
     // file: "",

@@ -1,4 +1,4 @@
-import { initialUser } from "../../components/auth/user.initial";
+import { initialUser } from "../../components/user/user.initial";
 import { stateUser } from "./user.state";
 
 export const initialState: stateUser = {

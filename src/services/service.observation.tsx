@@ -1,5 +1,5 @@
 import { api } from "../api/api"
-import { Observation } from "../components/observation/observation"
+import { Observation } from "../components/observation/observation.interface"
 
 export const create = (data:{}) => {
   return api.post<Observation>(`/observation`, data)

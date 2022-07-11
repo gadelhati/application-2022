@@ -1,4 +1,4 @@
-import { OM } from "../list/om.interface";
+import { OM } from "../om/om.interface";
 
 export interface User {
     id: string,

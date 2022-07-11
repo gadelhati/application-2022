@@ -1,7 +1,7 @@
-import { stateObservation } from "./observation/observation.state"
-import { initialState } from "./observation/observation.state.initial"
-import { constants } from "../assets/types/constants"
-import { crud } from "../actions.generics/type/action.type.observation"
+import { stateObservation } from "./observation.state";
+import { initialState } from "./observation.state.initial";
+import { constants } from "../../assets/types/constants"
+import { crud } from "../../actions.generics/type/action.type.observation"
 
 export const observationReducer = (state: stateObservation = initialState, action: crud): stateObservation => {
     switch (action.type) {
@@ -18,11 +18,11 @@ export const observationReducer = (state: stateObservation = initialState, actio
             return { ...state, error: null, loading: false, itens: action.payload }
         case constants.RETRIEVE_ALL_ERROR:
             return { ...state, error: action.payload, loading: false }
-            
+
         // case constants.RETRIEVE_START:
-        //     return { ...state, error: null, loading: true, item: {} }
+        //     return { ...state, error: null, loading: true }
         // case constants.RETRIEVE_SUCCESS:
-        //     return { ...state, error: null, loading: false, itens: [], item: action.payload }
+        //     return { ...state, error: null, loading: false, itens: [...state.itens], item: action.payload }
         // case constants.RETRIEVE_ERROR:
         //     return { ...state, error: action.payload, loading: false, itens: [], item: {} }
 

@@ -1,4 +1,4 @@
-import { User } from "../../components/auth/user.interface";
+import { User } from "../../components/user/user.interface";
 
 export interface stateUser {
     loading: boolean,

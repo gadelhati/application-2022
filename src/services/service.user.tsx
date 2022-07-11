@@ -1,5 +1,5 @@
 import { api } from "../api/api"
-import { User } from "../components/auth/user.interface"
+import { User } from "../components/user/user.interface"
 
 export const create = (data: User) => {
   return api.post<User>(`/user`, data)

@@ -1,4 +1,4 @@
-import { Observator } from "../observator/observator";
+import { User } from "../user/user.interface";
 
 export interface Observation {
     id: string;
@@ -86,7 +86,7 @@ export interface Observation {
     icf?: string;
     icp?: string;
     icq?: string;
-    observator: Observator;
+    observator: User;
     dataObservacao?: Date;
     // estacao?: Station;
     // file?: string;

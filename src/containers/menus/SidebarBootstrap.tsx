@@ -91,7 +91,7 @@ export const Sidestrap = (props: any) => {
                     </a>
                     <hr></hr>
                     <ul className="nav nav-pills flex-column mb-auto">
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <a href="#" className="nav-link active" aria-current="page" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#home" /></svg>Home</a>
                             <div className="collapse show" id="home-collapse">
@@ -100,27 +100,31 @@ export const Sidestrap = (props: any) => {
                                     <li><a href="/list" className="link-light rounded">List</a></li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> */}
                         <li>
                             <a href="/signin" className="nav-link text-white">
-                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#people-circle" /></svg>Signin</a>
+                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#home" /></svg>OM</a>
                         </li>
                         <li>
                             <a href="/users" className="nav-link text-white">
-                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table" /></svg>Users</a>
+                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#people-circle" /></svg>Users</a>
                         </li>
-                        {/* <li>
-                            <a href="/auth" className="nav-link text-white">
-                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#speedometer2" /></svg>Auth</a>
-                        </li> */}
-                        {/* <li>
+                        <li>
+                            <a href="/observation" className="nav-link text-white">
+                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#speedometer2" /></svg>Observation</a>
+                        </li>
+                        <li>
                             <a href="/profile" className="nav-link text-white">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#people-circle" /></svg>Profile</a>
-                        </li> */}
-                        <li>
-                            <a href="/list" className="nav-link text-white">
-                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#grid" /></svg>List</a>
                         </li>
+                        {/* <li>
+                            <a href="/om" className="nav-link text-white">
+                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#grid" /></svg>OM</a>
+                        </li>
+                        <li>
+                            <a href="/om" className="nav-link text-white">
+                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table" /></svg>OM</a>
+                        </li> */}
                     </ul>
                     {getUser() &&
                         <div className="dropdown">

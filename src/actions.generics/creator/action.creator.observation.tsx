@@ -1,7 +1,7 @@
 import { Dispatch } from "redux";
 import { crud } from "../type/action.type.observation";
 import { constants } from "../../assets/types/constants";
-import { Observation } from "../../components/observation/observation"
+import { Observation } from "../../components/observation/observation.interface"
 import { create, retrieve, getRetrieve, getAll, update, remove, removeAll } from "../../services/service.observation"
 
 export const createAction = (object: Observation) => {

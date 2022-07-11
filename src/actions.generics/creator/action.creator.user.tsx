@@ -2,7 +2,7 @@ import { AxiosError } from 'axios';
 import { Dispatch } from "redux";
 import { crud } from "../type/action.type.user";
 import { constants } from "../../assets/types/constants";
-import { User } from "../../components/auth/user.interface"
+import { User } from "../../components/user/user.interface"
 import { create, retrieve, getRetrieve, getAll, update, remove, removeAll, changePassword } from "../../services/service.user"
 
 export const createAction = (object: User) => {

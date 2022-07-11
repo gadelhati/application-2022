@@ -1,121 +1,14 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { OM } from "./om.interface";
-import { useQuery } from "../../assets/hook/useQuery";
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.om';
+import { OM } from "./om.interface";
 import { initialOM } from './om.initial';
-import { styled } from '@stitches/react';
-import './om.css';
-
-const FB = styled('div', {
-    position: 'relative',
-    padding: '13px',
-    input: {
-        width: '100%',
-        margin: '10px',
-        border: '0',
-        borderBottom: '2px solid lightgrey',
-        outline: 'none',
-        minWidth: '180px',
-        fontSize: '16px',
-        transition: 'all .3s ease - out',
-        webkitTransition: 'all .3s ease - out',
-        mozTransition: 'all .3s ease - out',
-        webkitAppearance: 'none',
-        borderRadius: '2px',
-        background: 'transparent',
-        '&:focus': {
-            borderBottom: '2px solid #3951b2',
-        },
-        '&::placeholder': {
-            color: 'transparent',
-        },
-        '&:focus:required:invalid': {
-            borderBottom: '2px solid red',
-        },
-        '&:required:invalid + label:before': {
-            content: '*',
-        },
-        '&:focus + label': {
-            fontSize: '13px',
-            marginTop: '0',
-            color: '#3951b2',
-        },
-        '&:not(:placeholder-shown) + label': {
-            fontSize: '13px',
-            marginTop: '0',
-            color: '#3951b2',
-        },
-    },
-    label: {
-        pointerEvents: 'none',
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        marginTop: '13px',
-        transition: 'all .3s ease - out',
-        webkitTransition: 'all .3s ease - out',
-        mozTransition: 'all .3s ease - out',
-    }
-});
-
-const FB2 = styled('div', {
-    position: 'relative',
-    padding: '13px',
-    input: {
-        margin: '10px',
-        border: '0',
-        borderBottom: '2px solid lightgrey',
-        outline: 'none',
-        minWidth: '180px',
-        fontSize: '16px',
-        transition: 'all .3s ease - out',
-        webkitTransition: 'all .3s ease - out',
-        mozTransition: 'all .3s ease - out',
-        webkitAppearance: 'none',
-        borderRadius: '2px',
-        background: 'transparent',
-        '&:focus': {
-            borderBottom: '2px solid #3951b2',
-        },
-        '&::placeholder': {
-            color: 'transparent',
-        },
-        '&:focus:required:invalid': {
-            borderBottom: '2px solid red',
-        },
-        '&:required:invalid + label:before': {
-            content: '*',
-        },
-        '&:focus + label': {
-            fontSize: '13px',
-            marginTop: '0',
-            color: '#3951b2',
-        },
-        '&:not(:placeholder-shown) + label': {
-            fontSize: '13px',
-            marginTop: '0',
-            color: '#3951b2',
-        },
-    },
-    label: {
-        pointerEvents: 'none',
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        marginTop: '13px',
-        transition: 'all .3s ease - out',
-        webkitTransition: 'all .3s ease - out',
-        mozTransition: 'all .3s ease - out',
-    }
-});
+import '../list.css'
 
 export const OMList = (props: OM) => {
-    const { data: oms, isQuery } = useQuery<OM[]>('/om/retrieve')
-    // const history = useHistory()
     const dispatch = useDispatch();
-    const [ state, setState ] = useState<OM>(props)
+    const [state, setState] = useState<OM>(initialOM)
     const { loading, error, itens, item } = useTypedSelector((state) => state.oms);
 
     useEffect(() => {
@@ -132,88 +25,98 @@ export const OMList = (props: OM) => {
         resetItem()
     }
     const retrieveItem = () => {
-        dispatch(retrieveAllAction())
         resetItem()
+        dispatch(retrieveAllAction())
     }
     const updateItem = () => {
         dispatch(updateAction(state.id, state))
-        // retrieveItem()
+        resetItem()
     }
     const deleteItem = () => {
         dispatch(deleteAction(state.id))
-        // retrieveItem()
+        resetItem()
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target
+        const { name } = event.target
+        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
         setState({ ...state, [name]: value })
     }
     return (
-        <div className='gti-container'>
-            <input
-                placeholder="ID"
-                aria-label="id"
-                aria-describedby="basic-addon1"
-                type="text"
-                className="form-control"
-                id="id"
-                required
-                value={state.id}
-                onChange={handleInputChange}
-                name="id"
-                readOnly
-            />
-            <input
-                placeholder="Name"
-                aria-label="name"
-                aria-describedby="basic-addon1"
-                type="text"
-                className="form-control"
-                id="name"
-                required
-                value={state.name}
-                onChange={handleInputChange}
-                name="name"
-            />
-            {/* <div className="form-floating mb-3">
-                <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"></input>
-                <label htmlFor="floatingInput">Email address</label>
-            </div>
-            <div className="form-floating">
-                <input type="password" className="form-control" id="floatingPassword" placeholder="Password"></input>
-                <label htmlFor="floatingPassword">Password</label>
+        <section>
+            <article>
+                <div className="form-floating">
+                    <input
+                        placeholder="ID"
+                        aria-label="id"
+                        aria-describedby="basic-addon1"
+                        type="text"
+                        className="form-control"
+                        id="id"
+                        required
+                        value={state.id}
+                        onChange={handleInputChange}
+                        name="id"
+                        readOnly
+                    />
+                    <label htmlFor="id">ID</label>
+                </div>
+                <div className="form-floating">
+                    <input
+                        placeholder="Name"
+                        aria-label="name"
+                        aria-describedby="basic-addon1"
+                        type="text"
+                        className="form-control"
+                        // className={state.name == "" ? "form-control is-invalid" : "form-control is-valid"}
+                        id="name"
+                        required
+                        value={state.name}
+                        onChange={handleInputChange}
+                        name="name"
+                    />
+                    <label htmlFor="name">Name</label>
+                    {/* <div className="valid-feedback">Looks good!</div> */}
+                    {/* <div className="invalid-feedback">Looks bad!</div> */}
+                </div>
+                {/* <div className="form-floating">
+                <select className={state.id == "" ? "form-select is-invalid" : "form-select is-valid"} id="floatingSelectGrid" aria-label="Floating label select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <label htmlFor="floatingSelectGrid">Works with selects</label>
             </div> */}
-            <button onClick={resetItem}>Reset</button>
-            <button onClick={createItem} disabled={state.id != ""} >Create</button>
-            <button onClick={retrieveItem}>Retrieve</button>
-            <button onClick={updateItem} disabled={state.id == ""} >Update</button>
-            <button onClick={deleteItem} disabled={state.id == ""} >Delete</button>
-            {/* <FB>
-                <input type="text" placeholder='name' required ></input>
-                <label>E-mail</label>
-            </FB>
-            <FB>
-                <input type="email" placeholder='email' ></input>
-                <label>E-mail</label>
-            </FB> */}
-            {loading && <>Loading...</>}
-            {error != null && JSON.stringify(error)}
-            <table className='gti-item'>
+                <button onClick={resetItem} className="w-20 btn btn-secondary">Reset</button>
+                <button onClick={createItem} className="w-20 btn btn-secondary" disabled={state.id != ""} >Create</button>
+                <button onClick={retrieveItem} className="w-20 btn btn-secondary" >Retrieve</button>
+                <button onClick={updateItem} className="w-20 btn btn-primary" disabled={state.id == ""} >Update</button>
+                <button onClick={deleteItem} className="w-20 btn btn-danger" disabled={state.id == ""} >Delete</button>
+                {loading && <>Loading...</>}
+                {error != null && JSON.stringify(error)}
+            </article>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NAME</th>
+                        <th scope="col">#</th>
+                    </tr>
+                </thead>
                 <tbody>
                     {itens?.map(item => {
                         return (
                             <tr key={item.id}>
-                                <td>{item.id}</td>
+                                <th scope="row">{item.id}</th>
                                 <td>{item.name}</td>
-                                {/* <td><input type="button" onClick={updateItem} key={item.id}>Update</input></td>
-                            <td><input type="button" onClick={deleteItem} key={item.id}> kDelete</input></td> */}
-                                {/* <td><Button href={`/item/${item.id}`} variant="secondary" key={item.id} item={item} > More </button></td> */}
-                                {/* <td><button href={`/item/${item.id}`} variant="secondary" key={item.id} item={item} > More </button></td> */}
-                                <td><button onClick={() =>selectItem(item)}>Select</button></td>
+                                <td className="align-bottom">
+                                    <button onClick={() => selectItem(item)} className="w-100 btn btn-lg btn-secondary">Select</button>
+                                </td>
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
-        </div>
+        </section>
     );
 }
