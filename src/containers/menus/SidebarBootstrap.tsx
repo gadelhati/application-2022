@@ -106,6 +106,10 @@ export const Sidestrap = (props: any) => {
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#home" /></svg>OM</a>
                         </li>
                         <li>
+                            <a href="/profile" className="nav-link text-white">
+                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#people-circle" /></svg>Profile</a>
+                        </li>
+                        <li>
                             <a href="/users" className="nav-link text-white">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#people-circle" /></svg>Users</a>
                         </li>
@@ -114,14 +118,10 @@ export const Sidestrap = (props: any) => {
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#speedometer2" /></svg>Observation</a>
                         </li>
                         <li>
-                            <a href="/profile" className="nav-link text-white">
-                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#people-circle" /></svg>Profile</a>
+                            <a href="/upload" className="nav-link text-white">
+                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#grid" /></svg>Upload</a>
                         </li>
                         {/* <li>
-                            <a href="/om" className="nav-link text-white">
-                                <svg className="bi me-2" width="16" height="16"><use xlinkHref="#grid" /></svg>OM</a>
-                        </li>
-                        <li>
                             <a href="/om" className="nav-link text-white">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table" /></svg>OM</a>
                         </li> */}

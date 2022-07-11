@@ -11,6 +11,7 @@ import { getUser } from "./services/service.token"
 import "./AppRoutes.css"
 import { UserList } from "./components/user/user.list";
 import { ObservationList } from "./components/observation/observation.list";
+import { ObservationUpload } from "./components/observation/observation.upload";
 
 export default function AppRoutes() {
     const defaultProtectedRouteProps: Omit<ProtectedRouteProps, 'outlet'> = {
@@ -31,6 +32,7 @@ export default function AppRoutes() {
                         <Route path="/users" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<UserList id="" username="" email="" password="" />} />} />
                         <Route path="/profile" element={<Profile id="" username="" email="" password="" />}></Route>
                         <Route path="/observation" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<ObservationList />} />} />
+                        <Route path="/upload" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<ObservationUpload />} />} />
                     </Routes>
                 </main>
             </BrowserRouter>

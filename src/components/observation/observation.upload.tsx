@@ -7,18 +7,14 @@ import { initialObservation } from './observation.initial';
 import '../list.css'
 // import data from 'data.json';
 import cc from './customer.json'
+import exemplo from './chm_2018-06-01_2018-06-30.json'
 
-export const ObservationUpdload = (props: Observation) => {
+export const ObservationUpload = () => {
     const dispatch = useDispatch();
     const [state, setState] = useState<Observation>(initialObservation)
     const { loading, error, itens, item } = useTypedSelector((state) => state.oms);
 
     useEffect(() => {
-        cc.name
-        cc.address
-        cc.order_count
-
-
         // const customer = require("./customer.json");
         // console.log(customer.address);
         // const fs = require('fs')
@@ -32,10 +28,16 @@ export const ObservationUpdload = (props: Observation) => {
         // })
         // fs.writeFile
     }, [])
+    const selectItem = () => {
+        // setState(exemplo)
+    }
     return (
         <section>
             <article>
-                let greeting = data.greeting;
+                {JSON.stringify(cc)}
+                {cc.name}
+                {cc.address}
+                {cc.order_count}
             </article>
         </section>
     );
