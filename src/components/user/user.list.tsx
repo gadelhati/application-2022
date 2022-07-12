@@ -125,14 +125,14 @@ export const UserList = (props: User) => {
                     />
                     <label className="form-check-label" htmlFor="active">Active</label>
                 </div>
-                <div className="form-floating">
+                {/* <div className="form-floating">
                     <select className="form-select" id="om" name="om" aria-label="Floating label select"  onChange={handleInputChange} >
                         {itensOM.map((option) => (
                             <option value={state.OM}>{option.name}</option>
                         ))}
                     </select>
                     <label htmlFor="om">OM</label>
-                </div>
+                </div> */}
                 <button onClick={resetItem} className="w-20 btn btn-secondary">Reset</button>
                 <button onClick={createItem} className="w-20 btn btn-secondary" disabled={state.id != ""} >Create</button>
                 <button onClick={retrieveItem} className="w-20 btn btn-secondary" >Retrieve</button>
