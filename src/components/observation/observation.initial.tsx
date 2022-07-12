@@ -3,7 +3,7 @@ import { initialUser } from "../user/user.initial";
 
 export const initialObservation : Observation = {
     id: "",
-    coordinates: "", 
+    // coordinates: "", 
     mimi: "",
     mjmj: "", 
     ddddddd: "",

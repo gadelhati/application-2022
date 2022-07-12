@@ -46,9 +46,10 @@ export const ObservationList = () => {
     return (
         <section>
             <article>
+                <Card style={{ width: '78vw', padding: '0.8em', marginBottom: '0.5em' }}>
                 <Row>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">AAXX/BBXX</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Indicador mensagem SYNOP ou SHIP: AAXX ou BBXX</Tooltip>}>
                                 <FormControl
@@ -79,7 +80,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">DDDDDDD</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Indicador internacional de chamada</Tooltip>}>
                                 <FormControl
@@ -145,7 +146,7 @@ export const ObservationList = () => {
                             </InputGroup>
                         </Col> */}
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">YYGGiw</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Dia do mês: 01 a 31</Tooltip>}>
                                 <FormControl
@@ -192,7 +193,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">IIiii</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Indicatiovos regionais: 82 a 83</Tooltip>}>
                                 <FormControl
@@ -227,7 +228,7 @@ export const ObservationList = () => {
                 </Row>
                 <Row>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">99LaLaLa</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Latitude em décimos de graus: graus+(min/60), 000 a 900</Tooltip>}>
                                 <FormControl
@@ -246,7 +247,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">QcLoLOLOLO</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Quadrante do globo: NE=1, SE=3, SW=5, NW=7</Tooltip>}>
                                 <FormControl
@@ -279,7 +280,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">iRiXhVV</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Ind. omissão ou inclusãode dados de precipitação: 1, 3 ou 4</Tooltip>}>
                                 <FormControl
@@ -341,7 +342,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">Nddff</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Cobertura total de nuvens: 0 a 9 ou /</Tooltip>}>
                                 <FormControl
@@ -391,7 +392,7 @@ export const ObservationList = () => {
                 <Row>
                     <Col lg={true} >
                         <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Velocidade do vento igual ou superior a 99 unidades indicados por iw do grupo YYGGiw: 100 a 999</Tooltip>}>
-                            <InputGroup className="mb-3">
+                            <InputGroup className="mb-3" size="sm">
                                 <InputGroup.Text id="basic-addon1">00fff</InputGroup.Text>
                                 <FormControl
                                     placeholder="fff"
@@ -409,7 +410,7 @@ export const ObservationList = () => {
                         </OverlayTrigger>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">1snTTT</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Indicador de sinal de temperatura: 0 a 1</Tooltip>}>
                                 <FormControl
@@ -442,7 +443,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">2snTdTdTd</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Indicador de sinal de temperatura ou indicador de umidade relativa: 0, 1 ou 9</Tooltip>}>
                                 <FormControl
@@ -475,7 +476,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">3P0P0P0P0</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Pressão atmosférica ao nível da estação em décimos de hectopascal: 8700 a 9999 ou 0000 a 1000</Tooltip>}>
                                 <FormControl
@@ -496,7 +497,7 @@ export const ObservationList = () => {
                 </Row>
                 <Row>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">4PPPP</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Pressão atmosférica ao nível do mar em décimos de hectopascal: 0000 a 9999</Tooltip>}>
                                 <FormControl
@@ -548,7 +549,7 @@ export const ObservationList = () => {
                             </InputGroup>
                         </Col> */}
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">5appp</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Característica da tendência barométrica durante as três horas precedentes à hora da observação: 1 a 8 ou /</Tooltip>}>
                                 <FormControl
@@ -581,7 +582,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">6RRRtR</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Quantidade de precipitação ocorrida durante o período anterior à hora de observação, como indicado por tR do grupo 6RRRtR: 001 a 999</Tooltip>}>
                                 <FormControl
@@ -614,7 +615,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">7wwW1W2</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Tempo presente: 00 a 99</Tooltip>}>
                                 <FormControl
@@ -724,7 +725,7 @@ export const ObservationList = () => {
                             </InputGroup>
                         </Col> */}
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">8NhCLCMCH</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Cobertura de nuvens baixas (ou nuvens médias na ausência de nuvens baixas): 0 a 8</Tooltip>}>
                                 <FormControl
@@ -785,7 +786,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">9GGgg</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Hora que foi feita a leitura do barômetro, se diferir mais do que 10 min da hora padrão GG informada na seção 0: HHmm</Tooltip>}>
                                 <FormControl
@@ -804,7 +805,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">222DsVs</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Rumo resultante do deslocamento da navio nas três horas precedentes à hora da observação: 0 a 9 ou /</Tooltip>}>
                                 <FormControl
@@ -837,7 +838,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">0SsTwTwTw</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Indicador do sinal e tipo da medição da temperatura da água do mar: 0 a 7</Tooltip>}>
                                 <FormControl
@@ -872,7 +873,7 @@ export const ObservationList = () => {
                 </Row>
                 <Row>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">1PwaPwaHwaHwa</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Período das ondas (segundos de tempo): 00 a 30</Tooltip>}>
                                 <FormControl
@@ -905,7 +906,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">2PwPwHwHw</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Período das vagas expressa em segundos de tempo: 00 a 20 ou 99</Tooltip>}>
                                 <FormControl
@@ -938,7 +939,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">3dw1dw1dw2dw2</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Direção verdadeira de onde vem o primeiro sistema de marulhos, expresso em dezenas de grau: 00 a 36</Tooltip>}>
                                 <FormControl
@@ -973,7 +974,7 @@ export const ObservationList = () => {
                 </Row>
                 <Row>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">4Pw1Pw1Hw1Hw1</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Período do primeiro sistema de marulhos, expresso em segundos de tempo: 00 a 30</Tooltip>}>
                                 <FormControl
@@ -1006,7 +1007,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">5Pw2Pw2Hw2Hw2</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Período do segundo sistema de marulhos, expresso em segundos: 00 a 30</Tooltip>}>
                                 <FormControl
@@ -1039,7 +1040,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">6IsEsEsRs</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Formação de gelo sobre navios: 1 a 5</Tooltip>}>
                                 <FormControl
@@ -1089,7 +1090,7 @@ export const ObservationList = () => {
                 <Row>
                     <Col lg={true} >
                         <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Altura das ondas medida por instrumento em décimos do metro: 000 a 200</Tooltip>}>
-                            <InputGroup className="mb-3">
+                            <InputGroup className="mb-3" size="sm">
                                 <InputGroup.Text id="basic-addon1">70HwaHwaHwa</InputGroup.Text>
                                 <FormControl
                                     placeholder="HwaHwaHwa"
@@ -1107,7 +1108,7 @@ export const ObservationList = () => {
                         </OverlayTrigger>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">8swTbTbTb</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Indicador de sinal e forma de obtenção da temperatura do termômetro de bulbo úmido: 0 a 7</Tooltip>}>
                                 <FormControl
@@ -1140,7 +1141,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">ICEciSibiDizi</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Concentração ou distribuição do gelo de origem marinha: 0 a 9 ou /</Tooltip>}>
                                 <FormControl
@@ -1215,7 +1216,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">1Sn</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Indicador de sinal de temperatura: 0 a 1</Tooltip>}>
                                 <FormControl
@@ -1250,7 +1251,7 @@ export const ObservationList = () => {
                 </Row>
                 <Row>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">2sn</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Indicador de sinal de temperatura: 0 a 1</Tooltip>}>
                                 <FormControl
@@ -1283,7 +1284,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">5</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Indicador das diferenças de pressão entre a hora da observação e as últimas 24 horas: 8 ou 9</Tooltip>}>
                                 <FormControl
@@ -1316,7 +1317,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
-                        <InputGroup className="mb-3">
+                        <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">555ichwicMcsicFicpicQ</InputGroup.Text>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Indicador para medição de altura de nuvens (h) e visibilidade (VV): 0, 1, 2 ou 3</Tooltip>}>
                                 <FormControl
@@ -1405,6 +1406,7 @@ export const ObservationList = () => {
                         </InputGroup>
                     </Col>
                 </Row>
+                </Card>
                 <button onClick={resetItem} className="w-20 btn btn-secondary">Reset</button>
                 <button onClick={createItem} className="w-20 btn btn-secondary" disabled={state.id != ""} >Create</button>
                 <button onClick={retrieveItem} className="w-20 btn btn-secondary" >Retrieve</button>
