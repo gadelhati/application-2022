@@ -1,4 +1,4 @@
-import { Card, Row, Col, OverlayTrigger, Tooltip, InputGroup, FormControl, Button } from "react-bootstrap"
+import { Card, Row, Col, OverlayTrigger, Tooltip, InputGroup, Form, FormControl, Button } from "react-bootstrap"
 
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -69,14 +69,13 @@ export const ObservationList = () => {
                                         //required
                                         defaultValue={'DEFAULT'}
                                         value={state.mimi}
-                                        onChange={handleInputChange}
+                                        // onChange={handleInputChange}
                                         name="mimi">
-                                        <option value="DEFAULT" disabled>Choose a salutation ...</option>
-                                        <option value="AA">SYNOP</option>
-                                        <option value="BB" defaultValue selected>SHIP</option>
-                                    </Form.Select> */}
+                                        <option value="AAXX">SYNOP</option>
+                                        <option value="BBXX">SHIP</option>
+                                </Form.Select> */}
                             </OverlayTrigger>
-                            <InputGroup.Text id="basic-addon1">XX</InputGroup.Text>
+                            {/* <InputGroup.Text id="basic-addon1">XX</InputGroup.Text> */}
                         </InputGroup>
                     </Col>
                     <Col lg={true} >
