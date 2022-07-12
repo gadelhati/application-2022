@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { User } from './user.interface';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
@@ -45,12 +45,15 @@ export const SigninContainer = (props: User) => {
         // console.log(JSON.stringify("State "+JSON.stringify(state)))
         // console.log(JSON.stringify("User "+JSON.stringify(user)))
         // console.log(JSON.stringify("User "+JSON.stringify(isLoggedIn)))
-        if(isLoggedIn) {
-            navigate("/list")
+        if(error == "") {
+            navigate("/om")
         }
     }
     const logoutItem = () => {
         dispatch(logoutAction())
+    }
+    const initiate = () => {
+        navigate("/om")
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
@@ -75,9 +78,11 @@ export const SigninContainer = (props: User) => {
                     <label htmlFor="rememberMe">Remember me</label>
                 </div>
                 <button onClick={signinItem} className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                <button onClick={initiate} className="w-100 btn btn-lg btn-primary" type="submit">Navigate</button>
                 <p className="mt-5 mb-3 text-muted">© Marinha do Brasil 1822 - 2022</p>
                 {loading && <>Loading...</>}
                 {error != null && "Some data are required: " + JSON.stringify(error)}
+                {/* {loading && <Navigate />} */}
                 {/* </Signin> */}
              </article>
         </section>

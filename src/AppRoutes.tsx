@@ -13,6 +13,7 @@ import { UserList } from "./components/user/user.list";
 import { ObservationList } from "./components/observation/observation.list";
 import { ObservationUpload } from "./components/observation/observation.upload";
 import { Header } from "./containers/menus/Header";
+import { UserSignin } from "./components/user/user.signin";
 
 export default function AppRoutes() {
     const defaultProtectedRouteProps: Omit<ProtectedRouteProps, 'outlet'> = {
@@ -29,6 +30,7 @@ export default function AppRoutes() {
                     <Routes>
                         <Route path="/" element={getUser() === null ? <SigninContainer id="" username="" email="" password="" /> : <Navigate to="/om" />}></Route>
                         <Route path="/signin" element={getUser() === null ? <SigninContainer id="" username="" email="" password="" /> : <Navigate to="/om" />}></Route>
+                        <Route path="/signin2" element={getUser() === null ? <UserSignin id="" username="" email="" password="" /> : <Navigate to="/om" />}></Route>
                         <Route path="/om" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<OMList id="" name="" />} />} />
                         <Route path="/users" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<UserList id="" username="" email="" password="" />} />} />
                         <Route path="/profile" element={<Profile id="" username="" email="" password="" />}></Route>
