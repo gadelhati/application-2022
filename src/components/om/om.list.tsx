@@ -44,7 +44,7 @@ export const OMList = (props: OM) => {
     return (
         <section>
             <article>
-                <div className="form-floating">
+                {/* <div className="form-floating">
                     <input
                         placeholder="ID"
                         aria-label="id"
@@ -59,7 +59,7 @@ export const OMList = (props: OM) => {
                         readOnly
                     />
                     <label htmlFor="id">ID</label>
-                </div>
+                </div> */}
                 <div className="form-floating">
                     <input
                         placeholder="Name"
@@ -98,7 +98,7 @@ export const OMList = (props: OM) => {
             <table>
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        {/* <th scope="col">ID</th> */}
                         <th scope="col">NAME</th>
                         <th scope="col">#</th>
                     </tr>
@@ -107,7 +107,7 @@ export const OMList = (props: OM) => {
                     {itens?.map(item => {
                         return (
                             <tr key={item.id}>
-                                <th scope="row">{item.id}</th>
+                                {/* <th scope="row">{item.id}</th> */}
                                 <td>{item.name}</td>
                                 <td className="align-bottom">
                                     <button onClick={() => selectItem(item)} className="w-100 btn btn-lg btn-secondary">Select</button>

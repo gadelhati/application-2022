@@ -155,7 +155,7 @@ export const UserList = (props: User) => {
                     {itens?.map(item => {
                         return (
                             <tr key={item.id}>
-                                <th scope="row">{item.id}</th>
+                                {/* <th scope="row">{item.id}</th> */}
                                 <td>{item.username}</td>
                                 <td>{item.email}</td>
                                 <td>

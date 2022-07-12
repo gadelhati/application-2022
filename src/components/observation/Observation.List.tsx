@@ -1418,10 +1418,27 @@ export const ObservationList = () => {
             <table>
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        {/* <th scope="col">ID</th> */}
+                        {/* <th scope="col">aabbxx</th> */}
                         <th scope="col">mimi</th>
-                        <th scope="col">dw1dw1</th>
                         <th scope="col">ddddddd</th>
+                        <th scope="col">ii</th>
+                        <th scope="col">iii</th>
+                        <th scope="col">yy</th>
+                        <th scope="col">gg</th>
+                        <th scope="col">iw</th>
+                        <th scope="col">ir</th>
+                        <th scope="col">ix</th>
+                        <th scope="col">h</th>
+                        <th scope="col">vv</th>
+                        <th scope="col">n</th>
+                        <th scope="col">dd</th>
+                        <th scope="col">ff</th>
+                        <th scope="col">fff</th>
+                        <th scope="col">ttt</th>
+                        <th scope="col">ppp</th>
+                        <th scope="col">ww</th>
+                        <th scope="col">w1w2</th>
                         <th scope="col">#</th>
                     </tr>
                 </thead>
@@ -1429,10 +1446,27 @@ export const ObservationList = () => {
                     {itens?.map(item => {
                         return (
                             <tr key={item.id}>
-                                <th scope="row">{item.id}</th>
+                                {/* <th scope="row">{item.id}</th> */}
+                                {/* <td>{item.aabbxx}</td> */}
                                 <td>{item.mimi}</td>
-                                <td>{item.dw1dw1}</td>
                                 <td>{item.ddddddd}</td>
+                                <td>{item.ii}</td>
+                                <td>{item.iii}</td>
+                                <td>{item.yy}</td>
+                                <td>{item.gg}</td>
+                                <td>{item.iw}</td>
+                                <td>{item.ir}</td>
+                                <td>{item.ix}</td>
+                                <td>{item.h}</td>
+                                <td>{item.vv}</td>
+                                <td>{item.n}</td>
+                                <td>{item.dd}</td>
+                                <td>{item.ff}</td>
+                                <td>{item.fff}</td>
+                                <td>{item.ttt}</td>
+                                <td>{item.ppp}</td>
+                                <td>{item.ww}</td>
+                                <td>{item.w1w2}</td>
                                 <td className="align-bottom">
                                     <button onClick={() => selectItem(item)} className="w-100 btn btn-lg btn-secondary">Select</button>
                                 </td>
