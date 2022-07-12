@@ -15,9 +15,14 @@ export const signupAction = (username: string, email: string, password: string) 
                 payload: data
             })
         } catch(error: any) {
+            if(error.response.data.errors != undefined){
+                error.response?.data.errors.map((element: any) => { error = element.field + ": " + element.defaultMessage })
+            } else {
+                error = error.response.data.error
+            }
             dispatch({
                 type: constants.SIGNUP_ERROR,
-                payload: error.message
+                payload: error
             });
         }
     }
@@ -36,9 +41,14 @@ export const signinAction = (username: string, password: string) => {
                 payload: data
             });
         } catch(error: any) {
+            if(error.response.data.errors != undefined){
+                error.response?.data.errors.map((element: any) => { error = element.field + ": " + element.defaultMessage })
+            } else {
+                error = error.response.data.error
+            }
             dispatch({
                 type: constants.SIGNIN_ERROR,
-                payload: error.message
+                payload: error
             });
 
         }

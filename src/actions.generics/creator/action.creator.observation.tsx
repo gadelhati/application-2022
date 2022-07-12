@@ -16,9 +16,14 @@ export const createAction = (object: Observation) => {
                 payload: data
             })
         } catch(error: any) {
+            if(error.response.data.errors != undefined){
+                error.response?.data.errors.map((element: any) => { error = element.field + ": " + element.defaultMessage })
+            } else {
+                error = error.response.data.error
+            }
             dispatch({
                 type: constants.CREATE_ERROR,
-                payload: error.response.data.errors
+                payload: error
             });
         }
     }
@@ -36,9 +41,14 @@ export const retrieveAllAction = () => {
                 payload: data
             });
         } catch(error: any) {
+            if(error.response.data.errors != undefined){
+                error.response?.data.errors.map((element: any) => { error = element.field + ": " + element.defaultMessage })
+            } else {
+                error = error.response.data.error
+            }
             dispatch({
                 type: constants.RETRIEVE_ALL_ERROR,
-                payload: error.message
+                payload: error
             });
 
         }
@@ -57,9 +67,14 @@ export const updateAction = (id: string, object: Observation) => {
                 payload: data
             });
         } catch(error: any) {
+            if(error.response.data.errors != undefined){
+                error.response?.data.errors.map((element: any) => { error = element.field + ": " + element.defaultMessage })
+            } else {
+                error = error.response.data.error
+            }
             dispatch({
                 type: constants.UPDATE_ERROR,
-                payload: error.message
+                payload: error
             });
         }
     }
@@ -77,9 +92,14 @@ export const deleteAction = (id: string) => {
                 payload: data
             });
         } catch(error: any) {
+            if(error.response.data.errors != undefined){
+                error.response?.data.errors.map((element: any) => { error = element.field + ": " + element.defaultMessage })
+            } else {
+                error = error.response.data.error
+            }
             dispatch({
                 type: constants.DELETE_ERROR,
-                payload: error.message
+                payload: error
             });
         }
     }
