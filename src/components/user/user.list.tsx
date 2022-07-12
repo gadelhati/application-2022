@@ -10,6 +10,7 @@ export const UserList = (props: User) => {
     const dispatch = useDispatch();
     const [state, setState] = useState<User>(initialUser)
     const { loading, error, itens, item } = useTypedSelector((state) => state.users);
+    const { loading: loadingOM, error: errorOM, itens: itensOM, item: itemOM } = useTypedSelector((state) => state.oms);
 
     useEffect(() => {
         retrieveItem()
@@ -125,14 +126,12 @@ export const UserList = (props: User) => {
                     <label className="form-check-label" htmlFor="active">Active</label>
                 </div>
                 <div className="form-floating">
-                    {/* <select className={state.id == "" ? "form-select is-invalid" : "form-select is-valid"} id="om" aria-label="Floating label select example"> */}
-                    <select className="form-select" id="om" aria-label="Floating label select">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select className="form-select" id="om" name="om" aria-label="Floating label select"  onChange={handleInputChange} >
+                        {itensOM.map((option) => (
+                            <option value={state.OM}>{option.name}</option>
+                        ))}
                     </select>
-                    <label htmlFor="om">Works with selects</label>
+                    <label htmlFor="om">OM</label>
                 </div>
                 <button onClick={resetItem} className="w-20 btn btn-secondary">Reset</button>
                 <button onClick={createItem} className="w-20 btn btn-secondary" disabled={state.id != ""} >Create</button>
