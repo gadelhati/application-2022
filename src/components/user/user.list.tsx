@@ -45,7 +45,7 @@ export const UserList = (props: User) => {
     return (
         <section>
             <article>
-                <div className="form-floating">
+                {/* <div className="form-floating">
                     <input
                         placeholder="ID"
                         aria-label="id"
@@ -60,7 +60,7 @@ export const UserList = (props: User) => {
                         readOnly
                     />
                     <label htmlFor="id">ID</label>
-                </div>
+                </div> */}
                 <div className="form-floating">
                     <input
                         placeholder="USERNAME"
