@@ -2,6 +2,7 @@ import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction, changePasswordAction } from '../../actions.generics/creator/action.creator.user';
+import { logoutAction } from '../../actions.generics/creator/action.creator.auth';
 import { User } from "./user.interface";
 import { initialUser } from './user.initial';
 import { getUserName, getLocalAccessToken, getId, getEmail, getUser } from "../../services/service.token"
@@ -27,6 +28,9 @@ export const Profile = (props: User) => {
     const retrieveItem = () => {
         resetItem()
         dispatch(retrieveAllAction())
+    }
+    const logoutItem = () => {
+        dispatch(logoutAction())
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name } = event.target
@@ -58,6 +62,7 @@ export const Profile = (props: User) => {
                         <label htmlFor="password">Password</label>
                     </div>
                     <button onClick={changePassword} className="w-20 btn btn-primary" >Change Password</button>
+                    <button onClick={logoutItem} className="w-20 btn btn-primary" >Logout</button>
                     {loading && <>Loading...</>}
                     {error != null && JSON.stringify(error)}
                 </article>
