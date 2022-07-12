@@ -2,7 +2,7 @@ import { User } from "../user/user.interface";
 
 export interface Observation {
     id: string;
-    // coordinates?: string;
+    // coordinates?: string; // POINT
     mimi: string;
     mjmj?: string;
     ddddddd?: string;
