@@ -1,6 +1,6 @@
 import { Card, Row, Col, OverlayTrigger, Tooltip, InputGroup, Form, FormControl, Button } from "react-bootstrap"
 
-import { useState, ChangeEvent, useEffect } from 'react';
+import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.observation';
@@ -43,6 +43,11 @@ export const ObservationList = () => {
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
         setState({ ...state, [name]: value })
     }
+    const handleFormEvent = (event: FormEvent<HTMLFormElement>) => {
+        // const { name } = event.target
+        // const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+        // setState({ ...state, [name]: value })
+    };
     return (
         <section>
             <article>
@@ -234,13 +239,16 @@ export const ObservationList = () => {
                                     placeholder="LaLaLa"
                                     aria-label="lalala"
                                     aria-describedby="basic-addon1"
-                                    type="text"
+                                    type="number"
                                     className="form-control"
                                     id="lalala"
                                     //required
                                     value={state.lalala}
                                     onChange={handleInputChange}
                                     name="lalala"
+                                    // onInput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
+                                    // onInput={(event: React.ChangeEvent<HTMLInputElement>) => setRate(event.target.value) }
+                                    // onKeyPress={event.charCode>=48 && event.charCode<=57}
                                 />
                             </OverlayTrigger>
                         </InputGroup>
