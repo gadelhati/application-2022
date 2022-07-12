@@ -1288,15 +1288,15 @@ export const ObservationList = () => {
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Indicador das diferenças de pressão entre a hora da observação e as últimas 24 horas: 8 ou 9</Tooltip>}>
                                 <FormControl
                                     placeholder="8/9"
-                                    aria-label="_89"
+                                    aria-label="ind89"
                                     aria-describedby="basic-addon1"
                                     type="text"
                                     className="form-control"
-                                    id="_89"
+                                    id="ind89"
                                     //required
-                                    value={state._89}
+                                    value={state.ind89}
                                     onChange={handleInputChange}
-                                    name="_89"
+                                    name="ind89"
                                 />
                             </OverlayTrigger>
                             <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">Diferença de pressão à superfície expressa em décimos de hectopascal: 000 a 200</Tooltip>}>

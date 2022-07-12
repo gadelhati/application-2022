@@ -3,7 +3,9 @@ import { initialUser } from "../user/user.initial";
 
 export const initialObservation : Observation = {
     id: "",
-    // coordinates: "", 
+    // coordinates: "",
+    //SECTION 0
+    // aabbxx: "", // mimi
     mimi: "",
     mjmj: "", 
     ddddddd: "",
@@ -18,6 +20,7 @@ export const initialObservation : Observation = {
     lalala: "",
     qc: "",
     lolololo: "",
+    //SECTION 1
     ir: "",
     ix: "",
     h: "",
@@ -40,8 +43,8 @@ export const initialObservation : Observation = {
     tr: "",
     ww: "",
     w1w2: "",
-    w1: "",
-    w2: "",
+    // w1: "",
+    // w2: "",
     wawa: "",
     wa1: "",
     wa2: "",
@@ -50,6 +53,7 @@ export const initialObservation : Observation = {
     cm: "",
     ch: "",
     gggg: "",
+    //SECTION 2
     ds: "",
     vs: "",
     ss: "",
@@ -75,20 +79,23 @@ export const initialObservation : Observation = {
     bi: "",
     di: "",
     zi: "",
+    //SECTION 3
     sn1_3: "",
     txtxtx: "",
     sn2_3: "",
     tntntn: "",
-    _89: "",
+    ind89: "",
     p24p24p24: "",
+    //SECTION 5
     ichw: "",
     icm: "",
     cs: "",
     icf: "",
     icp: "",
     icq: "",
-    observator: initialUser,
+
+    observador: "",
     dataObservacao: new Date(),
-    // estacao: "",
+    estacao: "",
     // file: "",
 }

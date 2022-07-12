@@ -3,6 +3,8 @@ import { User } from "../user/user.interface";
 export interface Observation {
     id: string;
     // coordinates?: string; // POINT
+    //SECTION 0
+    // aabbxx: string; // mimi
     mimi: string;
     mjmj?: string;
     ddddddd?: string;
@@ -17,6 +19,7 @@ export interface Observation {
     lalala?: string;
     qc?: string;
     lolololo?: string;
+    //SECTION 1
     ir?: string;
     ix?: string;
     h?: string;
@@ -39,8 +42,8 @@ export interface Observation {
     tr?: string;
     ww?: string;
     w1w2?: string,
-    w1?: string;
-    w2?: string;
+    // w1?: string;
+    // w2?: string;
     wawa?: string;
     wa1?: string;
     wa2?: string;
@@ -49,6 +52,7 @@ export interface Observation {
     cm?: string;
     ch?: string;
     gggg?: string;
+    //SECTION 2
     ds?: string;
     vs?: string;
     ss?: string;
@@ -74,20 +78,23 @@ export interface Observation {
     bi?: string;
     di?: string;
     zi?: string;
+    //SECTION 3
     sn1_3?: string;
     txtxtx?: string;
     sn2_3?: string;
     tntntn?: string;
-    _89?: string;
+    ind89?: string;
     p24p24p24?: string;
+    //SECTION 5
     ichw?: string;
     icm?: string;
     cs?: string;
     icf?: string;
     icp?: string;
     icq?: string;
-    observator: User;
+
+    observador: string;
     dataObservacao?: Date;
-    // estacao?: Station;
+    estacao?: string;
     // file?: string;
 }
