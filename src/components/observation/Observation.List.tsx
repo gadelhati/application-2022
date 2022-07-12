@@ -24,7 +24,7 @@ export const ObservationList = () => {
     }
     const createItem = () => {
         dispatch(createAction(state))
-        resetItem()
+        // resetItem()
     }
     const retrieveItem = () => {
         resetItem()
@@ -32,7 +32,7 @@ export const ObservationList = () => {
     }
     const updateItem = () => {
         dispatch(updateAction(state.id, state))
-        resetItem()
+        // resetItem()
     }
     const deleteItem = () => {
         dispatch(deleteAction(state.id))
@@ -1323,6 +1323,8 @@ export const ObservationList = () => {
                             </OverlayTrigger>
                         </InputGroup>
                     </Col>
+                    {/* <fieldset>
+                    <legend>Title</legend> */}
                     <Col lg={true} >
                         <InputGroup className="mb-3" size="sm">
                             <InputGroup.Text id="basic-addon1">555ichwicMcsicFicpicQ</InputGroup.Text>
@@ -1412,6 +1414,7 @@ export const ObservationList = () => {
                             </OverlayTrigger>
                         </InputGroup>
                     </Col>
+                    {/* </fieldset> */}
                 </Row>
                 </Card>
                 <button onClick={resetItem} className="w-20 btn btn-secondary">Reset</button>
