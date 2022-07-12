@@ -9,7 +9,6 @@ import { initialUser } from './user.initial';
 import "../../assets/bootstrap/dist/css/bootstrap.min.css"
 import "./signin.css"
 import logo from '../../assets/image/heraldica.png'
-import '../list.css'
 
 // export const Signin = styled('div', {
 //     margin: 0,
@@ -78,7 +77,7 @@ export const SigninContainer = (props: User) => {
                     <label htmlFor="rememberMe">Remember me</label>
                 </div>
                 <button onClick={signinItem} className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-                <button onClick={initiate} className="w-100 btn btn-lg btn-primary" type="submit">Navigate</button>
+                {/* <button onClick={initiate} className="w-100 btn btn-lg btn-primary" type="submit">Navigate</button> */}
                 <p className="mt-5 mb-3 text-muted">© Marinha do Brasil 1822 - 2022</p>
                 {loading && <>Loading...</>}
                 {error != null && "Some data are required: " + JSON.stringify(error)}
