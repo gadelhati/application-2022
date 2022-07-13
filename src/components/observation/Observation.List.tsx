@@ -39,9 +39,7 @@ export const ObservationList = () => {
         resetItem()
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name } = event.target
-        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-        setState({ ...state, [name]: value })
+        setState({ ...state, [event.target.name]: event.target.value })
     }
     const handleFormEvent = (event: FormEvent<HTMLFormElement>) => {
         // const { name } = event.target

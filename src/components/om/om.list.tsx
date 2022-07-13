@@ -6,7 +6,7 @@ import { OM } from "./om.interface";
 import { initialOM } from './om.initial';
 import '../list.css'
 
-export const OMList = (props: OM) => {
+export const OMList = () => {
     const dispatch = useDispatch();
     const [state, setState] = useState<OM>(initialOM)
     const { loading, error, itens, item } = useTypedSelector((state) => state.oms);
@@ -37,9 +37,7 @@ export const OMList = (props: OM) => {
         resetItem()
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name } = event.target
-        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-        setState({ ...state, [name]: value })
+        setState({ ...state, [event.target.name]: event.target.value })
     }
     return (
         <section>

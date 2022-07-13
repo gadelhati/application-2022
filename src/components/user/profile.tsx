@@ -8,7 +8,7 @@ import { initialUser } from './user.initial';
 import { getUserName, getLocalAccessToken, getId, getEmail, getUser } from "../../services/service.token"
 import '../list.css'
 
-export const Profile = (props: User) => {
+export const Profile = () => {
     const dispatch = useDispatch();
     const [state, setState] = useState<User>(initialUser)
     const { loading, error, itens, item } = useTypedSelector((state) => state.users);
@@ -33,9 +33,7 @@ export const Profile = (props: User) => {
         dispatch(logoutAction())
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name } = event.target
-        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-        setState({ ...state, [name]: value })
+        setState({ ...state, [event.target.name]: event.target.value })
     }
     return (
         <section>

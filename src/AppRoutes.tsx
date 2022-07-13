@@ -28,12 +28,13 @@ export default function AppRoutes() {
                 </aside>
                 <main>
                     <Routes>
+                        <Route path="*" element={getUser() === null ? <SigninContainer id="" username="" email="" password="" /> : <Navigate to="/om" />}></Route>
                         <Route path="/" element={getUser() === null ? <SigninContainer id="" username="" email="" password="" /> : <Navigate to="/om" />}></Route>
                         <Route path="/signin" element={getUser() === null ? <SigninContainer id="" username="" email="" password="" /> : <Navigate to="/om" />}></Route>
                         <Route path="/signin2" element={getUser() === null ? <UserSignin id="" username="" email="" password="" /> : <Navigate to="/om" />}></Route>
-                        <Route path="/om" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<OMList id="" name="" />} />} />
-                        <Route path="/users" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<UserList id="" username="" email="" password="" />} />} />
-                        <Route path="/profile" element={<Profile id="" username="" email="" password="" />}></Route>
+                        <Route path="/om" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<OMList />} />} />
+                        <Route path="/users" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<UserList />} />} />
+                        <Route path="/profile" element={<Profile />}></Route>
                         <Route path="/observation" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<ObservationList />} />} />
                         <Route path="/upload" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<ObservationUpload />} />} />
                     </Routes>
