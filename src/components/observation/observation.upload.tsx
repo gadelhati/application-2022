@@ -11,36 +11,52 @@ import exemplo from './chm_2018-06-01_2018-06-30.json'
 
 export const ObservationUpload = () => {
     const dispatch = useDispatch();
-    const [state, setState] = useState<Observation>(initialObservation)
+    const [state, setState] = useState<Observation[]>([initialObservation])
+    const [file, setFile] = useState<File>()
     const { loading, error, itens, item } = useTypedSelector((state) => state.oms);
 
     useEffect(() => {
-        // const customer = require("./customer.json");
-        // console.log(customer.address);
-        // const fs = require('fs')
-        // try {
-        //     const jsonString = fs.readFileSync('./customer.json', 'utf-8')
-        //     const customer = JSON.stringify(jsonString)
-        //     console.log(customer.address)
-        // } catch(err) {
-        //     console.log('Erro: ' + err)
-        // }
-        // })
-        // fs.writeFile
+
     }, [])
     const selectItem = () => {
-        // setState(exemplo)
-        for(let i = 0;i<exemplo.length;i++){
-            console.log(exemplo[i]);
-        }
+        exemplo.forEach((item) => {
+            setState([...state, initialObservation])
+        })
+        console.log(state)
+    }
+    const handleInputFile = (event: ChangeEvent<HTMLInputElement>) => {
+        // let json = JSON.stringify(exemplo);
+        // const blob = new Blob([json], {type:"application/json"});
+        // const fileReader0 = new FileReader()
+        // fileReader0.addEventListener("load", e => {
+        //     console.log(e.target?.result, JSON.parse(e.target?.result))
+        // });
+        // fileReader0.readAsText(blob);
+
+
+        const fileReader = new FileReader()
+        fileReader.readAsText(event.target.files?.[0] as File)
+        fileReader.onload = (event) => {
+            const fileAsText = event.target?.result
+            console.log(fileAsText)
+            // console.log(JSON.parse(fileAsText)) //
+            // console.log(JSON.stringify(exemplo)) //ARQUIVO IMPOTADO ENTENDE COMO JSON
+        };
+        // fileReader.onerror = () => { console.error("error")}
     }
     return (
         <section>
             <article>
-                {JSON.stringify(cc)}
-                {cc.name}
-                {cc.address}
-                {cc.order_count}
+                {/* {exemplo?.map(item => {
+                    return (
+                        <p key={item.dataObservacao}>
+                            <td>{item.yy}</td>
+                            <td>{item.gg}</td>
+                        </p>
+                    )
+                })} */}
+                {state[0].id}
+                <input type="file" onChange={handleInputFile} />
                 <button onClick={selectItem} className="w-20 btn btn-secondary">Show in Console Log</button>
             </article>
         </section>
