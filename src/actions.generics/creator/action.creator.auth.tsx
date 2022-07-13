@@ -35,7 +35,6 @@ export const signinAction = (username: string, password: string) => {
         });
         try {
             const { data } = await signin(username, password)
-            console.log(data)
             dispatch({
                 type: constants.SIGNIN_SUCCESS,
                 payload: data

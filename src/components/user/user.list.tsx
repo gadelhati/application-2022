@@ -128,7 +128,7 @@ export const UserList = () => {
                 {/* <div className="form-floating">
                     <select className="form-select" id="om" name="om" aria-label="Floating label select"  onChange={handleInputChange} >
                         {itensOM.map((option) => (
-                            <option value={state.OM}>{option.name}</option>
+                            <option value={state.OM?.id}>{option.id}</option>
                         ))}
                     </select>
                     <label htmlFor="om">OM</label>

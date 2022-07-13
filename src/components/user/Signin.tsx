@@ -9,6 +9,7 @@ import { initialUser } from './user.initial';
 import "../../assets/bootstrap/dist/css/bootstrap.min.css"
 import "./signin.css"
 import logo from '../../assets/image/heraldica.png'
+import { getUser } from '../../services/service.token';
 
 // export const Signin = styled('div', {
 //     margin: 0,
@@ -26,7 +27,7 @@ import logo from '../../assets/image/heraldica.png'
 //     }
 // });
 
-export const SigninContainer = (props: User) => {
+export const SigninContainer = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [ state, setState ] = useState<User>(initialUser)
@@ -37,16 +38,19 @@ export const SigninContainer = (props: User) => {
     }
     const signinItem = () => {
         dispatch(signinAction(state.username, state.password))
-        // console.log(JSON.stringify("Loading "+loading))
-        // console.log(JSON.stringify("Error "+error))
-        // console.log(JSON.stringify("Itens "+itens))
-        // console.log(JSON.stringify("Item "+JSON.stringify(item)))
-        // console.log(JSON.stringify("State "+JSON.stringify(state)))
-        // console.log(JSON.stringify("User "+JSON.stringify(user)))
-        // console.log(JSON.stringify("User "+JSON.stringify(isLoggedIn)))
-        if(error == "") {
-            navigate("/om")
-        }
+        console.log(JSON.stringify("Loading "+loading))
+        console.log(JSON.stringify("Error "+error))
+        console.log(JSON.stringify("Itens "+itens))
+        console.log(JSON.stringify("Item "+item))
+        console.log(JSON.stringify("State "+JSON.stringify(state)))
+        console.log(JSON.stringify("User "+JSON.stringify(user)))
+        console.log(JSON.stringify("User "+JSON.stringify(isLoggedIn)))
+
+        console.log(JSON.stringify("Auth: " + JSON.stringify))
+        // if(error == "") {
+        //     navigate("/om")
+        // }
+        return getUser() ? <SigninContainer /> : <Navigate to="/" />
     }
     const logoutItem = () => {
         dispatch(logoutAction())
@@ -55,8 +59,7 @@ export const SigninContainer = (props: User) => {
         navigate("/om")
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target
-        setState({ ...state, [name]: value })
+        setState({ ...state, [event.target.name]: event.target.value })
     }
     return (
         <section className="text-center signin">
