@@ -36,8 +36,8 @@ export const ObservationUpload = () => {
                 console.log("This file cannot be used!")
             }
         };
-        console.log(observations)
         setState(observations)
+        // event.target.value = ""
     }
     return (
         <section>
