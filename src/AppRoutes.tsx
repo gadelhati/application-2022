@@ -5,14 +5,14 @@ import { ProtectedRouteProps } from "./ProtectedRoutes";
 import { OMList } from "./components/om/om.list";
 import { Profile } from "./components/user/profile";
 import { SigninContainer } from "./components/user/signin";
-import { Sidestrap } from "./containers/menus/SidebarBootstrap";
+import { Sidestrap } from "./containers/menus/sidebar.bootstrap";
 import { getUser } from "./services/service.token"
 
 import "./AppRoutes.css"
 import { UserList } from "./components/user/user.list";
 import { ObservationList } from "./components/observation/observation.list";
 import { ObservationUpload } from "./components/observation/observation.upload";
-import { Header } from "./containers/menus/header";
+import { GHeader } from "./containers/menus/header";
 import { UserSignin } from "./components/user/user.signin";
 import { Footer } from "./containers/menus/footer";
 
@@ -28,6 +28,7 @@ export default function AppRoutes() {
                     {getUser() && <Sidestrap />}
                 </aside>
                 <main>
+                    {/* <Header /> */}
                     <Routes>
                         <Route path="*" element={getUser() === null ? <SigninContainer /> : <Navigate to="/om" />}></Route>
                         <Route path="/" element={getUser() === null ? <SigninContainer /> : <Navigate to="/om" />}></Route>
@@ -38,6 +39,8 @@ export default function AppRoutes() {
                         <Route path="/profile" element={<Profile />}></Route>
                         <Route path="/observation" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<ObservationList />} />} />
                         <Route path="/upload" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<ObservationUpload />} />} />
+                        <Route path="/header" element={<GHeader />} />
+                        <Route path="/footer" element={<Footer />} />
                     </Routes>
                     {/* <Footer /> */}
                 </main>

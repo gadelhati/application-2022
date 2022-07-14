@@ -1441,6 +1441,7 @@ export const ObservationList = () => {
                 {error != null && JSON.stringify(error)}
             </article>
             <ObservationUpload />
+            {/* <article> */}
             <table id="catTable">
                 <thead>
                     <tr>
@@ -1501,7 +1502,7 @@ export const ObservationList = () => {
                     })}
                 </tbody>
             </table>
-
+            {/* </article> */}
             {/* <button id="prevButton">Previous</button>
             <button id="nextButton">Next</button> */}
         </section>
