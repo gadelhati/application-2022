@@ -7,6 +7,7 @@ import { createAction, retrieveAllAction, updateAction, deleteAction } from '../
 import { Observation } from "./observation.interface";
 import { initialObservation } from './observation.initial';
 import '../list.css'
+import { ObservationUpload } from "./observation.upload";
 // import '../table.css'
 // import '../table.js'
 
@@ -81,6 +82,20 @@ export const ObservationList = () => {
                                 </Form.Select> */}
                                 </OverlayTrigger>
                                 {/* <InputGroup.Text id="basic-addon1">XX</InputGroup.Text> */}
+                                <OverlayTrigger placement="top" overlay={<Tooltip id="button-tooltip-2">mjmj: XX</Tooltip>}>
+                                    <FormControl
+                                        placeholder="XX"
+                                        aria-label="mjmj"
+                                        aria-describedby="basic-addon1"
+                                        type="text"
+                                        className="form-control"
+                                        id="mjmj"
+                                        required
+                                        value={state.mjmj}
+                                        onChange={handleInputChange}
+                                        name="mjmj"
+                                    />
+                                </OverlayTrigger>
                             </InputGroup>
                         </Col>
                         <Col lg={true} >
@@ -1425,6 +1440,7 @@ export const ObservationList = () => {
                 {loading && <>Loading...</>}
                 {error != null && JSON.stringify(error)}
             </article>
+            <ObservationUpload />
             <table id="catTable">
                 <thead>
                     <tr>

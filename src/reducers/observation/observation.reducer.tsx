@@ -2,14 +2,22 @@ import { stateObservation } from "./observation.state";
 import { initialState } from "./observation.state.initial";
 import { constants } from "../../assets/types/constants"
 import { crud } from "../../actions.generics/type/action.type.observation"
+import { Observation } from "../../components/observation/observation.interface";
 
 export const observationReducer = (state: stateObservation = initialState, action: crud): stateObservation => {
     switch (action.type) {
         case constants.CREATE_START:
             return { ...state, error: null, loading: true }
         case constants.CREATE_SUCCESS:
-            return { ...state, error: null, loading: false, itens: [...state.itens, action.payload], item: action.payload }
+            return { ...state, error: null, loading: false, itens: [...state.itens as Observation[], action.payload as Observation], item: action.payload as Observation }
         case constants.CREATE_ERROR:
+            return { ...state, error: action.payload, loading: false }
+
+        case constants.CREATE_ALL_START:
+            return { ...state, error: null, loading: true }
+        case constants.CREATE_ALL_SUCCESS:
+            return { ...state, error: null, loading: false, itens: action.payload as Observation[] }
+        case constants.CREATE_ALL_ERROR:
             return { ...state, error: action.payload, loading: false }
 
         case constants.RETRIEVE_ALL_START:
