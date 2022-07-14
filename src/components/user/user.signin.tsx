@@ -6,7 +6,7 @@ import { User } from "./user.interface";
 import { initialUser } from './user.initial';
 import '../list.css'
 
-export const UserSignin = (props: User) => {
+export const UserSignin = () => {
     const dispatch = useDispatch();
     const [state, setState] = useState<User>(initialUser)
     const { loading, error, itens, item } = useTypedSelector((state) => state.users);

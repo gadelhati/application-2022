@@ -28,10 +28,10 @@ export default function AppRoutes() {
                 </aside>
                 <main>
                     <Routes>
-                        <Route path="*" element={getUser() === null ? <SigninContainer id="" username="" email="" password="" /> : <Navigate to="/om" />}></Route>
-                        <Route path="/" element={getUser() === null ? <SigninContainer id="" username="" email="" password="" /> : <Navigate to="/om" />}></Route>
-                        <Route path="/signin" element={getUser() === null ? <SigninContainer id="" username="" email="" password="" /> : <Navigate to="/om" />}></Route>
-                        <Route path="/signin2" element={getUser() === null ? <UserSignin id="" username="" email="" password="" /> : <Navigate to="/om" />}></Route>
+                        <Route path="*" element={getUser() === null ? <SigninContainer /> : <Navigate to="/om" />}></Route>
+                        <Route path="/" element={getUser() === null ? <SigninContainer /> : <Navigate to="/om" />}></Route>
+                        <Route path="/signin" element={getUser() === null ? <SigninContainer /> : <Navigate to="/om" />}></Route>
+                        <Route path="/signin2" element={getUser() === null ? <UserSignin /> : <Navigate to="/om" />}></Route>
                         <Route path="/om" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<OMList />} />} />
                         <Route path="/users" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<UserList />} />} />
                         <Route path="/profile" element={<Profile />}></Route>
