@@ -8,6 +8,7 @@ import '../list.css'
 // import data from 'data.json';
 import cc from './customer.json'
 import exemplo from './chm_2018-06-01_2018-06-30.json'
+import exemploONE from './exemploONE.json'
 
 export const ObservationUpload = () => {
     const dispatch = useDispatch();
@@ -38,9 +39,22 @@ export const ObservationUpload = () => {
         fileReader.readAsText(event.target.files?.[0] as File)
         fileReader.onload = (event) => {
             const fileAsText = event.target?.result
+            var jsonString : string = fileAsText
+            var observation : Observation = JSON.parse(event.target?.result)
+            var observation2 : Partial<[Observation]> = JSON.parse(event.target?.result)
+
+
+
+
+
             console.log(fileAsText)
-            // console.log(JSON.parse(fileAsText)) //
-            // console.log(JSON.stringify(exemplo)) //ARQUIVO IMPOTADO ENTENDE COMO JSON
+            // console.log(exemplo) //ARQUIVO IMPOTADO ENTENDE COMO JSON ARRAY
+            console.log(JSON.stringify(fileAsText?.toString))
+            console.log(fileAsText?.toString)
+            // console.log(JSON.parse(JSON.stringify(fileAsText).toString))
+            console.log(JSON.parse(JSON.stringify(fileAsText)))
+            // console.log(JSON.parse(fileAsText?.toString))
+            // let obj: Observation = JSON.parse(fileAsText)
         };
         // fileReader.onerror = () => { console.error("error")}
     }
