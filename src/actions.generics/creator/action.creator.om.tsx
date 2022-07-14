@@ -1,4 +1,3 @@
-import { AxiosError } from 'axios';
 import { Dispatch } from "redux";
 import { crud } from "../type/action.type.om";
 import { constants } from "../../assets/types/constants";
@@ -16,7 +15,7 @@ export const createAction = (object: OM) => {
                 type: constants.CREATE_SUCCESS,
                 payload: data
             })
-        } catch(error: any | AxiosError) {
+        } catch(error: any) {
             if(error.response.data.errors != undefined){
                 error.response?.data.errors.map((element: any) => { error = element.field + ": " + element.defaultMessage })
             } else {
@@ -41,7 +40,7 @@ export const retrieveAllAction = () => {
                 type: constants.RETRIEVE_ALL_SUCCESS,
                 payload: data
             });
-        } catch(error: any | AxiosError) {
+        } catch(error: any) {
             if(error.response.data.errors != undefined){
                 error.response?.data.errors.map((element: any) => { error = element.field + ": " + element.defaultMessage })
             } else {
@@ -67,7 +66,7 @@ export const updateAction = (id: string, object: OM) => {
                 type: constants.UPDATE_SUCCESS,
                 payload: data
             });
-        } catch(error: any | AxiosError) {
+        } catch(error: any) {
             if(error.response.data.errors != undefined){
                 error.response?.data.errors.map((element: any) => { error = element.field + ": " + element.defaultMessage })
             } else {
@@ -92,7 +91,7 @@ export const deleteAction = (id: string) => {
                 type: constants.DELETE_SUCCESS,
                 payload: data
             });
-        } catch(error: any | AxiosError) {
+        } catch(error: any) {
             if(error.response.data.errors != undefined){
                 error.response?.data.errors.map((element: any) => { error = element.field + ": " + element.defaultMessage })
             } else {
