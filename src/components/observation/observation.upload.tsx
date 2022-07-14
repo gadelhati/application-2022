@@ -1,11 +1,10 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.om';
+import { createAction, createAllAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.observation';
 import { Observation } from "./observation.interface";
 import { initialObservation } from './observation.initial';
 import '../list.css'
-// import data from 'data.json';
 import cc from './customer.json'
 import exemplo from './chm_2018-06-01_2018-06-30.json'
 import exemploONE from './exemploONE.json'
@@ -17,46 +16,28 @@ export const ObservationUpload = () => {
     const { loading, error, itens, item } = useTypedSelector((state) => state.oms);
 
     useEffect(() => {
-
-    }, [])
-    const selectItem = () => {
-        exemplo.forEach((item) => {
-            setState([...state, initialObservation])
-        })
         console.log(state)
+    }, [state])
+    const createAllItems = () => {
+        dispatch(createAllAction(state))
     }
     const handleInputFile = (event: ChangeEvent<HTMLInputElement>) => {
-        // let json = JSON.stringify(exemplo);
-        // const blob = new Blob([json], {type:"application/json"});
-        // const fileReader0 = new FileReader()
-        // fileReader0.addEventListener("load", e => {
-        //     console.log(e.target?.result, JSON.parse(e.target?.result))
-        // });
-        // fileReader0.readAsText(blob);
-
-
+        const observations : Observation[] = []
         const fileReader = new FileReader()
         fileReader.readAsText(event.target.files?.[0] as File)
         fileReader.onload = (event) => {
             const fileAsText = event.target?.result
-            var jsonString : string = fileAsText
-            var observation : Observation = JSON.parse(event.target?.result)
-            var observation2 : Partial<[Observation]> = JSON.parse(event.target?.result)
-
-
-
-
-
-            console.log(fileAsText)
-            // console.log(exemplo) //ARQUIVO IMPOTADO ENTENDE COMO JSON ARRAY
-            console.log(JSON.stringify(fileAsText?.toString))
-            console.log(fileAsText?.toString)
-            // console.log(JSON.parse(JSON.stringify(fileAsText).toString))
-            console.log(JSON.parse(JSON.stringify(fileAsText)))
-            // console.log(JSON.parse(fileAsText?.toString))
-            // let obj: Observation = JSON.parse(fileAsText)
+            if (typeof fileAsText === 'string') {
+                let itens: Observation[] = JSON.parse(fileAsText.toString());
+                itens.forEach((item, index) => {
+                    observations[index] = item
+                })
+            } else {
+                console.log("This file cannot be used!")
+            }
         };
-        // fileReader.onerror = () => { console.error("error")}
+        console.log(observations)
+        setState(observations)
     }
     return (
         <section>
@@ -69,9 +50,8 @@ export const ObservationUpload = () => {
                         </p>
                     )
                 })} */}
-                {state[0].id}
-                <input type="file" onChange={handleInputFile} />
-                <button onClick={selectItem} className="w-20 btn btn-secondary">Show in Console Log</button>
+                <input type="file" className="w-20 btn btn-secondary" onChange={handleInputFile} />
+                <button onClick={createAllItems} className="w-20 btn btn-secondary" >Create All</button>
             </article>
         </section>
     );

@@ -5,6 +5,10 @@ export const create = (data:{}) => {
   return api.post<Observation>(`/observation`, data)
 }
 
+export const createAll = (data: Observation[]) => {
+  return api.post<Observation[]>(`/observation/createAll`, data)
+}
+
 export const getRetrieve = () => {
   return api.get<Observation[]>(`/observation/retrieve`)
 }
