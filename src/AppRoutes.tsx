@@ -12,8 +12,9 @@ import "./AppRoutes.css"
 import { UserList } from "./components/user/user.list";
 import { ObservationList } from "./components/observation/observation.list";
 import { ObservationUpload } from "./components/observation/observation.upload";
-import { Header } from "./containers/menus/Header";
+import { Header } from "./containers/menus/header";
 import { UserSignin } from "./components/user/user.signin";
+import { Footer } from "./containers/menus/footer";
 
 export default function AppRoutes() {
     const defaultProtectedRouteProps: Omit<ProtectedRouteProps, 'outlet'> = {
@@ -38,6 +39,7 @@ export default function AppRoutes() {
                         <Route path="/observation" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<ObservationList />} />} />
                         <Route path="/upload" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<ObservationUpload />} />} />
                     </Routes>
+                    {/* <Footer /> */}
                 </main>
             </BrowserRouter>
         </body>

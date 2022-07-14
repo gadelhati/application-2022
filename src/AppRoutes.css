@@ -1,28 +1,24 @@
 body {
-    /* background-color: red; */
+    background-color: rgb(223, 223, 223);
     display: flex;
-    flex-direction: row;
+    flex-direction: col;
     height: 100vh;
     width: 100vw;
 }
 
-aside {
+aside > section {
     /* background-color: green; */
     display: flex;
-    flex-direction: col;
-    align-items: stretch;
+    flex-direction: row;
+    align-items: flex-start;
     height: 100vh;
     width: 256px;
-}
-
-nav {
-    
 }
 
 main {
     /* background-color: blue; */
     display: flex;
-    flex-direction: col;
+    /* flex-direction: row; */
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: stretch;

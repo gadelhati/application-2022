@@ -1,6 +1,5 @@
-import { useState, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import { styled } from '@stitches/react';
+// import { styled } from '@stitches/react';
 import "./sidebars.css"
 import "../../assets/bootstrap/dist/js/bootstrap.bundle.min.js"
 import './sidebars.js';
@@ -81,12 +80,12 @@ export const Sidestrap = (props: any) => {
             </div>
             <main>
                 <h1 className="visually-hidden">Sidebars examples</h1>
-                <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark largura">
-                    <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <div className="d-flex flex-column flex-shrink-0 p-3 text-white largura">
+                    <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
                         {/* <svg className="bi me-2" width="40" height="32">
                             <use xlinkHref="#bootstrap" />
                         </svg> */}
-                        <img className="mb-6 rounded-circle me-2" src={logo} alt="" width="30" height="38"></img>
+                        <img className="mb-6 rounded-circle me-2 logo" src={logo} alt="" width="35" height="38"></img>
                         <span className="fs-4">CHM</span>
                     </a>
                     <hr></hr>
@@ -102,37 +101,37 @@ export const Sidestrap = (props: any) => {
                             </div>
                         </li> */}
                         <li>
-                            <a href="/signin" className="nav-link text-white">
+                            <a href="/signin" className="nav-link">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#home" /></svg>OM</a>
                         </li>
                         <li>
-                            <a href="/profile" className="nav-link text-white">
+                            <a href="/profile" className="nav-link">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#people-circle" /></svg>Profile</a>
                         </li>
                         <li>
-                            <a href="/users" className="nav-link text-white">
+                            <a href="/users" className="nav-link">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#grid" /></svg>Users</a>
                         </li>
                         <li>
-                            <a href="/observation" className="nav-link text-white">
+                            <a href="/observation" className="nav-link">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#speedometer2" /></svg>Observation</a>
                         </li>
                         {/* <li>
-                            <a href="/upload" className="nav-link text-white">
+                            <a href="/upload" className="nav-link">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#grid" /></svg>Upload</a>
                         </li> */}
                         {/* <li>
-                            <a href="/om" className="nav-link text-white">
+                            <a href="/om" className="nav-link">
                                 <svg className="bi me-2" width="16" height="16"><use xlinkHref="#table" /></svg>OM</a>
                         </li> */}
                     </ul>
                     {getUser() &&
                         <div className="dropdown">
-                            <a href="#" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"></img>
+                            <a href="#" className="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2 sumido"></img>
                                 <strong>{getUserName()}</strong>
                             </a>
-                            <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                            <ul className="dropdown-menu " aria-labelledby="dropdownUser1">
                                 {/* <li><a className="dropdown-item" href="#">New project...</a></li>
                                 <li><a className="dropdown-item" href="#">Settings</a></li> */}
                                 <li><a className="dropdown-item" href="/profile">Profile</a></li>
