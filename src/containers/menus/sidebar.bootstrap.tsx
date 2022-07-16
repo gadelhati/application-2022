@@ -6,6 +6,7 @@ import './sidebars.js';
 import { getUserName, getLocalAccessToken, getId, getEmail, getUser } from "../../services/service.token"
 import { signupAction, signinAction, logoutAction, refreshTokenAction } from '../../actions.generics/creator/action.creator.auth';
 import logo from '../../assets/image/heraldica.png'
+import person from '../../assets/image/logo/icon_person2.png'
 
 export const Sidestrap = (props: any) => {
     const dispatch = useDispatch();
@@ -128,7 +129,7 @@ export const Sidestrap = (props: any) => {
                     {getUser() &&
                         <div className="dropdown">
                             <a href="#" className="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2 sumido"></img>
+                                <img src={person} alt="" width="32" height="32" className="rounded-circle me-2"></img>
                                 <strong>{getUserName()}</strong>
                             </a>
                             <ul className="dropdown-menu " aria-labelledby="dropdownUser1">
