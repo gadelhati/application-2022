@@ -36,7 +36,7 @@ export default function AppRoutes() {
                         <Route path="/signin2" element={getUser() === null ? <UserSignin /> : <Navigate to="/om" />}></Route>
                         <Route path="/om" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<OMList />} />} />
                         <Route path="/users" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<UserList />} />} />
-                        <Route path="/profile" element={<Profile />}></Route>
+                        <Route path="/profile" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<Profile />} />} />
                         <Route path="/observation" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<ObservationList />} />} />
                         <Route path="/upload" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<ObservationUpload />} />} />
                         <Route path="/header" element={<GHeader />} />
