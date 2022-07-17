@@ -12,8 +12,8 @@ import "./AppRoutes.css"
 import { UserList } from "./components/user/user.list";
 import { ObservationList } from "./components/observation/observation.list";
 import { ObservationUpload } from "./components/observation/observation.upload";
-import { GHeader } from "./containers/menus/header";
 import { UserSignin } from "./components/user/user.signin";
+import { Header } from "./containers/menus/header";
 import { Footer } from "./containers/menus/footer";
 
 export default function AppRoutes() {
@@ -39,8 +39,6 @@ export default function AppRoutes() {
                         <Route path="/profile" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<Profile />} />} />
                         <Route path="/observation" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<ObservationList />} />} />
                         <Route path="/upload" element={<ProtectedRoute {...defaultProtectedRouteProps} outlet={<ObservationUpload />} />} />
-                        <Route path="/header" element={<GHeader />} />
-                        <Route path="/footer" element={<Footer />} />
                     </Routes>
                     {/* <Footer /> */}
                 </main>
