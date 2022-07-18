@@ -1,10 +1,8 @@
 X		redirect to before signin
 DOING	unique element has already been registered
-DONE	create/update active user
 		add validations style on filds
 		add validations message on filds
 DO		list om on user crud (repeat other state)
-DOING	change password, admin change others password
 DOING	filter user by admin domain / view admin / filter by OM
 DO		refresh token
 

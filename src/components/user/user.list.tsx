@@ -113,7 +113,7 @@ export const UserList = () => {
                         value={state.password}
                         onChange={handleInputChange}
                         name="password"
-                        readOnly={state.id != ""}
+                        // readOnly={state.id != ""}
                     />
                     <label htmlFor="password">Password</label>
                 </div>
