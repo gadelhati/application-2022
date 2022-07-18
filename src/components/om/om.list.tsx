@@ -1,5 +1,6 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { CDataTable } from '@coreui/react';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.om';
 import { OM } from "./om.interface";
@@ -39,6 +40,10 @@ export const OMList = () => {
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setState({ ...state, [event.target.name]: event.target.value })
     }
+    const fields = [
+        { key: 'name', label: 'Name', _style: { width: '10%' } },
+        { key: 'select', label: '', _style: { width: '1%' }, sorter: false, filter: false }
+    ]
     return (
         <section>
             <article>
@@ -93,28 +98,26 @@ export const OMList = () => {
                 {loading && <>Loading...</>}
                 {error != null && JSON.stringify(error)}
             </article>
-            <table>
-                <thead>
-                    <tr>
-                        {/* <th scope="col">ID</th> */}
-                        <th scope="col">NAME</th>
-                        <th scope="col">#</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {itens?.map(item => {
-                        return (
-                            <tr key={item.id}>
-                                {/* <th scope="row">{item.id}</th> */}
-                                <td>{item.name}</td>
-                                <td className="align-bottom">
-                                    <button onClick={() => selectItem(item)} className="w-100 btn btn-lg btn-secondary">Select</button>
-                                </td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
+            <CDataTable
+                items={itens}
+                fields={fields}
+                columnFilter
+                tableFilter={{ label: 'Buscar', placeholder: 'digite aqui para buscar' }}
+                // footer
+                itemsPerPageSelect
+                itemsPerPage={5}
+                hover
+                striped
+                sorter
+                pagination
+                scopedSlots={{
+                    'select': (item: any) => (
+                        <td className="align-bottom">
+                            <button onClick={() => selectItem(item)} className="w-100 btn btn-lg btn-secondary">Select</button>
+                        </td>
+                    ),
+                }}
+            />
         </section>
     );
 }

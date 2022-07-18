@@ -1,10 +1,10 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { User } from './user.interface';
+import { Auth } from './auth.interface';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { signupAction, signinAction, logoutAction, refreshTokenAction } from '../../actions.generics/creator/action.creator.auth'
-import { initialUser } from './user.initial';
+import { /*signupAction,*/ signinAction, logoutAction, refreshTokenAction } from '../../actions.generics/creator/action.creator.auth'
+import { initialAuth } from './auth.initial';
 // import { styled } from '@stitches/react';
 import "../../assets/bootstrap/dist/css/bootstrap.min.css"
 import "./signin.css"
@@ -30,27 +30,23 @@ import { getUser } from '../../services/service.token';
 export const SigninContainer = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [ state, setState ] = useState<User>(initialUser)
-    const { loading, error, itens, item, user, isLoggedIn } = useTypedSelector((state) => state.auths);
+    const [ state, setState ] = useState<Auth>(initialAuth)
+    const { loading, error, itens, item, isLoggedIn } = useTypedSelector((state) => state.auths);
 
     const resetItem = () => {
-        setState(initialUser)
+        setState(initialAuth)
     }
     const signinItem = () => {
-        dispatch(signinAction(state.username, state.password))
-        console.log(JSON.stringify("Loading "+loading))
-        console.log(JSON.stringify("Error "+error))
-        console.log(JSON.stringify("Itens "+itens))
-        console.log(JSON.stringify("Item "+item))
-        console.log(JSON.stringify("State "+JSON.stringify(state)))
-        console.log(JSON.stringify("User "+JSON.stringify(user)))
-        console.log(JSON.stringify("User "+JSON.stringify(isLoggedIn)))
-
-        console.log(JSON.stringify("Auth: " + JSON.stringify))
-        // if(error == "") {
-        //     navigate("/om")
-        // }
-        return getUser() ? <SigninContainer /> : <Navigate to="/" />
+        dispatch(signinAction(state))
+        // console.log(error)
+        if(item != null) {
+            console.log("if")
+            navigate("/om")
+            item !=null ? <SigninContainer /> : <Navigate to="/" />
+        } else {
+            console.log("else")
+        }
+        // return error !=null ? <SigninContainer /> : <Navigate to="/" />
     }
     const logoutItem = () => {
         dispatch(logoutAction())
@@ -83,7 +79,7 @@ export const SigninContainer = () => {
                 {/* <button onClick={initiate} className="w-100 btn btn-lg btn-primary" type="submit">Navigate</button> */}
                 <p className="mt-5 mb-3 text-muted">© Marinha do Brasil 1822 - 2022</p>
                 {loading && <>Loading...</>}
-                {error != null && "Some data are required: " + JSON.stringify(error)}
+                {error != null && JSON.stringify(error)}
                 {/* {loading && <Navigate />} */}
                 {/* </Signin> */}
              </article>

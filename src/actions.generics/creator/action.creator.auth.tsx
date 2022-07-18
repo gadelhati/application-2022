@@ -1,40 +1,41 @@
 import { Dispatch } from "redux";
 import { crud } from "../type/action.type.auth";
 import { constants } from "../../assets/types/constants";
-import { signup, signin, logout, refreshToken } from "../../services/service.auth"
+import { /*signup,*/ signin, logout, refreshToken } from "../../services/service.auth"
+import { Auth } from "../../components/auth/auth.interface"
 
-export const signupAction = (username: string, email: string, password: string) => {
-    return async (dispatch: Dispatch<crud>) => {
-        dispatch({
-            type: constants.SIGNUP_START
-        });
-        try {
-            const { data } = await signup(username, email, password);
-            dispatch({
-                type: constants.SIGNUP_SUCCESS,
-                payload: data
-            })
-        } catch(error: any) {
-            if(error.response.data.errors != undefined){
-                error.response?.data.errors.map((element: any) => { error = element.field + ": " + element.defaultMessage })
-            } else {
-                error = error.response.data.error
-            }
-            dispatch({
-                type: constants.SIGNUP_ERROR,
-                payload: error
-            });
-        }
-    }
-}
+// export const signupAction = (username: string, email: string, password: string) => {
+//     return async (dispatch: Dispatch<crud>) => {
+//         dispatch({
+//             type: constants.SIGNUP_START
+//         });
+//         try {
+//             const { data } = await signup(username, email, password);
+//             dispatch({
+//                 type: constants.SIGNUP_SUCCESS,
+//                 payload: data
+//             })
+//         } catch(error: any) {
+//             if(error.response.data.errors != undefined){
+//                 error.response?.data.errors.map((element: any) => { error = element.field + ": " + element.defaultMessage })
+//             } else {
+//                 error = error.response.data.error
+//             }
+//             dispatch({
+//                 type: constants.SIGNUP_ERROR,
+//                 payload: error
+//             });
+//         }
+//     }
+// }
 
-export const signinAction = (username: string, password: string) => {
+export const signinAction = (object: Auth) => {
     return async (dispatch: any) => {
         dispatch({
             type: constants.SIGNIN_START
         });
         try {
-            const { data } = await signin(username, password)
+            const { data } = await signin(object)
             dispatch({
                 type: constants.SIGNIN_SUCCESS,
                 payload: data

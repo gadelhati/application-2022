@@ -1,5 +1,6 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { CDataTable } from '@coreui/react';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.user';
 import { User } from "./user.interface";
@@ -42,6 +43,12 @@ export const UserList = () => {
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
         setState({ ...state, [name]: value })
     }
+    const fields = [
+        { key: 'username', label: 'Username', _style: { width: '10%' } },
+        { key: 'email', label: 'E-mail', _style: { width: '10%' } },
+        { key: 'active', label: 'Active', _style: { width: '10%' } },
+        { key: 'select', label: '', _style: { width: '1%' }, sorter: false, filter: false }
+    ]
     return (
         <section>
             <article>
@@ -120,6 +127,7 @@ export const UserList = () => {
                         id="active"
                         required
                         checked={state.active}
+                        defaultChecked={state.active}
                         onChange={handleInputChange}
                         name="active"
                     />
@@ -141,34 +149,27 @@ export const UserList = () => {
                 {loading && <>Loading...</>}
                 {error != null && JSON.stringify(error)}
             </article>
-            <table>
-                <thead>
-                    <tr>
-                        {/* <th scope="col">ID</th> */}
-                        <th scope="col">USERNAME</th>
-                        <th scope="col">E-MAIL</th>
-                        <th scope="col">ACTIVE</th>
-                        <th scope="col">#</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {itens?.map(item => {
-                        return (
-                            <tr key={item.id}>
-                                {/* <th scope="row">{item.id}</th> */}
-                                <td>{item.username}</td>
-                                <td>{item.email}</td>
-                                <td>
-                                    <input type="checkbox" value="active" id="active" disabled checked={item.active}></input>
-                                </td>
-                                <td className="align-bottom">
-                                    <button onClick={() => selectItem(item)} className="w-100 btn btn-lg btn-secondary">Select</button>
-                                </td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
+            <CDataTable
+                items={itens}
+                fields={fields}
+                columnFilter
+                tableFilter={{ label: 'Buscar', placeholder: 'digite aqui para buscar' }}
+                // footer
+                itemsPerPageSelect
+                itemsPerPage={5}
+                hover
+                striped
+                sorter
+                pagination
+                scopedSlots={{
+                    'active': (item: any) => (<td>{item.active ? JSON.stringify(true) : JSON.stringify(false)}</td>),
+                    'select': (item: any) => (
+                        <td className="align-bottom">
+                            <button onClick={() => selectItem(item)} className="w-100 btn btn-lg btn-secondary">Select</button>
+                        </td>
+                    ),
+                }}
+            />
         </section>
     );
 }

@@ -2,6 +2,7 @@ import { Card, Row, Col, OverlayTrigger, Tooltip, InputGroup, Form, FormControl,
 
 import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { CDataTable } from '@coreui/react';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.observation';
 import { Observation } from "./observation.interface";
@@ -49,6 +50,28 @@ export const ObservationList = () => {
         // const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
         // setState({ ...state, [name]: value })
     };
+    const fields = [
+        // { key: 'mimi', label: 'mimi', _style: { width: '3%' } },
+        // { key: 'ddddddd', label: 'ddddddd', _style: { width: '3%' } },
+        // { key: 'ii', label: 'ii', _style: { width: '3%' } },
+        // { key: 'iii', label: 'iii', _style: { width: '3%' } },
+        { key: 'yy', label: 'yy', _style: { width: '3%' } },
+        { key: 'gg', label: 'gg', _style: { width: '3%' } },
+        // { key: 'iw', label: 'iw', _style: { width: '3%' } },
+        // { key: 'ir', label: 'ir', _style: { width: '3%' } },
+        // { key: 'ix', label: 'ix', _style: { width: '3%' } },
+        // { key: 'h', label: 'h', _style: { width: '3%' } },
+        // { key: 'vv', label: 'vv', _style: { width: '3%' } },
+        // { key: 'n', label: 'n', _style: { width: '3%' } },
+        // { key: 'dd', label: 'dd', _style: { width: '3%' } },
+        // { key: 'ff', label: 'ff', _style: { width: '3%' } },
+        // { key: 'fff', label: 'fff', _style: { width: '3%' } },
+        { key: 'ttt', label: 'ttt', _style: { width: '3%' } },
+        { key: 'ppp', label: 'ppp', _style: { width: '3%' } },
+        // { key: 'ww', label: 'ww', _style: { width: '3%' } },
+        // { key: 'w1w2', label: 'w1w2', _style: { width: '3%' } },
+        { key: 'select', label: '', _style: { width: '1%' }, sorter: false, filter: false }
+    ]
     return (
         <section>
             <article>
@@ -1441,70 +1464,28 @@ export const ObservationList = () => {
                 {error != null && JSON.stringify(error)}
             </article>
             <ObservationUpload />
-            {/* <article> */}
-            <table id="catTable">
-                <thead>
-                    <tr>
-                        {/* <th scope="col">ID</th> */}
-                        {/* <th scope="col">aabbxx</th> */}
-                        <th scope="col">mimi</th>
-                        <th scope="col">ddddddd</th>
-                        <th scope="col">ii</th>
-                        <th scope="col">iii</th>
-                        <th scope="col">yy</th>
-                        <th scope="col">gg</th>
-                        <th scope="col">iw</th>
-                        <th scope="col">ir</th>
-                        <th scope="col">ix</th>
-                        <th scope="col">h</th>
-                        <th scope="col">vv</th>
-                        <th scope="col">n</th>
-                        <th scope="col">dd</th>
-                        <th scope="col">ff</th>
-                        <th scope="col">fff</th>
-                        <th scope="col">ttt</th>
-                        <th scope="col">ppp</th>
-                        <th scope="col">ww</th>
-                        <th scope="col">w1w2</th>
-                        <th scope="col">#</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {itens?.map(item => {
-                        return (
-                            <tr key={item.id}>
-                                {/* <th scope="row">{item.id}</th> */}
-                                {/* <td>{item.aabbxx}</td> */}
-                                <td>{item.mimi}</td>
-                                <td>{item.ddddddd}</td>
-                                <td>{item.ii}</td>
-                                <td>{item.iii}</td>
-                                <td>{item.yy}</td>
-                                <td>{item.gg}</td>
-                                <td>{item.iw}</td>
-                                <td>{item.ir}</td>
-                                <td>{item.ix}</td>
-                                <td>{item.h}</td>
-                                <td>{item.vv}</td>
-                                <td>{item.n}</td>
-                                <td>{item.dd}</td>
-                                <td>{item.ff}</td>
-                                <td>{item.fff}</td>
-                                <td>{item.ttt}</td>
-                                <td>{item.ppp}</td>
-                                <td>{item.ww}</td>
-                                <td>{item.w1w2}</td>
-                                <td className="align-bottom">
-                                    <button onClick={() => selectItem(item)} className="w-100 btn btn-lg btn-secondary">Select</button>
-                                </td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
-            {/* </article> */}
-            {/* <button id="prevButton">Previous</button>
-            <button id="nextButton">Next</button> */}
+            <article>
+            <CDataTable
+                items={itens}
+                fields={fields}
+                columnFilter
+                tableFilter={{ label: 'Buscar', placeholder: 'digite aqui para buscar' }}
+                // footer
+                itemsPerPageSelect
+                itemsPerPage={5}
+                hover
+                striped
+                sorter
+                pagination
+                scopedSlots={{
+                    'select': (item: any) => (
+                        <td className="align-bottom">
+                            <button onClick={() => selectItem(item)} className="w-100 btn btn-lg btn-secondary">Select</button>
+                        </td>
+                    ),
+                }}
+            />
+            </article>
         </section>
     );
 }

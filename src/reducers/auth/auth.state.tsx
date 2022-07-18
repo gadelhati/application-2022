@@ -1,10 +1,9 @@
-import { User } from "../../components/user/user.interface";
+import { Auth } from "../../components/auth/auth.interface";
 
 export interface stateAuth {
     loading: boolean,
     error: string | null,
+    item: Auth,
+    itens: Auth[],
     isLoggedIn: boolean,
-    user: {} | null,
-    item: User,
-    itens: User[],
 }
