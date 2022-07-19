@@ -1,5 +1,5 @@
 X		redirect to before signin
-DOING	unique element has already been registered
+X		unique element has already been registered
 		add validations style on filds
 		add validations message on filds
 DO		list om on user crud (repeat other state)
