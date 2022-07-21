@@ -5,23 +5,34 @@ import { useDispatch } from 'react-redux';
 import { CDataTable } from '@coreui/react';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.observation';
+import { createAction as oa, retrieveAllAction as or, updateAction as ou, deleteAction as od } from '../../actions.generics/creator/action.creator.om';
+import { createAction as uc, retrieveAllAction as ur, updateAction as uu, deleteAction as ud } from '../../actions.generics/creator/action.creator.om';
 import { Observation } from "./observation.interface";
 import { initialObservation } from './observation.initial';
-import '../list.css'
+import { OM } from "../om/om.interface";
+import { initialOM } from '../om/om.initial';
+import { User } from "../user/user.interface";
+import { initialUser } from '../user/user.initial';
 import { ObservationUpload } from "./observation.upload";
+import '../list.css'
 // import '../table.css'
 // import '../table.js'
 
 export const ObservationList = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
     const [state, setState] = useState<Observation>(initialObservation)
-    const { loading, error, itens, item } = useTypedSelector((state) => state.observations);
+    const { loading, error, itens, item } = useTypedSelector((state) => state.observations)
+    const [stateOM, setStateOM] = useState<OM>(initialOM)
+    const { loading: loadingOM, error: errorOM, itens: itensOM, item: itemOM } = useTypedSelector((stateOM) => stateOM.oms);
+    const [stateUser, setStateUser] = useState<User>(initialUser)
+    const { loading: loadingUser, error: errorUser, itens: itensUser, item: itemUser } = useTypedSelector((stateUser) => stateUser.users);
 
     useEffect(() => {
         retrieveItem()
     }, [dispatch])
     const selectItem = (object: Observation) => {
         setState(object)
+        console.log()
     }
     const resetItem = () => {
         setState(initialObservation)
@@ -33,6 +44,8 @@ export const ObservationList = () => {
     const retrieveItem = () => {
         resetItem()
         dispatch(retrieveAllAction())
+        dispatch(or())
+        dispatch(ur())
     }
     const updateItem = () => {
         dispatch(updateAction(state.id, state))
@@ -44,6 +57,11 @@ export const ObservationList = () => {
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setState({ ...state, [event.target.name]: event.target.value })
+    }
+    const handleInputChangeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
+        setState({ ...state, [event.target.name]: event.target.value })
+        console.log(event.target.name)
+        console.log(JSON.stringify(event.target.value))
     }
     const handleFormEvent = (event: FormEvent<HTMLFormElement>) => {
         // const { name } = event.target
@@ -1455,6 +1473,22 @@ export const ObservationList = () => {
                         {/* </fieldset> */}
                     </Row>
                 </Card>
+                <div className="form-floating">
+                    <select className="form-select" id="om" name="om" aria-label="Floating label select"  onChange={handleInputChangeSelect} >
+                        {itensOM.map((option) => (
+                            <option data-value={state.estacao}>{option.name}</option>
+                        ))}
+                    </select>
+                    <label htmlFor="om">OM</label>
+                </div>
+                <div className="form-floating">
+                    <select className="form-select" id="user" name="user" aria-label="Floating label select"  onChange={handleInputChangeSelect} >
+                        {itensUser.map((user) => (
+                            <option data-value={state.observador}>{user.username}</option>
+                        ))}
+                    </select>
+                    <label htmlFor="user">User</label>
+                </div>
                 <button onClick={resetItem} className="w-20 btn btn-secondary">Reset</button>
                 <button onClick={createItem} className="w-20 btn btn-secondary" disabled={state.id != ""} >Create</button>
                 <button onClick={retrieveItem} className="w-20 btn btn-secondary" >Retrieve</button>
