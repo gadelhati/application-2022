@@ -3,15 +3,19 @@ import { useDispatch } from 'react-redux';
 import { CDataTable } from '@coreui/react';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.user';
+import { createAction as ca, retrieveAllAction as ra, updateAction as ua, deleteAction as da } from '../../actions.generics/creator/action.creator.om';
 import { User } from "./user.interface";
+import { OM } from "../om/om.interface";
 import { initialUser } from './user.initial';
+import { initialOM } from '../om/om.initial';
 import '../list.css'
 
 export const UserList = () => {
     const dispatch = useDispatch();
     const [state, setState] = useState<User>(initialUser)
+    const [stateOM, setStateOM] = useState<OM>(initialOM)
     const { loading, error, itens, item } = useTypedSelector((state) => state.users);
-    const { loading: loadingOM, error: errorOM, itens: itensOM, item: itemOM } = useTypedSelector((state) => state.oms);
+    const { loading: loadingOM, error: errorOM, itens: itensOM, item: itemOM } = useTypedSelector((stateOM) => stateOM.oms);
 
     useEffect(() => {
         retrieveItem()
@@ -29,6 +33,7 @@ export const UserList = () => {
     const retrieveItem = () => {
         resetItem()
         dispatch(retrieveAllAction())
+        dispatch(ra())
     }
     const updateItem = () => {
         dispatch(updateAction(state.id, state))
@@ -39,9 +44,10 @@ export const UserList = () => {
         resetItem()
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name } = event.target
-        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-        setState({ ...state, [name]: value })
+        setState({ ...state, [event.target.name]: event.target.value })
+    }
+    const handleInputChangeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
+        setState({ ...state, [event.target.name]: event.target.value })
     }
     const fields = [
         { key: 'username', label: 'Username', _style: { width: '10%' } },
@@ -133,14 +139,14 @@ export const UserList = () => {
                     />
                     <label className="form-check-label" htmlFor="active">Active</label>
                 </div>
-                {/* <div className="form-floating">
-                    <select className="form-select" id="om" name="om" aria-label="Floating label select"  onChange={handleInputChange} >
+                <div className="form-floating">
+                    <select className="form-select" id="om" name="om" aria-label="Floating label select"  onChange={handleInputChangeSelect} >
                         {itensOM.map((option) => (
-                            <option value={state.OM?.id}>{option.id}</option>
+                            <option value={stateOM.id}>{option.name}</option>
                         ))}
                     </select>
                     <label htmlFor="om">OM</label>
-                </div> */}
+                </div>
                 <button onClick={resetItem} className="w-20 btn btn-secondary">Reset</button>
                 <button onClick={createItem} className="w-20 btn btn-secondary" disabled={state.id != ""} >Create</button>
                 <button onClick={retrieveItem} className="w-20 btn btn-secondary" >Retrieve</button>
