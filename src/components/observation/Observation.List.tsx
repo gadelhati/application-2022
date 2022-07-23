@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { CDataTable } from '@coreui/react';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
 import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.observation';
-import { createAction as oa, retrieveAllAction as or, updateAction as ou, deleteAction as od } from '../../actions.generics/creator/action.creator.om';
+import { createAction as oc, retrieveAllAction as or, updateAction as ou, deleteAction as od } from '../../actions.generics/creator/action.creator.om';
 import { createAction as uc, retrieveAllAction as ur, updateAction as uu, deleteAction as ud } from '../../actions.generics/creator/action.creator.om';
 import { Observation } from "./observation.interface";
 import { initialObservation } from './observation.initial';
@@ -58,10 +58,18 @@ export const ObservationList = () => {
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         setState({ ...state, [event.target.name]: event.target.value })
     }
-    const handleInputChangeSelect = (event: ChangeEvent<HTMLSelectElement>) => {
-        setState({ ...state, [event.target.name]: event.target.value })
-        console.log(event.target.name)
-        console.log(JSON.stringify(event.target.value))
+    const handleInputChangeSelectOM = (event: ChangeEvent<HTMLSelectElement>) => {
+        itensOM.forEach((element) => {
+            console.log(element)
+        });
+        
+        setState({ ...state, [event.target.name]: {
+            id: itensOM[event.target.selectedIndex].id, 
+            name: itensOM[event.target.selectedIndex].name
+        } })
+    }
+    const handleInputChangeSelectObservador = (event: ChangeEvent<HTMLSelectElement>) => {
+        setState({ ...state, [event.target.name]: {id: itensUser[event.target.selectedIndex].id, username: itensUser[event.target.selectedIndex].username} })
     }
     const handleFormEvent = (event: FormEvent<HTMLFormElement>) => {
         // const { name } = event.target
@@ -1474,17 +1482,17 @@ export const ObservationList = () => {
                     </Row>
                 </Card>
                 <div className="form-floating">
-                    <select className="form-select" id="om" name="om" aria-label="Floating label select"  onChange={handleInputChangeSelect} >
-                        {itensOM.map((option) => (
-                            <option data-value={state.estacao}>{option.name}</option>
+                    <select className="form-select" id="estacao" name="estacao" aria-label="Floating label select"  onChange={handleInputChangeSelectOM} >
+                        {itensOM.map((object) => (
+                            <option data-value={object}>{object.name}</option>
                         ))}
                     </select>
                     <label htmlFor="om">OM</label>
                 </div>
                 <div className="form-floating">
-                    <select className="form-select" id="user" name="user" aria-label="Floating label select"  onChange={handleInputChangeSelect} >
-                        {itensUser.map((user) => (
-                            <option data-value={state.observador}>{user.username}</option>
+                    <select className="form-select" id="observador" name="observador" aria-label="Floating label select"  onChange={handleInputChangeSelectObservador} >
+                        {itensUser.map((object) => (
+                            <option data-value={object}>{object.username}</option>
                         ))}
                     </select>
                     <label htmlFor="user">User</label>
