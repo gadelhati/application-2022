@@ -2,7 +2,6 @@ X		redirect to before signin
 X		unique element has already been registered
 		add validations style on filds
 		add validations message on filds
-DO		list om on user crud (repeat other state)
 DOING	filter user by admin domain / view admin / filter by OM
 DO		refresh token
 
@@ -24,6 +23,4 @@ improvments:
 			T.state.incial.tsx
 			T.state.tsx
 				redux object: { loading, error, item, itens[] }
-			action.creator.T.tsx
-			action.type.T.tsx
 			T.reducer.tsx

@@ -4,9 +4,9 @@ import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { CDataTable } from '@coreui/react';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.observation';
-import { createAction as oc, retrieveAllAction as or, updateAction as ou, deleteAction as od } from '../../actions.generics/creator/action.creator.om';
-import { createAction as uc, retrieveAllAction as ur, updateAction as uu, deleteAction as ud } from '../../actions.generics/creator/action.creator.om';
+import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/creator/action.creator';
+// import { createAction as oc, retrieveAllAction as or, updateAction as ou, deleteAction as od } from '../../actions/creator/action.creator';
+import { createAction as uc, retrieveAllAction as ur, updateAction as uu, deleteAction as ud } from '../../actions/creator/action.creator';
 import { Observation } from "./observation.interface";
 import { initialObservation } from './observation.initial';
 import { OM } from "../om/om.interface";
@@ -20,8 +20,8 @@ import '../list.css'
 
 export const ObservationList = () => {
     const dispatch = useDispatch()
-    const [state, setState] = useState<Observation>(initialObservation)
-    const { loading, error, itens, item } = useTypedSelector((state) => state.observations)
+    const [stateObservation, setStateObservation] = useState<Observation>(initialObservation)
+    const { loading: loadingObservation, error: errorObservation, itens: itensObservation, item: itemObservation } = useTypedSelector((stateObservation) => stateObservation.observations)
     const [stateOM, setStateOM] = useState<OM>(initialOM)
     const { loading: loadingOM, error: errorOM, itens: itensOM, item: itemOM } = useTypedSelector((stateOM) => stateOM.oms);
     const [stateUser, setStateUser] = useState<User>(initialUser)
@@ -31,51 +31,49 @@ export const ObservationList = () => {
         retrieveItem()
     }, [dispatch])
     const selectItem = (object: Observation) => {
-        setState(object)
-        console.log()
+        setStateObservation(object)
     }
     const resetItem = () => {
-        setState(initialObservation)
+        setStateObservation(initialObservation)
     }
     const createItem = () => {
-        dispatch(createAction(state))
+        dispatch(createAction('observation', stateObservation))
         // resetItem()
     }
     const retrieveItem = () => {
         resetItem()
-        dispatch(retrieveAllAction())
-        dispatch(or())
-        dispatch(ur())
+        // dispatch(retrieveAllAction('observation'))
+        dispatch(ur('user'))
+        dispatch(retrieveAllAction('om'))
+        
     }
     const updateItem = () => {
-        dispatch(updateAction(state.id, state))
+        dispatch(updateAction('observation', stateObservation.id, stateObservation))
         // resetItem()
     }
     const deleteItem = () => {
-        dispatch(deleteAction(state.id))
+        dispatch(deleteAction('observation', stateObservation.id))
         resetItem()
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setState({ ...state, [event.target.name]: event.target.value })
+        setStateObservation({ ...stateObservation, [event.target.name]: event.target.value })
     }
     const handleInputChangeSelectOM = (event: ChangeEvent<HTMLSelectElement>) => {
-        itensOM.forEach((element) => {
-            console.log(element)
-        });
-        
-        setState({ ...state, [event.target.name]: {
-            id: itensOM[event.target.selectedIndex].id, 
+        // itensOM.forEach((element) => {
+        //     console.log(element)
+        // });
+        // console.log(event.target.value)
+        setStateObservation({ ...stateObservation, [event.target.name]: {
+            // id: itensOM[event.target.selectedIndex].id, 
             name: itensOM[event.target.selectedIndex].name
         } })
     }
     const handleInputChangeSelectObservador = (event: ChangeEvent<HTMLSelectElement>) => {
-        setState({ ...state, [event.target.name]: {id: itensUser[event.target.selectedIndex].id, username: itensUser[event.target.selectedIndex].username} })
+        setStateObservation({ ...stateObservation, [event.target.name]: {
+            id: itensUser[event.target.selectedIndex].id, 
+            name: itensUser[event.target.selectedIndex].username
+        } })
     }
-    const handleFormEvent = (event: FormEvent<HTMLFormElement>) => {
-        // const { name } = event.target
-        // const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-        // setState({ ...state, [name]: value })
-    };
     const fields = [
         // { key: 'mimi', label: 'mimi', _style: { width: '3%' } },
         // { key: 'ddddddd', label: 'ddddddd', _style: { width: '3%' } },
@@ -115,7 +113,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="mimi"
                                         required
-                                        value={state.mimi}
+                                        value={stateObservation.mimi}
                                         onChange={handleInputChange}
                                         name="mimi"
                                     />
@@ -123,7 +121,7 @@ export const ObservationList = () => {
                                         id="mimi"
                                         //required
                                         defaultValue={'DEFAULT'}
-                                        value={state.mimi}
+                                        value={stateObservation.mimi}
                                         // onChange={handleInputChange}
                                         name="mimi">
                                         <option value="AAXX">SYNOP</option>
@@ -140,7 +138,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="mjmj"
                                         required
-                                        value={state.mjmj}
+                                        value={stateObservation.mjmj}
                                         onChange={handleInputChange}
                                         name="mjmj"
                                     />
@@ -159,7 +157,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ddddddd"
                                         required
-                                        value={state.ddddddd}
+                                        value={stateObservation.ddddddd}
                                         onChange={handleInputChange}
                                         name="ddddddd"
                                     />
@@ -178,7 +176,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="a1"
                                         //required
-                                        value={state.a1}
+                                        value={stateObservation.a1}
                                         onChange={handleInputChange}
                                         name="a1"
                                     />
@@ -192,7 +190,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="bw"
                                         //required
-                                        value={state.bw}
+                                        value={stateObservation.bw}
                                         onChange={handleInputChange}
                                         name="bw"
                                     />
@@ -206,7 +204,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="nbnbnb"
                                         //required
-                                        value={state.nbnbnb}
+                                        value={stateObservation.nbnbnb}
                                         onChange={handleInputChange}
                                         name="nbnbnb"
                                     />
@@ -225,7 +223,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="yy"
                                         required
-                                        value={state.yy}
+                                        value={stateObservation.yy}
                                         onChange={handleInputChange}
                                         name="yy"
                                     />
@@ -239,7 +237,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="gg"
                                         required
-                                        value={state.gg}
+                                        value={stateObservation.gg}
                                         onChange={handleInputChange}
                                         name="gg"
                                     />
@@ -253,7 +251,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="iw"
                                         required
-                                        value={state.iw}
+                                        value={stateObservation.iw}
                                         onChange={handleInputChange}
                                         name="iw"
                                     />
@@ -272,7 +270,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ii"
                                         required
-                                        value={state.ii}
+                                        value={stateObservation.ii}
                                         onChange={handleInputChange}
                                         name="ii"
                                     />
@@ -286,7 +284,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="iii"
                                         required
-                                        value={state.iii}
+                                        value={stateObservation.iii}
                                         onChange={handleInputChange}
                                         name="iii"
                                     />
@@ -307,7 +305,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="lalala"
                                         //required
-                                        value={state.lalala}
+                                        value={stateObservation.lalala}
                                         onChange={handleInputChange}
                                         name="lalala"
                                     // onInput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')"
@@ -329,7 +327,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="qc"
                                         //required
-                                        value={state.qc}
+                                        value={stateObservation.qc}
                                         onChange={handleInputChange}
                                         name="qc"
                                     />
@@ -343,7 +341,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="lolololo"
                                         //required
-                                        value={state.lolololo}
+                                        value={stateObservation.lolololo}
                                         onChange={handleInputChange}
                                         name="lolololo"
                                     />
@@ -362,7 +360,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ir"
                                         required
-                                        value={state.ir}
+                                        value={stateObservation.ir}
                                         onChange={handleInputChange}
                                         name="ir"
                                     />
@@ -376,7 +374,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ix"
                                         required
-                                        value={state.ix}
+                                        value={stateObservation.ix}
                                         onChange={handleInputChange}
                                         name="ix"
                                     />
@@ -390,7 +388,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="h"
                                         required
-                                        value={state.h}
+                                        value={stateObservation.h}
                                         onChange={handleInputChange}
                                         name="h"
                                     />
@@ -405,7 +403,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="vv"
                                         required
-                                        value={state.vv}
+                                        value={stateObservation.vv}
                                         onChange={handleInputChange}
                                         name="vv"
                                     />
@@ -424,7 +422,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="n"
                                         required
-                                        value={state.n}
+                                        value={stateObservation.n}
                                         onChange={handleInputChange}
                                         name="n"
                                     />
@@ -438,7 +436,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="dd"
                                         required
-                                        value={state.dd}
+                                        value={stateObservation.dd}
                                         onChange={handleInputChange}
                                         name="dd"
                                     />
@@ -452,7 +450,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ff"
                                         required
-                                        value={state.ff}
+                                        value={stateObservation.ff}
                                         onChange={handleInputChange}
                                         name="ff"
                                     />
@@ -473,7 +471,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="fff"
                                         //required
-                                        value={state.fff}
+                                        value={stateObservation.fff}
                                         onChange={handleInputChange}
                                         name="fff"
                                     />
@@ -492,7 +490,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="sn1_1"
                                         required
-                                        value={state.sn1_1}
+                                        value={stateObservation.sn1_1}
                                         onChange={handleInputChange}
                                         name="sn1_1"
                                     />
@@ -506,7 +504,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ttt"
                                         required
-                                        value={state.ttt}
+                                        value={stateObservation.ttt}
                                         onChange={handleInputChange}
                                         name="ttt"
                                     />
@@ -525,7 +523,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="sn2_1"
                                         //required
-                                        value={state.sn2_1}
+                                        value={stateObservation.sn2_1}
                                         onChange={handleInputChange}
                                         name="sn2_1"
                                     />
@@ -539,7 +537,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="tdtdtd"
                                         //required
-                                        value={state.tdtdtd}
+                                        value={stateObservation.tdtdtd}
                                         onChange={handleInputChange}
                                         name="tdtdtd"
                                     />
@@ -558,7 +556,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="p0p0p0p0"
                                         //required
-                                        value={state.p0p0p0p0}
+                                        value={stateObservation.p0p0p0p0}
                                         onChange={handleInputChange}
                                         name="p0p0p0p0"
                                     />
@@ -579,7 +577,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="pppp"
                                         required
-                                        value={state.pppp}
+                                        value={stateObservation.pppp}
                                         onChange={handleInputChange}
                                         name="pppp"
                                     />
@@ -598,7 +596,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="a3"
                                         //required
-                                        value={state.a3}
+                                        value={stateObservation.a3}
                                         onChange={handleInputChange}
                                         name="a3"
                                     />
@@ -612,7 +610,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="hhh"
                                         //required
-                                        value={state.hhh}
+                                        value={stateObservation.hhh}
                                         onChange={handleInputChange}
                                         name="hhh"
                                     />
@@ -631,7 +629,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="a"
                                         // //required
-                                        value={state.a}
+                                        value={stateObservation.a}
                                         onChange={handleInputChange}
                                         name="a"
                                     />
@@ -645,7 +643,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ppp"
                                         // //required
-                                        value={state.ppp}
+                                        value={stateObservation.ppp}
                                         onChange={handleInputChange}
                                         name="ppp"
                                     />
@@ -664,7 +662,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="rrr"
                                         //required
-                                        value={state.rrr}
+                                        value={stateObservation.rrr}
                                         onChange={handleInputChange}
                                         name="rrr"
                                     />
@@ -678,7 +676,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="tr"
                                         //required
-                                        value={state.tr}
+                                        value={stateObservation.tr}
                                         onChange={handleInputChange}
                                         name="tr"
                                     />
@@ -697,7 +695,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ww"
                                         required
-                                        value={state.ww}
+                                        value={stateObservation.ww}
                                         onChange={handleInputChange}
                                         name="ww"
                                     />
@@ -711,7 +709,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="w1w2"
                                         required
-                                        value={state.w1w2}
+                                        value={stateObservation.w1w2}
                                         onChange={handleInputChange}
                                         name="w1w2"
                                     />
@@ -725,7 +723,7 @@ export const ObservationList = () => {
                                     className="form-control"
                                     id="w1"
                                     required
-                                    value={state.w1}
+                                    value={stateObservation.w1}
                                     onChange={handleInputChange}
                                     name="w1"
                                 />
@@ -739,7 +737,7 @@ export const ObservationList = () => {
                                     className="form-control"
                                     id="w2"
                                     required
-                                    value={state.w2}
+                                    value={stateObservation.w2}
                                     onChange={handleInputChange}
                                     name="w2"
                                 />
@@ -760,7 +758,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="wawa"
                                         //required
-                                        value={state.wawa}
+                                        value={stateObservation.wawa}
                                         onChange={handleInputChange}
                                         name="wawa"
                                     />
@@ -774,7 +772,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="wa1"
                                         //required
-                                        value={state.wa1}
+                                        value={stateObservation.wa1}
                                         onChange={handleInputChange}
                                         name="wa1"
                                     />
@@ -788,7 +786,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="wa2"
                                         //required
-                                        value={state.wa2}
+                                        value={stateObservation.wa2}
                                         onChange={handleInputChange}
                                         name="wa2"
                                     />
@@ -807,7 +805,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="nh"
                                         //required
-                                        value={state.nh}
+                                        value={stateObservation.nh}
                                         onChange={handleInputChange}
                                         name="nh"
                                     />
@@ -821,7 +819,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="cl"
                                         //required
-                                        value={state.cl}
+                                        value={stateObservation.cl}
                                         onChange={handleInputChange}
                                         name="cl"
                                     />
@@ -835,7 +833,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="cm"
                                         //required
-                                        value={state.cm}
+                                        value={stateObservation.cm}
                                         onChange={handleInputChange}
                                         name="cm"
                                     />
@@ -849,7 +847,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ch"
                                         //required
-                                        value={state.ch}
+                                        value={stateObservation.ch}
                                         onChange={handleInputChange}
                                         name="ch"
                                     />
@@ -868,7 +866,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="gggg"
                                         //required
-                                        value={state.gggg}
+                                        value={stateObservation.gggg}
                                         onChange={handleInputChange}
                                         name="gggg"
                                     />
@@ -887,7 +885,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ds"
                                         //required
-                                        value={state.ds}
+                                        value={stateObservation.ds}
                                         onChange={handleInputChange}
                                         name="ds"
                                     />
@@ -901,7 +899,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="vs"
                                         //required
-                                        value={state.vs}
+                                        value={stateObservation.vs}
                                         onChange={handleInputChange}
                                         name="vs"
                                     />
@@ -920,7 +918,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ss"
                                         //required
-                                        value={state.ss}
+                                        value={stateObservation.ss}
                                         onChange={handleInputChange}
                                         name="ss"
                                     />
@@ -934,7 +932,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="twtwtw"
                                         //required
-                                        value={state.twtwtw}
+                                        value={stateObservation.twtwtw}
                                         onChange={handleInputChange}
                                         name="twtwtw"
                                     />
@@ -955,7 +953,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="pwapwa"
                                         //required
-                                        value={state.pwapwa}
+                                        value={stateObservation.pwapwa}
                                         onChange={handleInputChange}
                                         name="pwapwa"
                                     />
@@ -969,7 +967,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="hwahwa"
                                         //required
-                                        value={state.hwahwa}
+                                        value={stateObservation.hwahwa}
                                         onChange={handleInputChange}
                                         name="hwahwa"
                                     />
@@ -988,7 +986,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="pwpw"
                                         //required
-                                        value={state.pwpw}
+                                        value={stateObservation.pwpw}
                                         onChange={handleInputChange}
                                         name="pwpw"
                                     />
@@ -1002,7 +1000,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="hwhw"
                                         //required
-                                        value={state.hwhw}
+                                        value={stateObservation.hwhw}
                                         onChange={handleInputChange}
                                         name="hwhw"
                                     />
@@ -1021,7 +1019,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="dw1dw1"
                                         //required
-                                        value={state.dw1dw1}
+                                        value={stateObservation.dw1dw1}
                                         onChange={handleInputChange}
                                         name="dw1dw1"
                                     />
@@ -1035,7 +1033,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="dw2dw2"
                                         //required
-                                        value={state.dw2dw2}
+                                        value={stateObservation.dw2dw2}
                                         onChange={handleInputChange}
                                         name="dw2dw2"
                                     />
@@ -1056,7 +1054,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="pw1pw1"
                                         //required
-                                        value={state.pw1pw1}
+                                        value={stateObservation.pw1pw1}
                                         onChange={handleInputChange}
                                         name="pw1pw1"
                                     />
@@ -1070,7 +1068,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="hw1hw1"
                                         //required
-                                        value={state.hw1hw1}
+                                        value={stateObservation.hw1hw1}
                                         onChange={handleInputChange}
                                         name="hw1hw1"
                                     />
@@ -1089,7 +1087,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="pw2pw2"
                                         //required
-                                        value={state.pw2pw2}
+                                        value={stateObservation.pw2pw2}
                                         onChange={handleInputChange}
                                         name="pw2pw2"
                                     />
@@ -1103,7 +1101,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="hw2hw2"
                                         //required
-                                        value={state.hw2hw2}
+                                        value={stateObservation.hw2hw2}
                                         onChange={handleInputChange}
                                         name="hw2hw2"
                                     />
@@ -1122,7 +1120,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="is"
                                         //required
-                                        value={state.is}
+                                        value={stateObservation.is}
                                         onChange={handleInputChange}
                                         name="is"
                                     />
@@ -1136,7 +1134,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="eses"
                                         //required
-                                        value={state.eses}
+                                        value={stateObservation.eses}
                                         onChange={handleInputChange}
                                         name="eses"
                                     />
@@ -1150,7 +1148,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="rs"
                                         //required
-                                        value={state.rs}
+                                        value={stateObservation.rs}
                                         onChange={handleInputChange}
                                         name="rs"
                                     />
@@ -1171,7 +1169,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="hwahwahwa"
                                         //required
-                                        value={state.hwahwahwa}
+                                        value={stateObservation.hwahwahwa}
                                         onChange={handleInputChange}
                                         name="hwahwahwa"
                                     />
@@ -1190,7 +1188,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="sw"
                                         //required
-                                        value={state.sw}
+                                        value={stateObservation.sw}
                                         onChange={handleInputChange}
                                         name="sw"
                                     />
@@ -1204,7 +1202,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="tbtbtb"
                                         //required
-                                        value={state.tbtbtb}
+                                        value={stateObservation.tbtbtb}
                                         onChange={handleInputChange}
                                         name="tbtbtb"
                                     />
@@ -1223,7 +1221,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ci"
                                         //required
-                                        value={state.ci}
+                                        value={stateObservation.ci}
                                         onChange={handleInputChange}
                                         name="ci"
                                     />
@@ -1237,7 +1235,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="si"
                                         //required
-                                        value={state.si}
+                                        value={stateObservation.si}
                                         onChange={handleInputChange}
                                         name="si"
                                     />
@@ -1251,7 +1249,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="bi"
                                         //required
-                                        value={state.bi}
+                                        value={stateObservation.bi}
                                         onChange={handleInputChange}
                                         name="bi"
                                     />
@@ -1265,7 +1263,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="di"
                                         //required
-                                        value={state.di}
+                                        value={stateObservation.di}
                                         onChange={handleInputChange}
                                         name="di"
                                     />
@@ -1279,7 +1277,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="zi"
                                         //required
-                                        value={state.zi}
+                                        value={stateObservation.zi}
                                         onChange={handleInputChange}
                                         name="zi"
                                     />
@@ -1298,7 +1296,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="sn1_3"
                                         //required
-                                        value={state.sn1_3}
+                                        value={stateObservation.sn1_3}
                                         onChange={handleInputChange}
                                         name="sn1_3"
                                     />
@@ -1312,7 +1310,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="txtxtx"
                                         //required
-                                        value={state.txtxtx}
+                                        value={stateObservation.txtxtx}
                                         onChange={handleInputChange}
                                         name="txtxtx"
                                     />
@@ -1333,7 +1331,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="sn2_3"
                                         //required
-                                        value={state.sn2_3}
+                                        value={stateObservation.sn2_3}
                                         onChange={handleInputChange}
                                         name="sn2_3"
                                     />
@@ -1347,7 +1345,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="tntntn"
                                         //required
-                                        value={state.tntntn}
+                                        value={stateObservation.tntntn}
                                         onChange={handleInputChange}
                                         name="tntntn"
                                     />
@@ -1366,7 +1364,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ind89"
                                         //required
-                                        value={state.ind89}
+                                        value={stateObservation.ind89}
                                         onChange={handleInputChange}
                                         name="ind89"
                                     />
@@ -1380,7 +1378,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="p24p24p24"
                                         //required
-                                        value={state.p24p24p24}
+                                        value={stateObservation.p24p24p24}
                                         onChange={handleInputChange}
                                         name="p24p24p24"
                                     />
@@ -1401,7 +1399,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="ichw"
                                         //required
-                                        value={state.ichw}
+                                        value={stateObservation.ichw}
                                         onChange={handleInputChange}
                                         name="ichw"
                                     />
@@ -1415,7 +1413,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="icm"
                                         //required
-                                        value={state.icm}
+                                        value={stateObservation.icm}
                                         onChange={handleInputChange}
                                         name="icm"
                                     />
@@ -1429,7 +1427,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="cs"
                                         //required
-                                        value={state.cs}
+                                        value={stateObservation.cs}
                                         onChange={handleInputChange}
                                         name="cs"
                                     />
@@ -1443,7 +1441,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="icf"
                                         //required
-                                        value={state.icf}
+                                        value={stateObservation.icf}
                                         onChange={handleInputChange}
                                         name="icf"
                                     />
@@ -1457,7 +1455,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="icp"
                                         //required
-                                        value={state.icp}
+                                        value={stateObservation.icp}
                                         onChange={handleInputChange}
                                         name="icp"
                                     />
@@ -1471,7 +1469,7 @@ export const ObservationList = () => {
                                         className="form-control"
                                         id="icq"
                                         //required
-                                        value={state.icq}
+                                        value={stateObservation.icq}
                                         onChange={handleInputChange}
                                         name="icq"
                                     />
@@ -1498,17 +1496,17 @@ export const ObservationList = () => {
                     <label htmlFor="user">User</label>
                 </div>
                 <button onClick={resetItem} className="w-20 btn btn-secondary">Reset</button>
-                <button onClick={createItem} className="w-20 btn btn-secondary" disabled={state.id != ""} >Create</button>
+                <button onClick={createItem} className="w-20 btn btn-secondary" disabled={stateObservation.id != ""} >Create</button>
                 <button onClick={retrieveItem} className="w-20 btn btn-secondary" >Retrieve</button>
-                <button onClick={updateItem} className="w-20 btn btn-primary" disabled={state.id == ""} >Update</button>
-                <button onClick={deleteItem} className="w-20 btn btn-danger" disabled={state.id == ""} >Delete</button>
-                {loading && <>Loading...</>}
-                {error != null && JSON.stringify(error)}
+                <button onClick={updateItem} className="w-20 btn btn-primary" disabled={stateObservation.id == ""} >Update</button>
+                <button onClick={deleteItem} className="w-20 btn btn-danger" disabled={stateObservation.id == ""} >Delete</button>
+                {loadingObservation && <>Loading...</>}
+                {errorObservation != null && JSON.stringify(errorObservation)}
             </article>
             <ObservationUpload />
             <article>
             <CDataTable
-                items={itens}
+                items={itensObservation}
                 fields={fields}
                 columnFilter
                 tableFilter={{ label: 'Buscar', placeholder: 'digite aqui para buscar' }}

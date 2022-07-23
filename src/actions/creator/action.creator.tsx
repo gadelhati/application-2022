@@ -1,16 +1,15 @@
 import { Dispatch } from "redux";
-import { crud } from "../type/action.type.observation";
+import { createStart, createSuccess, createError, createAllStart, createAllSuccess, createAllError, retrieveAllStart, retrieveAllSuccess, retrieveAllError, retrieveStart, retrieveSuccess, retrieveError, updateStart, updateSuccess, updateError, deleteStart, deleteSuccess, deleteError, deleteAllStart, deleteAllSuccess, deleteAllError } from "../type/action.type";
 import { constants } from "../../assets/types/constants";
-import { Observation } from "../../components/observation/observation.interface"
-import { create, createAll, retrieve, getRetrieve, getAll, update, remove, removeAll } from "../../services/service.observation"
+import { create, createAll, retrieve, getRetrieve, getAll, update, remove, removeAll } from "../../services/service"
 
-export const createAction = (object: Observation) => {
-    return async (dispatch: Dispatch<crud>) => {
+export const createAction = <T extends {}>(url: string, object: T) => {
+    return async (dispatch: Dispatch<createStart | createSuccess<T> | createError>) => {
         dispatch({
             type: constants.CREATE_START
         });
         try {
-            const { data } = await create(object);
+            const { data } = await create<T>(url, object);
             dispatch({
                 type: constants.CREATE_SUCCESS,
                 payload: data
@@ -29,13 +28,13 @@ export const createAction = (object: Observation) => {
     }
 }
 
-export const createAllAction = (object: Observation[]) => {
-    return async (dispatch: Dispatch<crud>) => {
+export const createAllAction = <T extends {}>(url: string, object: T) => {
+    return async (dispatch: Dispatch<createAllStart | createAllSuccess<T> | createAllError>) => {
         dispatch({
             type: constants.CREATE_ALL_START
         });
         try {
-            const { data } = await createAll(object);
+            const { data } = await createAll<T>(url, object);
             dispatch({
                 type: constants.CREATE_ALL_SUCCESS,
                 payload: data
@@ -54,13 +53,39 @@ export const createAllAction = (object: Observation[]) => {
     }
 }
 
-export const retrieveAllAction = () => {
-    return async (dispatch: any) => {
+export const retrieveAction = <T extends {}>(url: string, id: string) => {
+    return async (dispatch: Dispatch<retrieveStart | retrieveSuccess<T> | retrieveError>) => {
+        dispatch({
+            type: constants.RETRIEVE_START
+        });
+        try {
+            const { data } = await retrieve<T>(url, id)
+            dispatch({
+                type: constants.RETRIEVE_SUCCESS,
+                payload: data
+            });
+        } catch(error: any) {
+            if(error.response.data.errors != undefined){
+                error.response?.data.errors.map((element: any) => { error = element.field + ": " + element.defaultMessage })
+            } else {
+                error = error.response.data.error
+            }
+            dispatch({
+                type: constants.RETRIEVE_ERROR,
+                payload: error
+            });
+
+        }
+    }
+}
+
+export const retrieveAllAction = <T extends {}>(url: string) => {
+    return async (dispatch: Dispatch<retrieveAllStart | retrieveAllSuccess<T> | retrieveAllError>) => {
         dispatch({
             type: constants.RETRIEVE_ALL_START
         });
         try {
-            const { data } = await getRetrieve()
+            const { data } = await getRetrieve<T>(url)
             dispatch({
                 type: constants.RETRIEVE_ALL_SUCCESS,
                 payload: data
@@ -80,13 +105,13 @@ export const retrieveAllAction = () => {
     }
 }
 
-export const updateAction = (id: string, object: Observation) => {
-    return async (dispatch: Dispatch<crud>) => {
+export const updateAction = <T extends {}>(url: string, id: string, object: T) => {
+    return async (dispatch: Dispatch<updateStart | updateSuccess<T> | updateError>) => {
         dispatch({
             type: constants.UPDATE_START
         });
         try {
-            const { data } = await update(id, object);
+            const { data } = await update(url , id, object);
             dispatch({
                 type: constants.UPDATE_SUCCESS,
                 payload: data
@@ -105,13 +130,13 @@ export const updateAction = (id: string, object: Observation) => {
     }
 }
 
-export const deleteAction = (id: string) => {
-    return async (dispatch: Dispatch<crud>) => {
+export const deleteAction = <T extends {}>(url: string, id: string) => {
+    return async (dispatch: Dispatch<deleteStart | deleteSuccess<T> | deleteError>) => {
         dispatch({
             type: constants.DELETE_START
         });
         try {
-            const { data } = await remove(id);
+            const { data } = await remove(url, id);
             dispatch({
                 type: constants.DELETE_SUCCESS,
                 payload: data
@@ -129,3 +154,15 @@ export const deleteAction = (id: string) => {
         }
     }
 }
+
+// export const findTutorialsByTitle = (title) => async (dispatch) => {
+//     try {
+//       const res = await TutorialDataService.findByTitle(title)
+//       dispatch({
+//         type: RETRIEVE_TUTORIALS,
+//         payload: res.data,
+//       });
+//     } catch (err) {
+//       console.log(err)
+//     }
+//   }

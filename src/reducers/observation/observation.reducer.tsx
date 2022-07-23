@@ -1,10 +1,10 @@
-import { stateObservation } from "./observation.state";
 import { initialState } from "./observation.state.initial";
 import { constants } from "../../assets/types/constants"
-import { crud } from "../../actions.generics/type/action.type.observation"
+import { createStart, createSuccess, createError, createAllStart, createAllSuccess, createAllError, retrieveAllStart, retrieveAllSuccess, retrieveAllError, retrieveStart, retrieveSuccess, retrieveError, updateStart, updateSuccess, updateError, deleteStart, deleteSuccess, deleteError } from "../../actions/type/action.type"
 import { Observation } from "../../components/observation/observation.interface";
+import { stateReducer } from "../reducer.state";
 
-export const observationReducer = (state: stateObservation = initialState, action: crud): stateObservation => {
+export const observationReducer = (state: stateReducer<Observation> = initialState, action: createStart | createSuccess<Observation> | createError | createAllStart | createAllSuccess<Observation> | createAllError | retrieveAllStart | retrieveAllSuccess<Observation> | retrieveAllError | retrieveStart | retrieveSuccess<Observation> | retrieveError | updateStart | updateSuccess<Observation> | updateError | deleteStart | deleteSuccess<Observation> | deleteError ): stateReducer<Observation> => {
     switch (action.type) {
         case constants.CREATE_START:
             return { ...state, error: null, loading: true }

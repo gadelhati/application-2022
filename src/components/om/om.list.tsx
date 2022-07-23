@@ -2,7 +2,7 @@ import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { CDataTable } from '@coreui/react';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.om';
+import { createAction, createAllAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/creator/action.creator';
 import { OM } from "./om.interface";
 import { initialOM } from './om.initial';
 import '../list.css'
@@ -22,19 +22,19 @@ export const OMList = () => {
         setState(initialOM)
     }
     const createItem = () => {
-        dispatch(createAction(state))
+        dispatch(createAction<OM>('om', state))
         resetItem()
     }
     const retrieveItem = () => {
         resetItem()
-        dispatch(retrieveAllAction())
+        dispatch(retrieveAllAction('om'))
     }
     const updateItem = () => {
-        dispatch(updateAction(state.id, state))
+        dispatch(updateAction('om', state.id, state))
         resetItem()
     }
     const deleteItem = () => {
-        dispatch(deleteAction(state.id))
+        dispatch(deleteAction('om', state.id))
         resetItem()
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {

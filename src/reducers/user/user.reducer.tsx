@@ -1,14 +1,15 @@
-import { stateUser } from "./user.state";
 import { initialState } from "./user.state.initial";
 import { constants } from "../../assets/types/constants"
-import { crud } from "../../actions.generics/type/action.type.user"
+import { createStart, createSuccess, createError, createAllStart, createAllSuccess, createAllError, retrieveAllStart, retrieveAllSuccess, retrieveAllError, retrieveStart, retrieveSuccess, retrieveError, updateStart, updateSuccess, updateError, deleteStart, deleteSuccess, deleteError } from "../../actions/type/action.type"
+import { stateReducer } from "../reducer.state";
+import { User } from "../../components/user/user.interface";
 
-export const userReducer = (state: stateUser = initialState, action: crud): stateUser => {
+export const userReducer = (state: stateReducer<User> = initialState, action: createStart | createSuccess<User> | createError | createAllStart | createAllSuccess<User> | createAllError | retrieveAllStart | retrieveAllSuccess<User> | retrieveAllError | retrieveStart | retrieveSuccess<User> | retrieveError | updateStart | updateSuccess<User> | updateError | deleteStart | deleteSuccess<User> | deleteError ): stateReducer<User> => {
     switch (action.type) {
         case constants.CREATE_START:
             return { ...state, error: null, loading: true }
         case constants.CREATE_SUCCESS:
-            return { ...state, error: null, loading: false, itens: [...state.itens, action.payload], item: action.payload }
+            return { ...state, error: null, loading: false, itens: [...state.itens as User[], action.payload as User], item: action.payload as User }
         case constants.CREATE_ERROR:
             return { ...state, error: action.payload, loading: false }
 

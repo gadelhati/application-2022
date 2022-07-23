@@ -1,10 +1,7 @@
 import { api } from "../api/api"
 import { setUser, removeToken } from "./service.token"
 import { Auth } from "../components/auth/auth.interface"
-
-export const signup = (data: Auth) => {
-  return api.post<Auth>(`/user/signup`, data)
-}
+import { User } from "../components/user/user.interface"
 
 export const signin = async (data: Auth) => {
   const response = await api.post<Auth>(`/user/signin`, data)
@@ -12,6 +9,10 @@ export const signin = async (data: Auth) => {
     setUser(response.data)
   }
   return response
+}
+
+export const changePassword = (id: string, data: User) => {
+  return api.put<User>(`/user/changePassword/${id}`, data)
 }
 
 export const logout = () => {

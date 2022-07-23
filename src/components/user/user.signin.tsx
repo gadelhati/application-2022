@@ -1,14 +1,17 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { signupAction, signinAction, logoutAction, refreshTokenAction } from '../../actions.generics/creator/action.creator.auth'
+import { signinAction, logoutAction, refreshTokenAction } from '../../actions/creator/action.creator.auth'
 import { User } from "./user.interface";
+import { Auth } from "../auth/auth.interface";
 import { initialUser } from './user.initial';
+import { initialAuth } from '../auth/auth.initial';
 import '../list.css'
 
 export const UserSignin = () => {
     const dispatch = useDispatch();
     const [state, setState] = useState<User>(initialUser)
+    const [stateAuth, setStateAuth] = useState<Auth>(initialAuth)
     const { loading, error, itens, item } = useTypedSelector((state) => state.users);
 
     useEffect(() => {
@@ -18,7 +21,7 @@ export const UserSignin = () => {
         setState(initialUser)
     }
     const signinItem = () => {
-        dispatch(signinAction(state.username, state.password))
+        dispatch(signinAction(stateAuth))
     }
     const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { name } = event.target

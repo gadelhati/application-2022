@@ -1,15 +1,15 @@
-import { initialState } from "./om.state.initial";
-import { constants } from "../../assets/types/constants"
-import { createStart, createSuccess, createError, createAllStart, createAllSuccess, createAllError, retrieveAllStart, retrieveAllSuccess, retrieveAllError, retrieveStart, retrieveSuccess, retrieveError, updateStart, updateSuccess, updateError, deleteStart, deleteSuccess, deleteError } from "../../actions/type/action.type"
-import { stateReducer } from "../reducer.state";
-import { OM } from "../../components/om/om.interface";
+import { initialState } from "./reducer.initial";
+import { constants } from "../assets/types/constants"
+import { createStart, createSuccess, createError, createAllStart, createAllSuccess, createAllError, retrieveAllStart, retrieveAllSuccess, retrieveAllError, retrieveStart, retrieveSuccess, retrieveError, updateStart, updateSuccess, updateError, deleteStart, deleteSuccess, deleteError } from "../actions/type/action.type"
+import { stateReducer } from "./reducer.state";
+import { OM } from "../components/om/om.interface";
 
-export const omReducer = (state: stateReducer<OM> = initialState, action: createStart | createSuccess<OM> | createError | createAllStart | createAllSuccess<OM> | createAllError | retrieveAllStart | retrieveAllSuccess<OM> | retrieveAllError | retrieveStart | retrieveSuccess<OM> | retrieveError | updateStart | updateSuccess<OM> | updateError | deleteStart | deleteSuccess<OM> | deleteError ): stateReducer<OM> => {
+export const rReducer = <T extends {}>(state: stateReducer<T> = initialState, action: createStart | createSuccess<T> | createError | createAllStart | createAllSuccess<T> | createAllError | retrieveAllStart | retrieveAllSuccess<T> | retrieveAllError | retrieveStart | retrieveSuccess<T> | retrieveError | updateStart | updateSuccess<T> | updateError | deleteStart | deleteSuccess<T> | deleteError ): stateReducer<T> => {
     switch (action.type) {
         case constants.CREATE_START:
             return { ...state, error: null, loading: true }
         case constants.CREATE_SUCCESS:
-            return { ...state, error: null, loading: false, itens: [...state.itens as OM[], action.payload as OM], item: action.payload as OM }
+            return { ...state, error: null, loading: false, itens: [...state.itens as T[], action.payload as T], item: action.payload as T }
         case constants.CREATE_ERROR:
             return { ...state, error: action.payload, loading: false }
 

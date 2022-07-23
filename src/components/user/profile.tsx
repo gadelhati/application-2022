@@ -1,8 +1,9 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { createAction, retrieveAllAction, updateAction, deleteAction, changePasswordAction } from '../../actions.generics/creator/action.creator.user';
-import { logoutAction } from '../../actions.generics/creator/action.creator.auth';
+import { createAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/creator/action.creator';
+import { changePasswordAction } from '../../actions/creator/action.creator.auth';
+import { logoutAction } from '../../actions/creator/action.creator.auth';
 import { User } from "./user.interface";
 import { initialUser } from './user.initial';
 import { getUserName, getLocalAccessToken, getId, getEmail, getUser } from "../../services/service.token"
@@ -27,7 +28,7 @@ export const Profile = () => {
     }
     const retrieveItem = () => {
         resetItem()
-        dispatch(retrieveAllAction())
+        dispatch(retrieveAllAction('user'))
     }
     const logoutItem = () => {
         dispatch(logoutAction())

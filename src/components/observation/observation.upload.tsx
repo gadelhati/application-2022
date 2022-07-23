@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from "../../assets/hook/useTypeSelector";
-import { createAction, createAllAction, retrieveAllAction, updateAction, deleteAction } from '../../actions.generics/creator/action.creator.observation';
+import { createAction, createAllAction, retrieveAllAction, updateAction, deleteAction } from '../../actions/creator/action.creator';
 import { Observation } from "./observation.interface";
 import { initialObservation } from './observation.initial';
 import '../list.css'
@@ -19,7 +19,7 @@ export const ObservationUpload = () => {
         console.log(state)
     }, [state])
     const createAllItems = () => {
-        dispatch(createAllAction(state))
+        dispatch(createAllAction<Observation>('observation', state))
     }
     const handleInputFile = (event: ChangeEvent<HTMLInputElement>) => {
         const observations : Observation[] = []

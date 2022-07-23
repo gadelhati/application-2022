@@ -1,7 +1,8 @@
 import { initialObservation } from "../../components/observation/observation.initial";
-import { stateObservation } from "./observation.state";
+import { Observation } from "../../components/observation/observation.interface";
+import { stateReducer } from "../reducer.state";
 
-export const initialState: stateObservation = {
+export const initialState: stateReducer<Observation> = {
     loading: false,
     error: null,
     item: initialObservation,
