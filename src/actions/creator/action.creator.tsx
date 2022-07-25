@@ -111,7 +111,7 @@ export const updateAction = <T extends {}>(url: string, id: string, object: T) =
             type: constants.UPDATE_START
         });
         try {
-            const { data } = await update(url , id, object);
+            const { data } = await update<T>(url , id, object);
             dispatch({
                 type: constants.UPDATE_SUCCESS,
                 payload: data
@@ -136,7 +136,7 @@ export const deleteAction = <T extends {}>(url: string, id: string) => {
             type: constants.DELETE_START
         });
         try {
-            const { data } = await remove(url, id);
+            const { data } = await remove<T>(url, id);
             dispatch({
                 type: constants.DELETE_SUCCESS,
                 payload: data

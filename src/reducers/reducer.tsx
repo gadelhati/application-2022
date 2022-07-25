@@ -16,7 +16,7 @@ export const rReducer = <T extends {}>(state: stateReducer<T> = initialState, ac
         case constants.RETRIEVE_ALL_START:
             return { ...state, error: null, loading: true }
         case constants.RETRIEVE_ALL_SUCCESS:
-            return { ...state, error: null, loading: false, itens: action.payload }
+            return { ...state, error: null, loading: false, itens: action.payload as T[] }
         case constants.RETRIEVE_ALL_ERROR:
             return { ...state, error: action.payload, loading: false }
 

@@ -23,7 +23,7 @@ export const observationReducer = (state: stateReducer<Observation> = initialSta
         case constants.RETRIEVE_ALL_START:
             return { ...state, error: null, loading: true }
         case constants.RETRIEVE_ALL_SUCCESS:
-            return { ...state, error: null, loading: false, itens: action.payload }
+            return { ...state, error: null, loading: false, itens: action.payload as Observation[] }
         case constants.RETRIEVE_ALL_ERROR:
             return { ...state, error: action.payload, loading: false }
 

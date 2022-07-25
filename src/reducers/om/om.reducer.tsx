@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { initialState } from "./om.state.initial";
 import { constants } from "../../assets/types/constants"
 import { createStart, createSuccess, createError, createAllStart, createAllSuccess, createAllError, retrieveAllStart, retrieveAllSuccess, retrieveAllError, retrieveStart, retrieveSuccess, retrieveError, updateStart, updateSuccess, updateError, deleteStart, deleteSuccess, deleteError } from "../../actions/type/action.type"
@@ -16,7 +17,7 @@ export const omReducer = (state: stateReducer<OM> = initialState, action: create
         case constants.RETRIEVE_ALL_START:
             return { ...state, error: null, loading: true }
         case constants.RETRIEVE_ALL_SUCCESS:
-            return { ...state, error: null, loading: false, itens: action.payload }
+            return { ...state, error: null, loading: false, itens: action.payload as OM[] }
         case constants.RETRIEVE_ALL_ERROR:
             return { ...state, error: action.payload, loading: false }
 

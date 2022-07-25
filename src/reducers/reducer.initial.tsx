@@ -3,11 +3,12 @@ import { stateReducer } from "./reducer.state";
 
 // export const initialState = <T extends Observation> (object: T) => {
 // export const initialState = <T extends stateReducer<Observation>> (x: T) => {
-export const initialState: <T extends {}>(oi: T): T = {
+// export const initialState: <T extends {}>(oi: T): T = {
+export const initialState: stateReducer<Observation> = {
     loading: false,
     error: null,
-    item: oi,
-    itens: T[],
+    item: {},
+    itens: [],
 }
 
 // export const identity = <T>(value: T): T => value;
