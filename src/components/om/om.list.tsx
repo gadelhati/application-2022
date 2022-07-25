@@ -69,7 +69,7 @@ export const OMList = () => {
                         aria-label="name"
                         aria-describedby="basic-addon1"
                         type="text"
-                        className="form-control"
+                        className="form-control sm"
                         // className={state.name == "" ? "form-control is-invalid" : "form-control is-valid"}
                         id="name"
                         required
@@ -82,42 +82,45 @@ export const OMList = () => {
                     {/* <div className="invalid-feedback">Looks bad!</div> */}
                 </div>
                 {/* <div className="form-floating">
-                <select className={state.id == "" ? "form-select is-invalid" : "form-select is-valid"} id="floatingSelectGrid" aria-label="Floating label select example">
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-                <label htmlFor="floatingSelectGrid">Works with selects</label>
-            </div> */}
-                <button onClick={resetItem} className="w-20 btn btn-secondary">Reset</button>
-                <button onClick={createItem} className="w-20 btn btn-secondary" disabled={state.id != ""} >Create</button>
-                <button onClick={retrieveItem} className="w-20 btn btn-secondary" >Retrieve</button>
-                <button onClick={updateItem} className="w-20 btn btn-primary" disabled={state.id == ""} >Update</button>
-                <button onClick={deleteItem} className="w-20 btn btn-danger" disabled={state.id == ""} >Delete</button>
+                    <select className={state.id == "" ? "form-select is-invalid" : "form-select is-valid"} id="floatingSelectGrid" aria-label="Floating label select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    <label htmlFor="floatingSelectGrid">Works with selects</label>
+                </div> */}
+                <hr />
+                <button onClick={resetItem} className="w-20 btn btn-secondary button btn-sm">Reset</button>
+                <button onClick={createItem} className="w-20 btn btn-secondary button btn-sm" disabled={state.id != ""} >Create</button>
+                <button onClick={retrieveItem} className="w-20 btn btn-secondary button btn-sm" >Retrieve</button>
+                <button onClick={updateItem} className="w-20 btn btn-primary button btn-sm" disabled={state.id == ""} >Update</button>
+                <button onClick={deleteItem} className="w-20 btn btn-danger button btn-sm" disabled={state.id == ""} >Delete</button>
                 {loading && <>Loading...</>}
                 {error != null && JSON.stringify(error)}
             </article>
-            <CDataTable
-                items={itens}
-                fields={fields}
-                columnFilter
-                tableFilter={{ label: 'Buscar', placeholder: 'digite aqui para buscar' }}
-                // footer
-                itemsPerPageSelect
-                itemsPerPage={5}
-                hover
-                striped
-                sorter
-                pagination
-                scopedSlots={{
-                    'select': (item: any) => (
-                        <td className="align-bottom">
-                            <button onClick={() => selectItem(item)} className="w-100 btn btn-lg btn-secondary">Select</button>
-                        </td>
-                    ),
-                }}
-            />
+            <article>
+                <CDataTable
+                    items={itens}
+                    fields={fields}
+                    columnFilter
+                    tableFilter={{ label: 'Buscar', placeholder: 'digite aqui para buscar' }}
+                    // footer
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    striped
+                    sorter
+                    pagination
+                    scopedSlots={{
+                        'select': (item: any) => (
+                            <td className="align-bottom">
+                                <button onClick={() => selectItem(item)} className="w-20 btn btn-secondary btn-sm">Select</button>
+                            </td>
+                        ),
+                    }}
+                />
+            </article>
         </section>
     );
 }

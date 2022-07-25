@@ -40,11 +40,13 @@ export const Profile = () => {
         <section>
             {getUser() ?
                 <article>
-                    <p><strong>Profile: </strong> {getUserName()}</p>
-                    {/* <p><strong>Token: </strong> {getLocalAccessToken()}</p> */}
-                    <p><strong>Id: </strong> {getId()}</p>
-                    <p><strong>Email: </strong> {getEmail()}</p>
-                    <strong>Authorities: </strong> {getUser().roles.map((role: any, index: any) => <li key={index}>{role}</li>)}
+                    <div className="alert alert-secondary" role="alert">
+                        <p><strong>Profile: </strong> {getUserName()}</p>
+                        {/* <p><strong>Token: </strong> {getLocalAccessToken()}</p> */}
+                        <p><strong>Id: </strong> {getId()}</p>
+                        <p><strong>Email: </strong> {getEmail()}</p>
+                        <strong>Authorities: </strong> {getUser().roles.map((role: any, index: any) => <div key={index}>{role}</div>)}
+                    </div>
                     <div className="form-floating">
                         <input
                             placeholder="PASSWORD"
@@ -60,8 +62,8 @@ export const Profile = () => {
                         />
                         <label htmlFor="password">Password</label>
                     </div>
-                    <button onClick={changePassword} className="w-20 btn btn-primary" >Change Password</button>
-                    <button onClick={logoutItem} className="w-20 btn btn-primary" >Logout</button>
+                    <button onClick={changePassword} className="w-20 btn btn-primary button btn-sm" >Change Password</button>
+                    <button onClick={logoutItem} className="w-20 btn btn-warning button btn-sm" >Logout</button>
                     {loading && <>Loading...</>}
                     {error != null && JSON.stringify(error)}
                 </article>

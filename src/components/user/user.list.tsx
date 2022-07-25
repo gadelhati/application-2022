@@ -130,35 +130,38 @@ export const UserList = () => {
                     />
                     <label className="form-check-label" htmlFor="active">Active</label>
                 </div>
-                <button onClick={resetItem} className="w-20 btn btn-secondary">Reset</button>
-                <button onClick={createItem} className="w-20 btn btn-secondary" disabled={state.id != ""} >Create</button>
-                <button onClick={retrieveItem} className="w-20 btn btn-secondary" >Retrieve</button>
-                <button onClick={updateItem} className="w-20 btn btn-primary" disabled={state.id == ""} >Update</button>
-                <button onClick={deleteItem} className="w-20 btn btn-danger" disabled={state.id == ""} >Delete</button>
+                <hr />
+                <button onClick={resetItem} className="w-20 btn btn-secondary button btn-sm">Reset</button>
+                <button onClick={createItem} className="w-20 btn btn-secondary button btn-sm" disabled={state.id != ""} >Create</button>
+                <button onClick={retrieveItem} className="w-20 btn btn-secondary button btn-sm" >Retrieve</button>
+                <button onClick={updateItem} className="w-20 btn btn-primary button btn-sm" disabled={state.id == ""} >Update</button>
+                <button onClick={deleteItem} className="w-20 btn btn-danger button btn-sm" disabled={state.id == ""} >Delete</button>
                 {loading && <>Loading...</>}
                 {error != null && JSON.stringify(error)}
             </article>
-            <CDataTable
-                items={itens}
-                fields={fields}
-                columnFilter
-                tableFilter={{ label: 'Buscar', placeholder: 'digite aqui para buscar' }}
-                // footer
-                itemsPerPageSelect
-                itemsPerPage={5}
-                hover
-                striped
-                sorter
-                pagination
-                scopedSlots={{
-                    'active': (item: any) => (<td>{item.active ? JSON.stringify(true) : JSON.stringify(false)}</td>),
-                    'select': (item: any) => (
-                        <td className="align-bottom">
-                            <button onClick={() => selectItem(item)} className="w-100 btn btn-lg btn-secondary">Select</button>
-                        </td>
-                    ),
-                }}
-            />
+            <article>
+                <CDataTable
+                    items={itens}
+                    fields={fields}
+                    columnFilter
+                    tableFilter={{ label: 'Buscar', placeholder: 'digite aqui para buscar' }}
+                    // footer
+                    itemsPerPageSelect
+                    itemsPerPage={5}
+                    hover
+                    striped
+                    sorter
+                    pagination
+                    scopedSlots={{
+                        'active': (item: any) => (<td>{item.active ? JSON.stringify(true) : JSON.stringify(false)}</td>),
+                        'select': (item: any) => (
+                            <td className="align-bottom">
+                                <button onClick={() => selectItem(item)} className="w-20 btn btn-secondary btn-sm">Select</button>
+                            </td>
+                        ),
+                    }}
+                />
+            </article>
         </section>
     );
 }

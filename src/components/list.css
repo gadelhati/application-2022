@@ -9,12 +9,21 @@ section {
     /* background-color: yellow; */
     /* width: 80vw; */
     padding: 10px;
+    /* margin: 10px; */
+    /* border: 6px solid white; */
 }
 
 article {
-    padding: 0.5em;
+    padding: 0.6em;
+    background-color: rgb(252, 246, 246);
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
-table {
-    overflow-y:auto;
+.form-floating {
+    margin-bottom: 10px;
+}
+
+.button {
+    margin-right: 12px;
 }
